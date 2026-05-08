@@ -66,7 +66,7 @@ function renderCard(job) {
   return `
     <div class="jc${job.featured ? ' featured' : ''}"
          style="cursor:pointer"
-         onclick="if(event.target.tagName!=='BUTTON'&&!event.target.closest('.save-btn'))window.location='job.html?id=${job.id}'"
+         onclick="if(event.target.tagName!=='BUTTON'&&!event.target.closest('.save-btn'))window.location='job?id=${job.id}'"
          data-id="${job.id}"
          data-type="${job.type}"
          data-discipline="${cats}"
@@ -84,7 +84,7 @@ function renderCard(job) {
               ${ARR_BADGE[job.arrangement] || ''}
               ${clr}
             </div>
-            <div class="jc-title"><a href="job.html?id=${job.id}">${job.title}</a></div>
+            <div class="jc-title"><a href="job?id=${job.id}">${job.title}</a></div>
             <div class="jc-company">${job.organization}${job.location ? ' &mdash; ' + job.location : ''}</div>
           </div>
           <div class="jc-rate">${rateText(job)}</div>
@@ -100,7 +100,7 @@ function renderCard(job) {
             <button class="save-btn" title="Save job">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
             </button>
-            <a class="btn btn-primary btn-sm" href="job.html?id=${job.id}">View & Apply</a>
+            <a class="btn btn-primary btn-sm" href="job?id=${job.id}">View & Apply</a>
           </div>
         </div>
       </div>

@@ -113,7 +113,7 @@ function renderSimilarCard(job) {
   const abbr = jdAbbr(job.organization);
   const rate = jdRateText(job);
   return `
-    <a class="sim-card" href="job.html?id=${job.id}">
+    <a class="sim-card" href="job?id=${job.id}">
       <div class="sim-logo" style="background:${jdLogoColor(job.organization)}">${abbr}</div>
       <div class="sim-body">
         <div class="sim-job-title">${job.title}</div>
