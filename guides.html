@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides & Handbooks — STEMsource</title>
+  <meta name="description" content="Comprehensive career guides for STEM professionals — from portfolio building to contract negotiation.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(22,45,69,.12); }
+    .guide-card-full {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+      transition: all var(--transition);
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 20px;
+      align-items: start;
+    }
+    .guide-card-full:hover { border-color: var(--sky); box-shadow: var(--shadow-md); }
+    .guide-card-full .guide-icon-wrap { width: 64px; height: 64px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .guide-card-full .guide-title { font-size: 1.05rem; font-weight: 600; color: var(--text); line-height: 1.35; margin-bottom: 6px; }
+    .guide-card-full .guide-title a:hover { color: var(--sky); }
+    .guide-card-full .guide-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 12px; }
+    .guide-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: .8rem; color: var(--text-light); }
+    .guide-meta-item { display: flex; align-items: center; gap: 5px; }
+    .guide-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+    .chapter-count { font-size: .78rem; color: var(--text-light); white-space: nowrap; }
+
+    .hero-guide {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      margin-bottom: 48px;
+    }
+    .hero-guide-visual {
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-guide-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+    .hero-guide-label { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sky); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .hero-guide-title { font-family: var(--font-serif); font-size: 1.55rem; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 12px; }
+    .hero-guide-desc { font-size: .9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
+    .hero-guide-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hero-guide-stats { display: flex; gap: 20px; margin-bottom: 24px; font-size: .82rem; color: var(--text-light); }
+    .hero-guide-stat strong { display: block; font-size: 1.1rem; font-weight: 700; color: var(--navy); font-family: var(--font-serif); }
+
+    .guides-section-list { display: flex; flex-direction: column; gap: 16px; }
+    .section-divider { display: flex; align-items: center; gap: 12px; margin: 40px 0 24px; }
+    .section-divider h3 { font-family: var(--font-serif); font-size: 1.1rem; color: var(--navy); white-space: nowrap; }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .section-divider::before { content: ''; flex: 0 0 0; }
+
+    @media(max-width:900px){
+      .hero-guide{grid-template-columns:1fr;}
+      .hero-guide-visual{min-height:180px;}
+      .guide-card-full{grid-template-columns:1fr;gap:12px;}
+      .guide-cta{flex-direction:row;align-items:center;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+  New guide: <strong>Navigating Security Clearances in Defense STEM Roles</strong> — <a href="#">Read now →</a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container-lg">
+    <div class="navbar-inner">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <span class="brand-name">STEM<span>source</span></span>
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="jobs.html?type=freelance"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><div class="dropdown-item-text"><span class="title">Freelance Projects</span></div></a><a class="dropdown-item" href="jobs.html?type=contract"><div class="dropdown-icon" style="background:var(--amber-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div class="dropdown-item-text"><span class="title">Contract Positions</span></div></a><a class="dropdown-item" href="jobs.html?type=fulltime"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="dropdown-item-text"><span class="title">Full-Time Employment</span></div></a></div></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html" style="color:var(--navy);font-weight:600">Resources<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="blog.html"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="dropdown-item-text"><span class="title">Blog &amp; Insights</span></div></a><a class="dropdown-item" href="guides.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="dropdown-item-text"><span class="title">Guides &amp; Handbooks</span></div></a><a class="dropdown-item" href="#"><div class="dropdown-icon" style="background:var(--sage-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="dropdown-item-text"><span class="title">Salary Explorer</span></div></a></div></li>
+        <li class="nav-item"><a class="nav-link" href="#">Community<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="#"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="dropdown-item-text"><span class="title">Professional Forums</span></div></a></div></li>
+        <li class="nav-item"><a class="nav-link" href="post-job.html">For Employers<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="post-job.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="dropdown-item-text"><span class="title">Post a Position</span></div></a></div></li>
+      </ul>
+      <div class="navbar-actions">
+        <a class="nav-sign-in" href="signup.html">Sign In</a>
+        <a class="btn btn-primary btn-sm" href="post-job.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post a Job</a>
+        <button class="nav-toggle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav"><div class="mobile-nav-panel"><button class="mobile-nav-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><a class="mobile-nav-link" href="jobs.html">Browse Jobs</a><a class="mobile-nav-link" href="blog.html">Blog</a><a class="mobile-nav-link" href="guides.html">Guides</a><hr class="mobile-nav-divider"><a class="mobile-nav-link" href="post-job.html">Post a Job</a><a class="mobile-nav-link" href="signup.html">Sign In</a></div></div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-inner">
+      <div class="page-breadcrumb"><a href="index.html">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span>Guides</span></div>
+      <h1>Guides &amp; Handbooks</h1>
+      <p>Deep-dive frameworks and playbooks written by senior STEM professionals — free for all members.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="section">
+  <div class="container">
+
+    <!-- Category tabs -->
+    <div class="category-tabs">
+      <button class="category-tab active">All Guides</button>
+      <button class="category-tab">Career Transitions</button>
+      <button class="category-tab">Freelancing</button>
+      <button class="category-tab">Contracts &amp; Legal</button>
+      <button class="category-tab">Interview Prep</button>
+      <button class="category-tab">Salary &amp; Rates</button>
+      <button class="category-tab">Portfolio Building</button>
+      <button class="category-tab">Security Clearances</button>
+    </div>
+
+    <!-- Featured Guide -->
+    <div class="hero-guide">
+      <div class="hero-guide-visual" style="background:linear-gradient(135deg,#1a2e45,#0d4f47)">
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <div style="position:absolute;bottom:20px;left:20px">
+          <span class="badge" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.2)">
+            ⭐ Most Popular Guide
+          </span>
+        </div>
+      </div>
+      <div class="hero-guide-body">
+        <div class="hero-guide-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Featured Handbook · Interview Prep
+        </div>
+        <h2 class="hero-guide-title">Technical Interview Mastery for Scientists &amp; Engineers</h2>
+        <p class="hero-guide-desc">From domain-specific problem types to whiteboard strategies and how to communicate complex research to non-expert interviewers. Covers all major STEM disciplines with role-specific playbooks.</p>
+        <div class="hero-guide-tags">
+          <span class="tag">All Disciplines</span>
+          <span class="tag">Industry Roles</span>
+          <span class="tag">Research Positions</span>
+          <span class="tag">Leadership Tracks</span>
+        </div>
+        <div class="hero-guide-stats">
+          <div class="hero-guide-stat"><strong>12</strong>Chapters</div>
+          <div class="hero-guide-stat"><strong>~4 hrs</strong>Reading time</div>
+          <div class="hero-guide-stat"><strong>8,200+</strong>Readers</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>
+            Start Reading
+          </a>
+          <span class="guide-level level-intermediate">Intermediate</span>
+          <span style="font-size:.8rem;color:var(--text-light)">Updated April 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career Transitions -->
+    <div class="section-divider">
+      <h3>Career Transitions</h3>
+    </div>
+    <div class="guides-section-list">
+
+      <div class="guide-card-full">
+        <div class="guide-icon-wrap" style="background:var(--teal-pale)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="guide-title"><a href="#">From Academia to Industry: A Step-by-Step Transition Guide for PhD Researchers</a></div>
+          <div class="guide-desc">How to translate your research experience into industry language, which sectors value academic credentials most, and the companies with the best track records hiring postdocs.</div>
+          <div class="guide-meta">
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>10 chapters</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~3.5 hrs</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>6,450 readers</span>
+            <span class="guide-level level-beginner" style="padding:2px 8px">Beginner</span>
+          </div>
+        </div>
+        <div class="guide-cta">
+          <a class="btn btn-outline-navy btn-sm" href="#">Read Guide</a>
+          <span class="chapter-count">Updated Mar 2026</span>
+        </div>
+      </div>
+
+      <div class="guide-card-full">
+        <div class="guide-icon-wrap" style="background:#ede8f8">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c52c0" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <div class="guide-title"><a href="#">Government STEM to Private Sector: Navigating the Cultural Shift</a></div>
+          <div class="guide-desc">Federal lab culture vs. startup pace vs. Fortune 500 structure. A practical guide for scientists and engineers moving from government roles, including salary recalibration and security considerations.</div>
+          <div class="guide-meta">
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>7 chapters</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~2.5 hrs</span>
+            <span class="guide-level level-intermediate" style="padding:2px 8px">Intermediate</span>
+          </div>
+        </div>
+        <div class="guide-cta">
+          <a class="btn btn-outline-navy btn-sm" href="#">Read Guide</a>
+          <span class="chapter-count">Updated Jan 2026</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Freelancing -->
+    <div class="section-divider"><h3>Freelancing &amp; Consulting</h3></div>
+    <div class="guides-section-list">
+
+      <div class="guide-card-full">
+        <div class="guide-icon-wrap" style="background:var(--teal-pale)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div>
+          <div class="guide-title"><a href="#">Building a Standout STEM Portfolio That Gets You Hired</a></div>
+          <div class="guide-desc">What to include, how to present it for different audiences (technical vs. executive), and common mistakes that cost scientists and engineers interviews.</div>
+          <div class="guide-meta">
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>8 chapters</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~2 hrs</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>5,120 readers</span>
+            <span class="guide-level level-beginner" style="padding:2px 8px">Beginner</span>
+          </div>
+        </div>
+        <div class="guide-cta">
+          <a class="btn btn-outline-navy btn-sm" href="#">Read Guide</a>
+          <span class="chapter-count">Updated Apr 2026</span>
+        </div>
+      </div>
+
+      <div class="guide-card-full">
+        <div class="guide-icon-wrap" style="background:var(--amber-pale)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div>
+          <div class="guide-title"><a href="#">Setting Your Consulting Rate: A Data-Driven Framework for STEM Freelancers</a></div>
+          <div class="guide-desc">How to calculate your baseline rate, factor in overhead, taxes, and benefits gaps, then position yourself at the right level within the market. Includes rate tables by discipline and experience level.</div>
+          <div class="guide-meta">
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>6 chapters</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~1.5 hrs</span>
+            <span class="guide-level level-intermediate" style="padding:2px 8px">Intermediate</span>
+          </div>
+        </div>
+        <div class="guide-cta">
+          <a class="btn btn-outline-navy btn-sm" href="#">Read Guide</a>
+          <span class="chapter-count">Updated Feb 2026</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contracts & Legal -->
+    <div class="section-divider"><h3>Contracts &amp; Legal</h3></div>
+    <div class="guides-section-list">
+
+      <div class="guide-card-full">
+        <div class="guide-icon-wrap" style="background:var(--gold-pale)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="guide-title"><a href="#">IP Rights &amp; Confidentiality for Freelance STEM Consultants</a></div>
+          <div class="guide-desc">Who owns your work product? How to negotiate IP assignment clauses, publication rights, non-competes, and non-solicitation provisions in consulting engagements. Includes annotated sample contract language.</div>
+          <div class="guide-meta">
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>5 chapters</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~2 hrs</span>
+            <span class="guide-level level-advanced" style="padding:2px 8px">Advanced</span>
+          </div>
+        </div>
+        <div class="guide-cta">
+          <a class="btn btn-outline-navy btn-sm" href="#">Read Guide</a>
+          <span class="chapter-count">Updated Mar 2026</span>
+        </div>
+      </div>
+
+      <div class="guide-card-full">
+        <div class="guide-icon-wrap" style="background:var(--sky-pale)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div>
+          <div class="guide-title"><a href="#">Contract vs. Full-Time Employment: A Financial Comparison for STEM Professionals</a></div>
+          <div class="guide-desc">Tax implications of 1099 vs. W-2, benefits gap calculations, rate multipliers, retirement savings strategies, and 5-year wealth projections across both employment models.</div>
+          <div class="guide-meta">
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>6 chapters</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~2.5 hrs</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>4,800 readers</span>
+            <span class="guide-level level-intermediate" style="padding:2px 8px">Intermediate</span>
+          </div>
+        </div>
+        <div class="guide-cta">
+          <a class="btn btn-outline-navy btn-sm" href="#">Read Guide</a>
+          <span class="chapter-count">Updated Jan 2026</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Security Clearances -->
+    <div class="section-divider"><h3>Security Clearances</h3></div>
+    <div class="guides-section-list">
+      <div class="guide-card-full">
+        <div class="guide-icon-wrap" style="background:var(--navy);opacity:.9">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="guide-title"><a href="#">Navigating Security Clearances in Defense &amp; Government STEM Roles</a></div>
+          <div class="guide-desc">Types of clearances (Secret, TS, TS/SCI), investigation timelines, lifestyle polygraph, adjudicative guidelines, and which employers sponsor the process for incoming hires from the private sector.</div>
+          <div class="guide-meta">
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg>7 chapters</span>
+            <span class="guide-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~2 hrs</span>
+            <span class="guide-level level-advanced" style="padding:2px 8px">Advanced</span>
+            <span style="background:var(--teal-pale);color:var(--teal);border-radius:var(--r-pill);padding:2px 8px;font-size:.75rem;font-weight:600">New</span>
+          </div>
+        </div>
+        <div class="guide-cta">
+          <a class="btn btn-outline-navy btn-sm" href="#">Read Guide</a>
+          <span class="chapter-count">Published May 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background:var(--bg-alt);border:1px solid var(--border-light);border-radius:var(--r-xl);padding:40px;text-align:center;margin-top:48px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px">For Members</div>
+      <h3 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--navy);margin-bottom:10px">Unlock the Full Library</h3>
+      <p style="color:var(--text-mid);max-width:480px;margin:0 auto 24px;line-height:1.7">Members get early access to new guides, downloadable templates, and curated reading lists. Free to join.</p>
+      <a class="btn btn-primary btn-lg" href="signup.html">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Create Free Account
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="brand-name">STEM<span>source</span></span></a><p class="footer-tagline">The premier job platform for STEM professionals worldwide.</p><div class="footer-socials"><a class="social-btn" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+      <div><div class="footer-col-title">Find Work</div><div class="footer-links"><a class="footer-link" href="jobs.html">Browse Jobs</a><a class="footer-link" href="jobs.html?type=freelance">Freelance</a><a class="footer-link" href="jobs.html?type=contract">Contract</a><a class="footer-link" href="jobs.html?type=fulltime">Full-Time</a></div></div>
+      <div><div class="footer-col-title">Resources</div><div class="footer-links"><a class="footer-link" href="blog.html">Blog</a><a class="footer-link" href="guides.html">Guides</a><a class="footer-link" href="#">Salary Explorer</a></div></div>
+      <div><div class="footer-col-title">Employers</div><div class="footer-links"><a class="footer-link" href="post-job.html">Post a Job</a><a class="footer-link" href="#">Talent Search</a><a class="footer-link" href="#">Pricing</a></div></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 STEMsource Inc. All rights reserved.</span><div class="footer-bottom-links"><a class="footer-bottom-link" href="#">Privacy</a><a class="footer-bottom-link" href="#">Terms</a></div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

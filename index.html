@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STEMsource — Jobs & Resources for STEM Professionals</title>
+  <meta name="description" content="Find freelance projects, contracts, and full-time positions in science, technology, engineering, and mathematics. Join 42,000+ STEM professionals." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ─── ANNOUNCE BAR ──────────────────────────────────────────────── -->
+<div style="background:var(--green-700);color:#fff;text-align:center;padding:9px 16px;font-size:.8rem;font-weight:500;letter-spacing:.01em;">
+  🚀 STEMsource is in beta — post your first job <strong>free</strong> for a limited time.
+  <a href="post-job.html" style="color:#a7f3d0;font-weight:700;margin-left:6px;text-decoration:underline;">Post Now →</a>
+</div>
+
+<!-- ─── NAVBAR ────────────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="container-lg">
+    <div class="navbar-inner">
+
+      <!-- Brand -->
+      <a href="index.html" class="navbar-brand">
+        <div class="brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+          </svg>
+        </div>
+        <span class="brand-name">STEM<em>source</em></span>
+      </a>
+
+      <!-- Nav links -->
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Find Jobs
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="jobs.html?type=freelance" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Freelance Projects</span>
+                <span class="dd-desc">Short-term, project-based contracts</span>
+              </div>
+            </a>
+            <a href="jobs.html?type=contract" class="dd-item">
+              <div class="dd-icon" style="background:var(--amber-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Contract Positions</span>
+                <span class="dd-desc">Mid-term engagements, W2 or 1099</span>
+              </div>
+            </a>
+            <a href="jobs.html?type=fulltime" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Full-Time Roles</span>
+                <span class="dd-desc">Permanent positions with benefits</span>
+              </div>
+            </a>
+            <a href="jobs.html?type=parttime" class="dd-item">
+              <div class="dd-icon" style="background:var(--violet-100);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Part-Time &amp; Advisory</span>
+                <span class="dd-desc">Flexible hours, board seats, consulting</span>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Disciplines
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown dropdown-wide">
+            <div class="dd-grid">
+              <a href="jobs.html?d=biotech" class="dd-item">
+                <div class="dd-icon" style="background:#fdf2f8;"><span style="font-size:1.1rem;">🧬</span></div>
+                <div><span class="dd-title">Biotechnology</span><span class="dd-desc">Genomics, CRISPR, drug discovery</span></div>
+              </a>
+              <a href="jobs.html?d=cs" class="dd-item">
+                <div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">💻</span></div>
+                <div><span class="dd-title">Computer Science</span><span class="dd-desc">AI/ML, software, data science</span></div>
+              </a>
+              <a href="jobs.html?d=engineering" class="dd-item">
+                <div class="dd-icon" style="background:var(--amber-50);"><span style="font-size:1.1rem;">⚙️</span></div>
+                <div><span class="dd-title">Engineering</span><span class="dd-desc">Mechanical, electrical, civil</span></div>
+              </a>
+              <a href="jobs.html?d=chemistry" class="dd-item">
+                <div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">⚗️</span></div>
+                <div><span class="dd-title">Chemistry</span><span class="dd-desc">Pharma, materials, synthesis</span></div>
+              </a>
+              <a href="jobs.html?d=physics" class="dd-item">
+                <div class="dd-icon" style="background:var(--violet-100);"><span style="font-size:1.1rem;">⚛️</span></div>
+                <div><span class="dd-title">Physics</span><span class="dd-desc">Quantum, astrophysics, optics</span></div>
+              </a>
+              <a href="jobs.html?d=math" class="dd-item">
+                <div class="dd-icon" style="background:var(--slate-100);"><span style="font-size:1.1rem;">📐</span></div>
+                <div><span class="dd-title">Mathematics</span><span class="dd-desc">Statistics, modeling, actuarial</span></div>
+              </a>
+              <a href="jobs.html?d=env" class="dd-item">
+                <div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">🌍</span></div>
+                <div><span class="dd-title">Environmental</span><span class="dd-desc">Climate science, ecology, GIS</span></div>
+              </a>
+              <a href="jobs.html?d=neuro" class="dd-item">
+                <div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">🧠</span></div>
+                <div><span class="dd-title">Neuroscience</span><span class="dd-desc">Cognitive science, neuropharma</span></div>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Resources
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="blog.html" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div><span class="dd-title">Blog</span><span class="dd-desc">Career advice, industry trends</span></div>
+            </a>
+            <a href="guides.html" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+              </div>
+              <div><span class="dd-title">Guides &amp; Playbooks</span><span class="dd-desc">Deep-dive how-tos for STEM careers</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--amber-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div><span class="dd-title">Salary Reports</span><span class="dd-desc">2025 STEM compensation benchmarks</span></div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Community
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--violet-100);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div><span class="dd-title">Forum</span><span class="dd-desc">Ask questions, share insights</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div><span class="dd-title">Mentorship</span><span class="dd-desc">Connect with senior STEM leaders</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div><span class="dd-title">Events &amp; Webinars</span><span class="dd-desc">Live sessions with industry experts</span></div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            For Employers
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="post-job.html" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+              <div><span class="dd-title">Post a Job</span><span class="dd-desc">Reach 42,000+ STEM professionals</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div><span class="dd-title">Search Candidates</span><span class="dd-desc">Browse verified STEM profiles</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--amber-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div><span class="dd-title">Enterprise Plans</span><span class="dd-desc">Custom hiring solutions for teams</span></div>
+            </a>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- Navbar actions -->
+      <div class="navbar-actions">
+        <a href="signup.html" class="nav-signin">Sign In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="nav-toggle" id="mobileToggle" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" id="mobileClose">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="jobs.html" class="mobile-nav-link">Find Jobs</a>
+    <a href="jobs.html" class="mobile-nav-link">Browse Disciplines</a>
+    <a href="blog.html" class="mobile-nav-link">Blog</a>
+    <a href="guides.html" class="mobile-nav-link">Guides</a>
+    <a href="#" class="mobile-nav-link">Community</a>
+    <hr class="mobile-nav-divider" />
+    <a href="post-job.html" class="mobile-nav-link">Post a Job</a>
+    <hr class="mobile-nav-divider" />
+    <a href="signup.html" class="mobile-nav-link">Sign In</a>
+    <a href="signup.html" class="btn btn-primary" style="margin-top:8px;justify-content:center;">Get Started Free</a>
+  </div>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="container-lg">
+    <div class="hero-inner">
+
+      <!-- Left: copy + search -->
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          Now live — 1,240 new jobs this week
+        </div>
+
+        <h1>
+          The professional network<br>
+          for <span class="highlight">STEM talent</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Freelance projects, contracts, and full-time roles across biotech, engineering, data science, and more. Vetted employers. Verified credentials.
+        </p>
+
+        <!-- Search form -->
+        <form class="hero-search hero-search-form" action="jobs.html" method="get">
+          <div class="hero-search-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <input type="text" name="q" placeholder="Job title, skill, or keyword…" />
+          <div class="hero-search-sep"></div>
+          <select name="discipline">
+            <option value="">All Disciplines</option>
+            <option>Biotechnology</option>
+            <option>Computer Science</option>
+            <option>Engineering</option>
+            <option>Chemistry</option>
+            <option>Physics</option>
+            <option>Mathematics</option>
+            <option>Environmental Science</option>
+            <option>Neuroscience</option>
+          </select>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <!-- Trust logos -->
+        <div class="hero-trust">
+          <span class="hero-trust-label">Trusted by teams at</span>
+          <div class="trust-logos">
+            <div class="trust-logo">NIH</div>
+            <div class="trust-logo">SpaceX</div>
+            <div class="trust-logo">Pfizer</div>
+            <div class="trust-logo">MIT</div>
+            <div class="trust-logo">Google</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: floating job preview card -->
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-dot" style="background:#ef4444;"></div>
+            <div class="hero-card-dot" style="background:#f59e0b;"></div>
+            <div class="hero-card-dot" style="background:#22c55e;"></div>
+            <span class="hero-card-title">Recent Openings</span>
+          </div>
+          <div class="hero-card-body">
+
+            <div class="hero-mini-job active">
+              <div class="hmj-row">
+                <div class="hmj-logo" style="background:#1d4ed8;">IBM</div>
+                <div>
+                  <div class="hmj-title">Senior ML Research Scientist</div>
+                  <div class="hmj-company">IBM Research · Remote</div>
+                </div>
+              </div>
+              <div class="hmj-footer">
+                <span class="hmj-rate">$145–185k / yr</span>
+                <span class="badge badge-fulltime">Full-Time</span>
+              </div>
+            </div>
+
+            <div class="hero-mini-job">
+              <div class="hmj-row">
+                <div class="hmj-logo" style="background:#7c3aed;">DM</div>
+                <div>
+                  <div class="hmj-title">Computational Neuroscientist</div>
+                  <div class="hmj-company">DeepMind · London / Hybrid</div>
+                </div>
+              </div>
+              <div class="hmj-footer">
+                <span class="hmj-rate">£95–130k</span>
+                <span class="badge badge-contract">Contract</span>
+              </div>
+            </div>
+
+            <div class="hero-mini-job">
+              <div class="hmj-row">
+                <div class="hmj-logo" style="background:#059669;">PFZ</div>
+                <div>
+                  <div class="hmj-title">CRISPR Genomics Consultant</div>
+                  <div class="hmj-company">Pfizer · New York, NY</div>
+                </div>
+              </div>
+              <div class="hmj-footer">
+                <span class="hmj-rate">$220/hr</span>
+                <span class="badge badge-freelance">Freelance</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="hero-card-stats">
+            <div class="hcs-item">
+              <div class="hcs-num">42k+</div>
+              <div class="hcs-label">Professionals</div>
+            </div>
+            <div class="hcs-item">
+              <div class="hcs-num">3.8k</div>
+              <div class="hcs-label">Open Roles</div>
+            </div>
+            <div class="hcs-item">
+              <div class="hcs-num">98%</div>
+              <div class="hcs-label">Placement Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─────────────────────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="container-lg">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-icon-wrap" style="background:var(--green-50);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div>
+          <span class="stat-num" data-count="42000" data-suffix="k+">0</span>
+          <span class="stat-label">STEM Professionals</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap" style="background:var(--blue-50);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div>
+          <span class="stat-num" data-count="3800" data-suffix="+">0</span>
+          <span class="stat-label">Active Openings</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap" style="background:var(--amber-50);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div>
+          <span class="stat-num" data-count="1200" data-suffix="+">0</span>
+          <span class="stat-label">Verified Employers</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon-wrap" style="background:var(--violet-100);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div>
+          <span class="stat-num" data-count="98" data-suffix="%">0</span>
+          <span class="stat-label">Placement Rate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FEATURED JOBS ─────────────────────────────────────────────── -->
+<section class="section" style="background:#fff;">
+  <div class="container-lg">
+    <div class="section-header">
+      <div class="section-header-left">
+        <p class="label-xs">Curated Opportunities</p>
+        <h2 class="section-title">Featured Jobs</h2>
+        <p class="section-sub">Hand-picked positions from top employers across all STEM disciplines.</p>
+      </div>
+      <a href="jobs.html" class="view-all">
+        Browse All Jobs
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <div class="jobs-grid">
+
+      <!-- Card 1 -->
+      <div class="job-card job-card-featured">
+        <div class="jc-top">
+          <div class="co-logo" style="background:#1d4ed8;">IBM</div>
+          <div class="jc-badges">
+            <span class="badge badge-featured">⭐ Featured</span>
+            <span class="badge badge-fulltime">Full-Time</span>
+          </div>
+          <button class="save-btn" aria-label="Save job">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="jc-title"><a href="#">Senior ML Research Scientist</a></div>
+          <div class="jc-company">IBM Research</div>
+        </div>
+        <div class="jc-meta">
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Remote — US
+          </span>
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            8+ yrs exp
+          </span>
+        </div>
+        <div class="jc-tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">LLMs</span>
+          <span class="tag">Distributed ML</span>
+          <span class="tag">Python</span>
+        </div>
+        <div class="jc-footer">
+          <div class="jc-salary">$145,000 – $185,000 <small>/ year</small></div>
+          <span class="jc-posted">2 days ago</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="job-card">
+        <div class="jc-top">
+          <div class="co-logo" style="background:#7c3aed;">DM</div>
+          <div class="jc-badges">
+            <span class="badge badge-contract">Contract</span>
+            <span class="badge badge-remote">Remote</span>
+          </div>
+          <button class="save-btn" aria-label="Save job">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="jc-title"><a href="#">Computational Neuroscientist</a></div>
+          <div class="jc-company">DeepMind</div>
+        </div>
+        <div class="jc-meta">
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            London / Hybrid
+          </span>
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            12-month contract
+          </span>
+        </div>
+        <div class="jc-tags">
+          <span class="tag">fMRI</span>
+          <span class="tag">Python</span>
+          <span class="tag">JAX</span>
+          <span class="tag">Neural Networks</span>
+        </div>
+        <div class="jc-footer">
+          <div class="jc-salary">£95,000 – £130,000</div>
+          <span class="jc-posted">1 day ago</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="job-card">
+        <div class="jc-top">
+          <div class="co-logo" style="background:#059669;">PFZ</div>
+          <div class="jc-badges">
+            <span class="badge badge-freelance">Freelance</span>
+          </div>
+          <button class="save-btn" aria-label="Save job">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="jc-title"><a href="#">CRISPR Genomics Consultant</a></div>
+          <div class="jc-company">Pfizer</div>
+        </div>
+        <div class="jc-meta">
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            New York, NY
+          </span>
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            3-month project
+          </span>
+        </div>
+        <div class="jc-tags">
+          <span class="tag">CRISPR</span>
+          <span class="tag">Gene Editing</span>
+          <span class="tag">R</span>
+          <span class="tag">Bioinformatics</span>
+        </div>
+        <div class="jc-footer">
+          <div class="jc-salary">$220 <small>/ hour</small></div>
+          <span class="jc-posted">3 days ago</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="job-card job-card-featured">
+        <div class="jc-top">
+          <div class="co-logo" style="background:#0f172a;">JHU</div>
+          <div class="jc-badges">
+            <span class="badge badge-featured">⭐ Featured</span>
+            <span class="badge badge-parttime">Part-Time</span>
+          </div>
+          <button class="save-btn" aria-label="Save job">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="jc-title"><a href="#">Biostatistics Research Advisor</a></div>
+          <div class="jc-company">Johns Hopkins University</div>
+        </div>
+        <div class="jc-meta">
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Baltimore, MD
+          </span>
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            20 hrs/week
+          </span>
+        </div>
+        <div class="jc-tags">
+          <span class="tag">R</span>
+          <span class="tag">SAS</span>
+          <span class="tag">Clinical Trials</span>
+          <span class="tag">Epidemiology</span>
+        </div>
+        <div class="jc-footer">
+          <div class="jc-salary">$95 <small>/ hour</small></div>
+          <span class="jc-posted">Today</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="job-card">
+        <div class="jc-top">
+          <div class="co-logo" style="background:#dc2626;">SpX</div>
+          <div class="jc-badges">
+            <span class="badge badge-fulltime">Full-Time</span>
+          </div>
+          <button class="save-btn" aria-label="Save job">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="jc-title"><a href="#">Propulsion Systems Engineer</a></div>
+          <div class="jc-company">SpaceX</div>
+        </div>
+        <div class="jc-meta">
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Hawthorne, CA
+          </span>
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            5+ yrs exp
+          </span>
+        </div>
+        <div class="jc-tags">
+          <span class="tag">CFD</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Ansys Fluent</span>
+          <span class="tag">Thermodynamics</span>
+        </div>
+        <div class="jc-footer">
+          <div class="jc-salary">$120,000 – $160,000 <small>/ year</small></div>
+          <span class="jc-posted">5 days ago</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="job-card">
+        <div class="jc-top">
+          <div class="co-logo" style="background:#166534;">EPA</div>
+          <div class="jc-badges">
+            <span class="badge badge-contract">Contract</span>
+            <span class="badge badge-remote">Remote</span>
+          </div>
+          <button class="save-btn" aria-label="Save job">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="jc-title"><a href="#">Environmental Data Scientist</a></div>
+          <div class="jc-company">U.S. Environmental Protection Agency</div>
+        </div>
+        <div class="jc-meta">
+          <span class="jc-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Washington, DC / Remote
+          </span>
+        </div>
+        <div class="jc-tags">
+          <span class="tag">Python</span>
+          <span class="tag">GIS</span>
+          <span class="tag">ArcGIS</span>
+          <span class="tag">Climate Modeling</span>
+        </div>
+        <div class="jc-footer">
+          <div class="jc-salary">$85 <small>/ hour</small></div>
+          <span class="jc-posted">1 week ago</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:40px;">
+      <a href="jobs.html" class="btn btn-ghost btn-lg">View All 3,800+ Jobs →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ───────────────────────────────────────────────── -->
+<section class="section" style="background:var(--slate-50);">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <p class="label-xs">Simple Process</p>
+      <h2 class="section-title" style="margin:8px auto 0;max-width:480px;text-align:center;">Get hired in three steps</h2>
+      <p class="section-sub" style="margin:12px auto 0;text-align:center;">From signup to your first engagement in days, not months.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Create Your Profile</h3>
+        <p class="step-desc">Upload credentials, publications, and past projects. Our verification team confirms your background within 24 hours.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Browse &amp; Apply</h3>
+        <p class="step-desc">Search thousands of curated roles by discipline, type, location, and compensation. Set alerts for new matches.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Land the Engagement</h3>
+        <p class="step-desc">Interview directly with hiring teams. We handle NDAs, contracts, and invoicing so you can focus on the science.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFITS ──────────────────────────────────────────────────── -->
+<section class="section" style="background:#fff;">
+  <div class="container-lg">
+    <div class="section-header">
+      <div class="section-header-left">
+        <p class="label-xs">Why STEMsource</p>
+        <h2 class="section-title">Built for scientists, by scientists</h2>
+        <p class="section-sub">We understand STEM careers in a way general job boards simply can't.</p>
+      </div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:var(--green-50);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="benefit-title">Verified Credentials</h3>
+        <p class="benefit-desc">Every profile is manually reviewed. Employers see verified degrees, publications, and clearance levels — no imposters.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:var(--blue-50);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="benefit-title">Faster Time-to-Hire</h3>
+        <p class="benefit-desc">Our discipline-matched search cuts recruiting time by 60%. Top candidates receive interview requests within 48 hours.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:var(--amber-50);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3 class="benefit-title">Competitive Rates</h3>
+        <p class="benefit-desc">STEM professionals on our platform earn on average 32% more than traditional job boards. Live salary benchmarks help you negotiate.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:var(--violet-100);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="benefit-title">Curated Network</h3>
+        <p class="benefit-desc">1,200+ vetted employers from Fortune 500 labs, federal agencies, biotech startups, and research universities.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:var(--green-50);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <h3 class="benefit-title">Expert Guides</h3>
+        <p class="benefit-desc">From navigating security clearances to pricing your consulting rate — our playbooks are written by domain experts.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:var(--blue-50);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <h3 class="benefit-title">Secure Payments</h3>
+        <p class="benefit-desc">Milestone-based escrow for freelance work. Invoicing, tax forms, and payment tracking built right in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DISCIPLINES ────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--slate-50);">
+  <div class="container-lg">
+    <div style="text-align:center;margin-bottom:40px;">
+      <p class="label-xs">All Disciplines</p>
+      <h2 class="section-title" style="text-align:center;margin:8px auto 0;">Browse by field</h2>
+      <p class="section-sub" style="text-align:center;margin:12px auto 0;">Hundreds of roles in every STEM specialization.</p>
+    </div>
+    <div class="disciplines-grid">
+      <a href="jobs.html?d=biotech" class="discipline-card">
+        <div class="disc-icon" style="background:#fdf2f8;">🧬</div>
+        <div>
+          <div class="disc-name">Biotechnology</div>
+          <div class="disc-count">412 open roles</div>
+        </div>
+      </a>
+      <a href="jobs.html?d=cs" class="discipline-card">
+        <div class="disc-icon" style="background:var(--blue-50);">💻</div>
+        <div>
+          <div class="disc-name">Computer Science</div>
+          <div class="disc-count">891 open roles</div>
+        </div>
+      </a>
+      <a href="jobs.html?d=engineering" class="discipline-card">
+        <div class="disc-icon" style="background:var(--amber-50);">⚙️</div>
+        <div>
+          <div class="disc-name">Engineering</div>
+          <div class="disc-count">734 open roles</div>
+        </div>
+      </a>
+      <a href="jobs.html?d=chemistry" class="discipline-card">
+        <div class="disc-icon" style="background:var(--green-50);">⚗️</div>
+        <div>
+          <div class="disc-name">Chemistry</div>
+          <div class="disc-count">298 open roles</div>
+        </div>
+      </a>
+      <a href="jobs.html?d=physics" class="discipline-card">
+        <div class="disc-icon" style="background:var(--violet-100);">⚛️</div>
+        <div>
+          <div class="disc-name">Physics</div>
+          <div class="disc-count">187 open roles</div>
+        </div>
+      </a>
+      <a href="jobs.html?d=math" class="discipline-card">
+        <div class="disc-icon" style="background:var(--slate-100);">📐</div>
+        <div>
+          <div class="disc-name">Mathematics</div>
+          <div class="disc-count">214 open roles</div>
+        </div>
+      </a>
+      <a href="jobs.html?d=env" class="discipline-card">
+        <div class="disc-icon" style="background:var(--green-50);">🌍</div>
+        <div>
+          <div class="disc-name">Environmental</div>
+          <div class="disc-count">156 open roles</div>
+        </div>
+      </a>
+      <a href="jobs.html?d=neuro" class="discipline-card">
+        <div class="disc-icon" style="background:var(--blue-50);">🧠</div>
+        <div>
+          <div class="disc-name">Neuroscience</div>
+          <div class="disc-count">142 open roles</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOG ──────────────────────────────────────────────────────── -->
+<section class="section" style="background:#fff;">
+  <div class="container-lg">
+    <div class="section-header">
+      <div class="section-header-left">
+        <p class="label-xs">Insights &amp; Advice</p>
+        <h2 class="section-title">Latest from the Blog</h2>
+        <p class="section-sub">Career strategy, industry trends, and expert takes for STEM professionals.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="scroll-arrow" data-scroll-id="blog-scroll" data-dir="-1" aria-label="Scroll left">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="scroll-arrow" data-scroll-id="blog-scroll" data-dir="1" aria-label="Scroll right">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <a href="blog.html" class="view-all">All Articles →</a>
+      </div>
+    </div>
+    <div class="scroll-outer" id="blog-scroll">
+      <div class="scroll-track">
+
+        <article class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#0f172a,#1e3a5f);">
+            <span class="blog-img-cat"><span class="badge badge-blue">Career</span></span>
+            <span style="font-size:2.2rem;">🚀</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-title"><a href="blog.html">How to Price Your STEM Consulting Rate in 2025</a></div>
+            <div class="blog-excerpt">Market data from 6,000+ engagements reveals the sweet spot for biotech and software consulting rates.</div>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-av" style="background:var(--green-600);">SR</div>
+                <span>Sarah R.</span>
+              </div>
+              <span>8 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#14532d,#166534);">
+            <span class="blog-img-cat"><span class="badge badge-green">Guide</span></span>
+            <span style="font-size:2.2rem;">🧬</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-title"><a href="blog.html">Navigating Security Clearances for STEM Contractors</a></div>
+            <div class="blog-excerpt">A step-by-step breakdown of the SF-86, timelines, and what disqualifies candidates from federal work.</div>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-av" style="background:var(--blue-600);">MK</div>
+                <span>Michael K.</span>
+              </div>
+              <span>12 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#4c1d95,#6d28d9);">
+            <span class="blog-img-cat"><span class="badge badge-violet">Research</span></span>
+            <span style="font-size:2.2rem;">🤖</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-title"><a href="blog.html">AI is Reshaping STEM Hiring — Here's What to Expect</a></div>
+            <div class="blog-excerpt">From automated screening to AI-generated job descriptions, how machine learning is changing the talent game.</div>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-av" style="background:var(--violet-600);">JL</div>
+                <span>Jessica L.</span>
+              </div>
+              <span>6 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#78350f,#92400e);">
+            <span class="blog-img-cat"><span class="badge badge-amber">Finance</span></span>
+            <span style="font-size:2.2rem;">💰</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-title"><a href="blog.html">Independent Contractor vs. W2: A STEM Tax Guide</a></div>
+            <div class="blog-excerpt">Self-employment tax, quarterly estimates, deductions, and retirement accounts for freelance scientists.</div>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-av" style="background:var(--amber-600);">CP</div>
+                <span>Chris P.</span>
+              </div>
+              <span>10 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#164e63,#0e7490);">
+            <span class="blog-img-cat"><span class="badge badge-blue">Industry</span></span>
+            <span style="font-size:2.2rem;">⚗️</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-title"><a href="blog.html">Top 10 Biotech Hubs to Watch in 2025</a></div>
+            <div class="blog-excerpt">Beyond Boston and San Diego — emerging clusters in Austin, Research Triangle, and the UK.</div>
+            <div class="blog-footer">
+              <div class="blog-author">
+                <div class="author-av" style="background:var(--blue-600);">AN</div>
+                <span>Aisha N.</span>
+              </div>
+              <span>7 min read</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GUIDES ────────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--slate-50);">
+  <div class="container-lg">
+    <div class="section-header">
+      <div class="section-header-left">
+        <p class="label-xs">Expert Playbooks</p>
+        <h2 class="section-title">Guides for STEM Professionals</h2>
+        <p class="section-sub">In-depth resources to help you navigate every stage of your STEM career.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="scroll-arrow" data-scroll-id="guides-scroll" data-dir="-1" aria-label="Scroll left">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="scroll-arrow" data-scroll-id="guides-scroll" data-dir="1" aria-label="Scroll right">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <a href="guides.html" class="view-all">All Guides →</a>
+      </div>
+    </div>
+    <div class="scroll-outer" id="guides-scroll">
+      <div class="scroll-track">
+
+        <div class="guide-card">
+          <div class="guide-icon-box" style="background:var(--green-50);">
+            <span style="font-size:1.5rem;">🚀</span>
+          </div>
+          <div class="guide-title"><a href="guides.html">The STEM Freelancer's Complete Handbook</a></div>
+          <div class="guide-desc">Everything from setting your rate and finding clients to invoicing and managing contracts.</div>
+          <div class="guide-foot">
+            <span class="guide-level level-beginner">Beginner</span>
+            <span class="guide-chapters">14 chapters</span>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-icon-box" style="background:var(--blue-50);">
+            <span style="font-size:1.5rem;">🔒</span>
+          </div>
+          <div class="guide-title"><a href="guides.html">Security Clearance Guide for Scientists</a></div>
+          <div class="guide-desc">SF-86 walkthrough, investigation timelines, reciprocity, and common disqualifiers.</div>
+          <div class="guide-foot">
+            <span class="guide-level level-intermediate">Intermediate</span>
+            <span class="guide-chapters">9 chapters</span>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-icon-box" style="background:var(--amber-50);">
+            <span style="font-size:1.5rem;">📄</span>
+          </div>
+          <div class="guide-title"><a href="guides.html">Decoding STEM Contracts &amp; SOWs</a></div>
+          <div class="guide-desc">IP clauses, indemnification, deliverables — what to watch and what to push back on.</div>
+          <div class="guide-foot">
+            <span class="guide-level level-advanced">Advanced</span>
+            <span class="guide-chapters">11 chapters</span>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-icon-box" style="background:var(--violet-100);">
+            <span style="font-size:1.5rem;">💰</span>
+          </div>
+          <div class="guide-title"><a href="guides.html">Negotiating a Biotech Salary Offer</a></div>
+          <div class="guide-desc">Data-backed strategies for pharma, medtech, and research roles — base, equity, and sign-on.</div>
+          <div class="guide-foot">
+            <span class="guide-level level-intermediate">Intermediate</span>
+            <span class="guide-chapters">7 chapters</span>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-icon-box" style="background:var(--green-50);">
+            <span style="font-size:1.5rem;">🌍</span>
+          </div>
+          <div class="guide-title"><a href="guides.html">Transitioning from Academia to Industry</a></div>
+          <div class="guide-desc">How to reframe your PhD, position transferable skills, and target the right companies.</div>
+          <div class="guide-foot">
+            <span class="guide-level level-beginner">Beginner</span>
+            <span class="guide-chapters">12 chapters</span>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-icon-box" style="background:var(--blue-50);">
+            <span style="font-size:1.5rem;">📊</span>
+          </div>
+          <div class="guide-title"><a href="guides.html">Data Science for Experimental Scientists</a></div>
+          <div class="guide-desc">Python, statistics, and ML skills that lab-based scientists need to stay competitive.</div>
+          <div class="guide-foot">
+            <span class="guide-level level-intermediate">Intermediate</span>
+            <span class="guide-chapters">18 chapters</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────────── -->
+<section class="section testimonials-section">
+  <div class="container-lg">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p class="label-xs">What Members Say</p>
+      <h2 class="section-title" style="text-align:center;margin:8px auto 0;">Trusted by 42,000+ STEM professionals</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"STEMsource connected me with a 6-month NIH contract at more than double my previous consulting rate. The verification system means every client is serious."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-av" style="background:var(--green-600);">DR</div>
+          <div>
+            <div class="testimonial-name">Dr. Rachel Chen</div>
+            <div class="testimonial-role">Computational Biologist · Boston, MA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I was skeptical about leaving my postdoc. The salary benchmarks showed me I was underpaid by 40%. I landed an industry role in three weeks through this platform."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-av" style="background:var(--blue-600);">JS</div>
+          <div>
+            <div class="testimonial-name">James Sutherland, PhD</div>
+            <div class="testimonial-role">Materials Engineer · Austin, TX</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"As a hiring manager at a biotech startup, finding credentialed talent used to take months. STEMsource cut our time-to-hire to under two weeks. Phenomenal ROI."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-av" style="background:var(--violet-600);">MO</div>
+          <div>
+            <div class="testimonial-name">Maria Okonkwo</div>
+            <div class="testimonial-role">VP of R&amp;D · Precision Bio Inc.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container" style="position:relative;z-index:1;">
+    <p class="label-xs" style="color:rgba(255,255,255,.5);margin-bottom:16px;">Join the Community</p>
+    <h2>Ready to advance your STEM career?</h2>
+    <p>Join thousands of scientists, engineers, and researchers already using STEMsource to find better work and better pay.</p>
+    <div class="cta-actions">
+      <a href="signup.html" class="btn btn-primary btn-lg btn-pill">Get Started — It's Free</a>
+      <a href="jobs.html" class="btn btn-outline btn-lg btn-pill">Browse Jobs</a>
+    </div>
+    <p style="color:rgba(255,255,255,.35);font-size:.78rem;margin-top:20px;">No credit card required. Free for professionals.</p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container-lg">
+    <div class="footer-grid">
+
+      <!-- Brand col -->
+      <div>
+        <a href="index.html" class="navbar-brand" style="margin-bottom:12px;display:inline-flex;">
+          <div class="brand-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+            </svg>
+          </div>
+          <span class="brand-name" style="color:#fff;">STEM<em>source</em></span>
+        </a>
+        <p class="footer-tagline">The professional network built exclusively for STEM talent and the employers who need them.</p>
+        <p class="footer-newsletter-label">Stay current with the STEM job market</p>
+        <div class="newsletter-row">
+          <input type="email" class="newsletter-input" placeholder="your@email.com" />
+          <button class="newsletter-btn">Subscribe</button>
+        </div>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Twitter/X">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="GitHub">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Professionals col -->
+      <div>
+        <div class="footer-col-title">Professionals</div>
+        <ul class="footer-links">
+          <li><a href="jobs.html" class="footer-link">Find Jobs</a></li>
+          <li><a href="signup.html" class="footer-link">Create Profile</a></li>
+          <li><a href="guides.html" class="footer-link">Career Guides</a></li>
+          <li><a href="blog.html" class="footer-link">Blog</a></li>
+          <li><a href="#" class="footer-link">Salary Calculator</a></li>
+          <li><a href="#" class="footer-link">Community Forum</a></li>
+        </ul>
+      </div>
+
+      <!-- Employers col -->
+      <div>
+        <div class="footer-col-title">Employers</div>
+        <ul class="footer-links">
+          <li><a href="post-job.html" class="footer-link">Post a Job</a></li>
+          <li><a href="#" class="footer-link">Search Candidates</a></li>
+          <li><a href="#" class="footer-link">Enterprise Plans</a></li>
+          <li><a href="#" class="footer-link">Hiring Resources</a></li>
+          <li><a href="#" class="footer-link">Success Stories</a></li>
+        </ul>
+      </div>
+
+      <!-- Company col -->
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">About STEMsource</a></li>
+          <li><a href="#" class="footer-link">Press &amp; Media</a></li>
+          <li><a href="#" class="footer-link">Partnerships</a></li>
+          <li><a href="#" class="footer-link">Careers at STEM</a></li>
+          <li><a href="#" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <span>© 2025 STEMsource Inc. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Preferences</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

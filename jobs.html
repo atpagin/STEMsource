@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Jobs — STEMsource</title>
+  <meta name="description" content="Search thousands of STEM jobs, freelance projects, and contracts from verified organizations.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(22,45,69,.12); }
+    .active-filter {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--teal-pale); color: var(--teal);
+      border: 1px solid rgba(42,157,143,.3);
+      border-radius: var(--r-pill); padding: 4px 10px;
+      font-size: .78rem; font-weight: 600; cursor: pointer;
+    }
+    .active-filter:hover { background: #cceae6; }
+    .active-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .job-list-card.featured-card { border-color: var(--gold); position: relative; }
+    .job-list-card.featured-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px; background: linear-gradient(180deg,var(--gold),var(--amber));
+      border-radius: var(--r-lg) 0 0 var(--r-lg);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+  <strong>2,847</strong> active positions · Updated hourly. <a href="signup.html">Create alerts →</a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container-lg">
+    <div class="navbar-inner">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <span class="brand-name">STEM<span>source</span></span>
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="jobs.html" style="color:var(--navy);font-weight:600">Jobs<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown">
+            <a class="dropdown-item" href="jobs.html?type=freelance"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><div class="dropdown-item-text"><span class="title">Freelance Projects</span><span class="desc">Short-term & project-based work</span></div></a>
+            <a class="dropdown-item" href="jobs.html?type=contract"><div class="dropdown-icon" style="background:var(--amber-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="dropdown-item-text"><span class="title">Contract Positions</span><span class="desc">Fixed-term contract roles</span></div></a>
+            <a class="dropdown-item" href="jobs.html?type=fulltime"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="dropdown-item-text"><span class="title">Full-Time Employment</span><span class="desc">Permanent career positions</span></div></a>
+            <a class="dropdown-item" href="jobs.html?type=parttime"><div class="dropdown-icon" style="background:var(--sage-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="dropdown-item-text"><span class="title">Part-Time & Flexible</span><span class="desc">Work on your schedule</span></div></a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Resources<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="blog.html"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="dropdown-item-text"><span class="title">Blog &amp; Insights</span></div></a><a class="dropdown-item" href="guides.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="dropdown-item-text"><span class="title">Guides &amp; Handbooks</span></div></a></div></li>
+        <li class="nav-item"><a class="nav-link" href="#">Community<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="#"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="dropdown-item-text"><span class="title">Professional Forums</span></div></a><a class="dropdown-item" href="#"><div class="dropdown-icon" style="background:var(--amber-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="dropdown-item-text"><span class="title">Events &amp; Webinars</span></div></a></div></li>
+        <li class="nav-item"><a class="nav-link" href="post-job.html">For Employers<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="post-job.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="dropdown-item-text"><span class="title">Post a Position</span></div></a></div></li>
+      </ul>
+      <div class="navbar-actions">
+        <a class="nav-sign-in" href="signup.html">Sign In</a>
+        <a class="btn btn-primary btn-sm" href="post-job.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post a Job</a>
+        <button class="nav-toggle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav"><div class="mobile-nav-panel"><button class="mobile-nav-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><a class="mobile-nav-link" href="jobs.html">Browse Jobs</a><a class="mobile-nav-link" href="blog.html">Blog</a><a class="mobile-nav-link" href="guides.html">Guides</a><hr class="mobile-nav-divider"><a class="mobile-nav-link" href="post-job.html">Post a Job</a><a class="mobile-nav-link" href="signup.html">Sign In</a></div></div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-inner">
+      <div class="page-breadcrumb">
+        <a href="index.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>Jobs</span>
+      </div>
+      <h1>STEM Job Board</h1>
+      <p>Browse freelance projects, contracts, and full-time roles from verified organizations worldwide.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH + FILTER BAR -->
+<div style="background:var(--white);border-bottom:1px solid var(--border);padding:16px 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center">
+      <div class="search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Job title, skill, or keyword…">
+      </div>
+      <div class="search-bar" style="min-width:180px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <input type="text" placeholder="Location or Remote">
+      </div>
+      <button class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="section-sm">
+  <div class="container">
+    <div class="jobs-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="filter-sidebar">
+        <div class="filter-title">
+          Filters
+          <span class="filter-clear">Clear all</span>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Position Type</div>
+          <label class="filter-checkbox"><input type="checkbox" checked> Freelance / Project <span class="filter-checkbox-count">612</span></label>
+          <label class="filter-checkbox"><input type="checkbox" checked> Contract <span class="filter-checkbox-count">498</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Full-Time <span class="filter-checkbox-count">1,204</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Part-Time <span class="filter-checkbox-count">533</span></label>
+        </div>
+        <hr class="filter-divider">
+
+        <div class="filter-group">
+          <div class="filter-group-label">Discipline</div>
+          <label class="filter-checkbox"><input type="checkbox" checked> Engineering <span class="filter-checkbox-count">634</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Life Sciences <span class="filter-checkbox-count">512</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> CS &amp; AI <span class="filter-checkbox-count">487</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Chemistry <span class="filter-checkbox-count">298</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Physics <span class="filter-checkbox-count">215</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Mathematics <span class="filter-checkbox-count">341</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Environmental <span class="filter-checkbox-count">178</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Medicine <span class="filter-checkbox-count">182</span></label>
+        </div>
+        <hr class="filter-divider">
+
+        <div class="filter-group">
+          <div class="filter-group-label">Work Arrangement</div>
+          <label class="filter-checkbox"><input type="checkbox" checked> Remote <span class="filter-checkbox-count">1,342</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Hybrid <span class="filter-checkbox-count">876</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> On-Site <span class="filter-checkbox-count">629</span></label>
+        </div>
+        <hr class="filter-divider">
+
+        <div class="filter-group">
+          <div class="filter-group-label">Experience Level</div>
+          <label class="filter-checkbox"><input type="checkbox"> Entry Level <span class="filter-checkbox-count">312</span></label>
+          <label class="filter-checkbox"><input type="checkbox" checked> Mid-Level <span class="filter-checkbox-count">987</span></label>
+          <label class="filter-checkbox"><input type="checkbox" checked> Senior <span class="filter-checkbox-count">1,104</span></label>
+          <label class="filter-checkbox"><input type="checkbox"> Principal / Lead <span class="filter-checkbox-count">444</span></label>
+        </div>
+        <hr class="filter-divider">
+
+        <div class="filter-group">
+          <div class="filter-group-label">Hourly Rate / Salary</div>
+          <div style="padding:6px 0">
+            <div class="salary-range" style="margin-bottom:8px">
+              <span style="font-size:.78rem;white-space:nowrap">$50/hr</span>
+              <input type="range" min="50" max="250" value="200" style="width:100%">
+              <span style="font-size:.78rem;white-space:nowrap">$250/hr</span>
+            </div>
+            <p style="font-size:.78rem;color:var(--text-light);text-align:center">Up to $200/hr or $240k/yr</p>
+          </div>
+        </div>
+        <hr class="filter-divider">
+
+        <div class="filter-group">
+          <div class="filter-group-label">Date Posted</div>
+          <label class="filter-checkbox"><input type="radio" name="date" checked> Any time</label>
+          <label class="filter-checkbox"><input type="radio" name="date"> Past 24 hours</label>
+          <label class="filter-checkbox"><input type="radio" name="date"> Past 7 days</label>
+          <label class="filter-checkbox"><input type="radio" name="date"> Past 30 days</label>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Apply Filters</button>
+      </aside>
+
+      <!-- JOB LISTINGS -->
+      <div>
+        <!-- Active filters -->
+        <div class="active-filters">
+          <span class="active-filter">Freelance ×</span>
+          <span class="active-filter">Contract ×</span>
+          <span class="active-filter">Engineering ×</span>
+          <span class="active-filter">Remote ×</span>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="jobs-toolbar">
+          <p class="jobs-count">Showing <strong>1,110</strong> positions</p>
+          <select class="sort-select">
+            <option>Most Relevant</option>
+            <option>Newest First</option>
+            <option>Highest Pay</option>
+            <option>Most Applied</option>
+          </select>
+        </div>
+
+        <div class="jobs-list">
+
+          <!-- Featured listing -->
+          <div class="job-list-card featured-card">
+            <div class="company-logo" style="background:linear-gradient(135deg,#1a6b8a,#0d3f5a)">IBM</div>
+            <div class="job-list-body">
+              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+                <span class="badge badge-featured">⭐ Featured</span>
+                <span class="badge badge-freelance">Freelance</span>
+                <span class="badge badge-remote">Remote</span>
+              </div>
+              <div class="job-title" style="font-size:1.05rem"><a href="#">Quantum Computing Algorithm Developer</a></div>
+              <div class="job-company" style="margin-bottom:10px">IBM Research — Yorktown Heights, NY</div>
+              <div class="job-meta">
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3–6 months</span>
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Senior</span>
+                <span class="job-meta-item">Posted 2 days ago</span>
+              </div>
+              <div class="job-tags" style="margin-top:10px">
+                <span class="tag">Qiskit</span><span class="tag">Python</span><span class="tag">Linear Algebra</span><span class="tag">Quantum ML</span>
+              </div>
+            </div>
+            <div class="job-list-footer">
+              <div class="job-salary" style="text-align:right">$145–$175<small>/hr</small></div>
+              <div style="display:flex;gap:8px">
+                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Regular listings -->
+          <div class="job-list-card">
+            <div class="company-logo" style="background:linear-gradient(135deg,#2d6a2d,#1a3f1a)">NASA</div>
+            <div class="job-list-body">
+              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-contract">Contract</span><span class="badge badge-remote">Hybrid</span></div>
+              <div class="job-title"><a href="#">Computational Fluid Dynamics Engineer — Mars Mission Systems</a></div>
+              <div class="job-company" style="margin-bottom:10px">NASA Jet Propulsion Laboratory — Pasadena, CA</div>
+              <div class="job-meta">
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24 months</span>
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Senior</span>
+                <span class="job-meta-item">Posted 1 day ago</span>
+              </div>
+              <div class="job-tags" style="margin-top:10px"><span class="tag">ANSYS Fluent</span><span class="tag">OpenFOAM</span><span class="tag">C++</span><span class="tag">Thermodynamics</span></div>
+            </div>
+            <div class="job-list-footer">
+              <div class="job-salary" style="text-align:right">$95–$130<small>/hr</small></div>
+              <div style="display:flex;gap:8px">
+                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-list-card">
+            <div class="company-logo" style="background:linear-gradient(135deg,#5a1a8a,#350f52)">SYN</div>
+            <div class="job-list-body">
+              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-freelance">Freelance</span><span class="badge badge-remote">Remote</span><span class="badge badge-new">New</span></div>
+              <div class="job-title"><a href="#">Synthetic Biology Consultant — Metabolic Pathway Design</a></div>
+              <div class="job-company" style="margin-bottom:10px">Ginkgo Bioworks — Remote / Boston, MA</div>
+              <div class="job-meta">
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2–4 months</span>
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Expert</span>
+                <span class="job-meta-item">Posted today</span>
+              </div>
+              <div class="job-tags" style="margin-top:10px"><span class="tag">Python</span><span class="tag">COBRApy</span><span class="tag">E. coli</span><span class="tag">Fermentation</span></div>
+            </div>
+            <div class="job-list-footer">
+              <div class="job-salary" style="text-align:right">$120–$160<small>/hr</small></div>
+              <div style="display:flex;gap:8px">
+                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-list-card">
+            <div class="company-logo" style="background:linear-gradient(135deg,#0f4c7a,#062f52)">MCK</div>
+            <div class="job-list-body">
+              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-contract">Contract</span></div>
+              <div class="job-title"><a href="#">Structural Materials Engineer — Semiconductor Packaging</a></div>
+              <div class="job-company" style="margin-bottom:10px">McKinsey Materials Practice — Austin, TX</div>
+              <div class="job-meta">
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 months</span>
+                <span class="job-meta-item">Posted 4 days ago</span>
+              </div>
+              <div class="job-tags" style="margin-top:10px"><span class="tag">FEA</span><span class="tag">ABAQUS</span><span class="tag">Failure Analysis</span><span class="tag">Semiconductors</span></div>
+            </div>
+            <div class="job-list-footer">
+              <div class="job-salary" style="text-align:right">$110–$145<small>/hr</small></div>
+              <div style="display:flex;gap:8px">
+                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-list-card">
+            <div class="company-logo" style="background:linear-gradient(135deg,#7a3a0f,#4a2208)">RCH</div>
+            <div class="job-list-body">
+              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-freelance">Freelance</span><span class="badge badge-remote">Remote</span></div>
+              <div class="job-title"><a href="#">Bioinformatics Pipeline Developer — Genomic Data Analysis</a></div>
+              <div class="job-company" style="margin-bottom:10px">Broad Institute (Contract via Vendor)</div>
+              <div class="job-meta">
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4–6 months</span>
+                <span class="job-meta-item">Posted 3 days ago</span>
+              </div>
+              <div class="job-tags" style="margin-top:10px"><span class="tag">Snakemake</span><span class="tag">BWA/GATK</span><span class="tag">Python</span><span class="tag">AWS</span></div>
+            </div>
+            <div class="job-list-footer">
+              <div class="job-salary" style="text-align:right">$95–$125<small>/hr</small></div>
+              <div style="display:flex;gap:8px">
+                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-list-card">
+            <div class="company-logo" style="background:linear-gradient(135deg,#1a3a6b,#0d2244)">DOE</div>
+            <div class="job-list-body">
+              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-contract">Contract</span></div>
+              <div class="job-title"><a href="#">Nuclear Safety Systems Analyst — SMR Design Review</a></div>
+              <div class="job-company" style="margin-bottom:10px">US Department of Energy — Oak Ridge, TN</div>
+              <div class="job-meta">
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>18 months</span>
+                <span class="job-meta-item">Posted 6 days ago · Security clearance required</span>
+              </div>
+              <div class="job-tags" style="margin-top:10px"><span class="tag">RELAP5</span><span class="tag">MELCOR</span><span class="tag">NRC Regs</span><span class="tag">Thermal-Hydraulics</span></div>
+            </div>
+            <div class="job-list-footer">
+              <div class="job-salary" style="text-align:right">$130–$165<small>/hr</small></div>
+              <div style="display:flex;gap:8px">
+                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="job-list-card">
+            <div class="company-logo" style="background:linear-gradient(135deg,#0d4a5a,#062e38)">OPN</div>
+            <div class="job-list-body">
+              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-freelance">Freelance</span><span class="badge badge-remote">Remote</span></div>
+              <div class="job-title"><a href="#">Photonic IC Layout Designer — LiDAR Systems</a></div>
+              <div class="job-company" style="margin-bottom:10px">Luminar Technologies — Remote</div>
+              <div class="job-meta">
+                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 months</span>
+                <span class="job-meta-item">Posted 1 week ago</span>
+              </div>
+              <div class="job-tags" style="margin-top:10px"><span class="tag">Lumerical</span><span class="tag">Klayout</span><span class="tag">Silicon Photonics</span><span class="tag">FDTD</span></div>
+            </div>
+            <div class="job-list-footer">
+              <div class="job-salary" style="text-align:right">$140–$175<small>/hr</small></div>
+              <div style="display:flex;gap:8px">
+                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /jobs-list -->
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">4</button>
+          <button class="page-btn">5</button>
+          <span style="padding:0 4px;color:var(--text-light)">…</span>
+          <button class="page-btn">47</button>
+          <button class="page-btn" style="width:auto;padding:0 14px;gap:6px;display:flex;align-items:center">
+            Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div><!-- /listings -->
+
+    </div><!-- /jobs-layout -->
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Don't See the Right Fit?</h2>
+    <p>Create a profile and let verified employers come to you. Set custom job alerts for your exact discipline and rate requirements.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;position:relative">
+      <a class="btn btn-navy btn-lg" href="signup.html">Create Free Profile</a>
+      <a class="btn btn-outline btn-lg" href="#">Set Job Alerts</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="brand-name">STEM<span>source</span></span></a>
+        <p class="footer-tagline">The premier job platform for science, technology, engineering, and mathematics professionals worldwide.</p>
+        <div class="footer-socials"><a class="social-btn" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a class="social-btn" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a></div>
+      </div>
+      <div><div class="footer-col-title">Find Work</div><div class="footer-links"><a class="footer-link" href="jobs.html">Browse All Jobs</a><a class="footer-link" href="jobs.html?type=freelance">Freelance Projects</a><a class="footer-link" href="jobs.html?type=contract">Contract Roles</a><a class="footer-link" href="jobs.html?type=fulltime">Full-Time Positions</a></div></div>
+      <div><div class="footer-col-title">Resources</div><div class="footer-links"><a class="footer-link" href="blog.html">Blog &amp; Insights</a><a class="footer-link" href="guides.html">Guides</a><a class="footer-link" href="#">Salary Explorer</a></div></div>
+      <div><div class="footer-col-title">Employers</div><div class="footer-links"><a class="footer-link" href="post-job.html">Post a Position</a><a class="footer-link" href="#">Talent Search</a><a class="footer-link" href="#">Pricing</a></div></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 STEMsource Inc. All rights reserved.</span><div class="footer-bottom-links"><a class="footer-bottom-link" href="#">Privacy</a><a class="footer-bottom-link" href="#">Terms</a><a class="footer-bottom-link" href="#">Accessibility</a></div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join STEMsource — Sign Up or Sign In</title>
+  <meta name="description" content="Create your free STEMsource account to access STEM jobs, guides, and the professional community.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    body { background: var(--bg); min-height: 100vh; }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(22,45,69,.12); }
+
+    .auth-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 64px);
+    }
+    .auth-panel-left {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 50%, #1a4a62 100%);
+      padding: 60px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-panel-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(42,157,143,.22) 0%, transparent 50%),
+        radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: auto, 26px 26px;
+    }
+    .auth-left-content { position: relative; z-index: 1; }
+    .auth-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 48px; }
+    .auth-logo .brand-name { color: white; font-size: 1.4rem; }
+    .auth-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      font-weight: 600;
+      color: white;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .auth-headline em { font-style: italic; color: var(--teal-light); }
+    .auth-sub {
+      font-size: .95rem;
+      color: rgba(255,255,255,.68);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 380px;
+    }
+    .auth-benefits { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+    .auth-benefit {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .auth-benefit-icon {
+      width: 36px; height: 36px; border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .auth-benefit-title { font-size: .9rem; font-weight: 600; color: white; margin-bottom: 2px; }
+    .auth-benefit-desc { font-size: .82rem; color: rgba(255,255,255,.55); line-height: 1.5; }
+    .auth-testimonial {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r-lg);
+      padding: 22px 24px;
+    }
+    .auth-testimonial-text {
+      font-size: .88rem;
+      color: rgba(255,255,255,.78);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .auth-testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .auth-testimonial-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 700; color: white;
+    }
+    .auth-testimonial-name { font-size: .85rem; font-weight: 600; color: white; }
+    .auth-testimonial-role { font-size: .75rem; color: rgba(255,255,255,.45); }
+
+    .auth-panel-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 32px;
+      overflow-y: auto;
+    }
+    .auth-form-wrap { width: 100%; max-width: 440px; }
+    .auth-form-header { margin-bottom: 32px; text-align: center; }
+    .auth-form-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .auth-form-header p { font-size: .9rem; color: var(--text-light); }
+
+    .auth-mode-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .auth-mode-tab {
+      padding: 13px;
+      text-align: center;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      cursor: pointer;
+      background: var(--bg);
+      border: none;
+      transition: all var(--transition);
+      font-family: var(--font-sans);
+    }
+    .auth-mode-tab.active { background: var(--navy); color: white; }
+
+    .account-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .account-type-card {
+      border: 2px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 18px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .account-type-card:hover { border-color: var(--teal); }
+    .account-type-card.selected { border-color: var(--teal); background: var(--teal-pale); }
+    .account-type-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
+    }
+    .account-type-label { font-size: .9rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .account-type-desc { font-size: .76rem; color: var(--text-light); line-height: 1.4; }
+
+    .divider-text {
+      display: flex; align-items: center; gap: 12px;
+      font-size: .8rem; color: var(--text-light);
+      margin: 20px 0;
+    }
+    .divider-text::before, .divider-text::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .social-auth-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--white);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-sans);
+      margin-bottom: 8px;
+    }
+    .social-auth-btn:hover { border-color: var(--navy); background: var(--bg); }
+
+    .password-toggle {
+      position: relative;
+    }
+    .password-toggle input { padding-right: 44px; }
+    .password-toggle button {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--text-light);
+      padding: 4px; cursor: pointer; line-height: 1;
+    }
+    .password-toggle button:hover { color: var(--text-mid); }
+
+    .strength-bar {
+      height: 4px; border-radius: 2px; background: var(--border);
+      margin-top: 6px; overflow: hidden;
+    }
+    .strength-fill { height: 100%; border-radius: 2px; width: 0%; transition: width .3s, background .3s; }
+
+    .terms-note {
+      font-size: .77rem;
+      color: var(--text-light);
+      text-align: center;
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+    .terms-note a { color: var(--teal); }
+
+    .signin-panel { display: none; }
+    .signin-panel.active { display: block; }
+    .signup-panel { display: block; }
+    .signup-panel.hidden { display: none; }
+
+    .forgot-link {
+      font-size: .82rem;
+      color: var(--teal);
+      float: right;
+      margin-bottom: 4px;
+    }
+    .forgot-link:hover { text-decoration: underline; }
+
+    @media(max-width:900px){
+      .auth-layout { grid-template-columns: 1fr; }
+      .auth-panel-left { display: none; }
+      .auth-panel-right { min-height: calc(100vh - 64px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container-lg">
+    <div class="navbar-inner">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <span class="brand-name">STEM<span>source</span></span>
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="jobs.html?type=freelance"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><div class="dropdown-item-text"><span class="title">Freelance Projects</span></div></a><a class="dropdown-item" href="jobs.html?type=contract"><div class="dropdown-icon" style="background:var(--amber-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div class="dropdown-item-text"><span class="title">Contract Positions</span></div></a></div></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Resources<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="blog.html"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="dropdown-item-text"><span class="title">Blog</span></div></a><a class="dropdown-item" href="guides.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="dropdown-item-text"><span class="title">Guides</span></div></a></div></li>
+        <li class="nav-item"><a class="nav-link" href="post-job.html">For Employers<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="post-job.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="dropdown-item-text"><span class="title">Post a Position</span></div></a></div></li>
+      </ul>
+      <div class="navbar-actions">
+        <a class="btn btn-primary btn-sm" href="post-job.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post a Job</a>
+        <button class="nav-toggle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav"><div class="mobile-nav-panel"><button class="mobile-nav-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><a class="mobile-nav-link" href="jobs.html">Browse Jobs</a><a class="mobile-nav-link" href="blog.html">Blog</a><a class="mobile-nav-link" href="guides.html">Guides</a><hr class="mobile-nav-divider"><a class="mobile-nav-link" href="post-job.html">Post a Job</a></div></div>
+
+<!-- AUTH LAYOUT -->
+<div class="auth-layout">
+
+  <!-- LEFT PANEL -->
+  <div class="auth-panel-left">
+    <div class="auth-left-content">
+      <div class="auth-logo">
+        <div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <span class="brand-name">STEM<span style="color:var(--teal-light)">source</span></span>
+      </div>
+
+      <h2 class="auth-headline">Your next great<br><em>STEM opportunity</em><br>starts here.</h2>
+      <p class="auth-sub">Join 47,000+ scientists, engineers, and researchers who use STEMsource to find work that matches their expertise — on their terms.</p>
+
+      <div class="auth-benefits">
+        <div class="auth-benefit">
+          <div class="auth-benefit-icon" style="background:rgba(42,157,143,.2)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal-light)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div>
+            <div class="auth-benefit-title">Find the right fit faster</div>
+            <div class="auth-benefit-desc">Discipline-specific search surfaces roles that match your exact expertise — no irrelevant listings.</div>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit-icon" style="background:rgba(58,127,193,.2)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7ab3e0" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="auth-benefit-title">Transparent compensation</div>
+            <div class="auth-benefit-desc">Every listing includes salary ranges. Know what you're worth before you apply.</div>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit-icon" style="background:rgba(201,168,76,.2)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e0c86a" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div>
+            <div class="auth-benefit-title">Free expert guides</div>
+            <div class="auth-benefit-desc">Access the full library of career guides and handbooks written by senior STEM professionals.</div>
+          </div>
+        </div>
+        <div class="auth-benefit">
+          <div class="auth-benefit-icon" style="background:rgba(82,121,111,.2)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8fbdb3" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </div>
+          <div>
+            <div class="auth-benefit-title">STEM-specific community</div>
+            <div class="auth-benefit-desc">Forums, mentorship, and events with peers who actually understand your field.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-testimonial">
+        <p class="auth-testimonial-text">"I went from a postdoc with no industry connections to three job offers in six weeks. The guides, the community, and the quality of listings made the difference."</p>
+        <div class="auth-testimonial-author">
+          <div class="auth-testimonial-avatar" style="background:linear-gradient(135deg,var(--teal),var(--sky))">PL</div>
+          <div>
+            <div class="auth-testimonial-name">Dr. Priya Lalwani</div>
+            <div class="auth-testimonial-role">Senior Data Scientist · Genentech</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-panel-right">
+    <div class="auth-form-wrap">
+
+      <!-- Sign In / Sign Up toggle -->
+      <div class="auth-mode-tabs">
+        <button class="auth-mode-tab active" id="signupTab" onclick="showSignup()">Create Account</button>
+        <button class="auth-mode-tab" id="signinTab" onclick="showSignin()">Sign In</button>
+      </div>
+
+      <!-- SIGN UP PANEL -->
+      <div class="signup-panel" id="signupPanel">
+
+        <div class="auth-form-header">
+          <h2>Join STEMsource</h2>
+          <p>Free forever. No credit card required.</p>
+        </div>
+
+        <!-- Account type -->
+        <p style="font-size:.82rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px">I am a…</p>
+        <div class="account-type-grid">
+          <div class="account-type-card selected" onclick="selectType(this)">
+            <div class="account-type-icon" style="background:var(--teal-pale)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="account-type-label">STEM Professional</div>
+            <div class="account-type-desc">Scientist, engineer, researcher, or mathematician seeking work</div>
+          </div>
+          <div class="account-type-card" onclick="selectType(this)">
+            <div class="account-type-icon" style="background:var(--sky-pale)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div class="account-type-label">Employer</div>
+            <div class="account-type-desc">Organization or team hiring for STEM positions</div>
+          </div>
+        </div>
+
+        <!-- Social auth -->
+        <button class="social-auth-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+        <button class="social-auth-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Continue with LinkedIn
+        </button>
+
+        <div class="divider-text">or sign up with email</div>
+
+        <!-- Email form -->
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name <span style="color:var(--amber)">*</span></label>
+              <input class="form-input" type="text" placeholder="Jane" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name <span style="color:var(--amber)">*</span></label>
+              <input class="form-input" type="text" placeholder="Smith" autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Work or Academic Email <span style="color:var(--amber)">*</span></label>
+            <input class="form-input" type="email" placeholder="jane.smith@institution.edu" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Primary Discipline <span style="color:var(--amber)">*</span></label>
+            <select class="form-select">
+              <option value="">Select your field…</option>
+              <optgroup label="Sciences">
+                <option>Biology &amp; Life Sciences</option>
+                <option>Chemistry</option>
+                <option>Physics</option>
+                <option>Medicine &amp; Biomedical</option>
+                <option>Environmental Science</option>
+              </optgroup>
+              <optgroup label="Engineering">
+                <option>Aerospace Engineering</option>
+                <option>Biomedical Engineering</option>
+                <option>Chemical Engineering</option>
+                <option>Electrical Engineering</option>
+                <option>Mechanical Engineering</option>
+                <option>Materials Engineering</option>
+                <option>Nuclear Engineering</option>
+              </optgroup>
+              <optgroup label="Technology & Math">
+                <option>Computer Science &amp; Software</option>
+                <option>Artificial Intelligence &amp; ML</option>
+                <option>Data Science &amp; Analytics</option>
+                <option>Mathematics &amp; Statistics</option>
+                <option>Quantum Computing</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- ── Professional Profile Fields (searchable by employers) ── -->
+          <div id="professionalProfileFields">
+
+            <div style="
+              background:var(--slate-50);border:1px solid var(--slate-200);
+              border-radius:10px;padding:14px 16px;margin-bottom:20px;
+              display:flex;align-items:flex-start;gap:10px;
+            ">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <p style="font-size:.8rem;color:var(--slate-600);line-height:1.55;margin:0;">
+                <strong style="color:var(--navy-900);">Your profile is searchable by employers.</strong>
+                Complete the fields below so verified organizations can find and contact you directly.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Professional Headline <span style="color:var(--amber)">*</span></label>
+              <input class="form-input" type="text" placeholder="e.g. Computational Biologist | 8 yrs · CRISPR · Python" maxlength="100">
+              <p class="form-hint">Shown at the top of your profile in search results.</p>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Years of Experience <span style="color:var(--amber)">*</span></label>
+                <select class="form-select">
+                  <option value="">Select…</option>
+                  <option>0–1 year (student/new grad)</option>
+                  <option>2–4 years</option>
+                  <option>5–9 years</option>
+                  <option>10–14 years</option>
+                  <option>15+ years</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Highest Degree <span style="color:var(--amber)">*</span></label>
+                <select class="form-select">
+                  <option value="">Select…</option>
+                  <option>Bachelor's (B.S./B.E.)</option>
+                  <option>Master's (M.S./M.Eng.)</option>
+                  <option>PhD / Doctoral</option>
+                  <option>MD / MD-PhD</option>
+                  <option>Postdoctoral Researcher</option>
+                  <option>Professional Certification</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">City / Location <span style="color:var(--amber)">*</span></label>
+                <input class="form-input" type="text" placeholder="e.g. Boston, MA">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Availability <span style="color:var(--amber)">*</span></label>
+                <select class="form-select">
+                  <option value="">Select…</option>
+                  <option>Immediately available</option>
+                  <option>2 weeks notice</option>
+                  <option>1 month notice</option>
+                  <option>Available in 2–3 months</option>
+                  <option>Not actively looking</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Open To <span style="color:var(--amber)">*</span></label>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;transition:all .18s ease;" class="open-to-opt">
+                  <input type="checkbox" checked style="accent-color:var(--color-primary);"> Freelance
+                </label>
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;transition:all .18s ease;" class="open-to-opt">
+                  <input type="checkbox" checked style="accent-color:var(--color-primary);"> Contract
+                </label>
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;transition:all .18s ease;" class="open-to-opt">
+                  <input type="checkbox" style="accent-color:var(--color-primary);"> Full-Time
+                </label>
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;transition:all .18s ease;" class="open-to-opt">
+                  <input type="checkbox" style="accent-color:var(--color-primary);"> Part-Time
+                </label>
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;transition:all .18s ease;" class="open-to-opt">
+                  <input type="checkbox" style="accent-color:var(--color-primary);"> Advisory / Board
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Work Preference</label>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;" class="open-to-opt">
+                  <input type="radio" name="workpref" checked style="accent-color:var(--color-primary);"> Remote
+                </label>
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;" class="open-to-opt">
+                  <input type="radio" name="workpref" style="accent-color:var(--color-primary);"> Hybrid
+                </label>
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;" class="open-to-opt">
+                  <input type="radio" name="workpref" style="accent-color:var(--color-primary);"> On-Site
+                </label>
+                <label style="display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--slate-600);cursor:pointer;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:6px;" class="open-to-opt">
+                  <input type="radio" name="workpref" style="accent-color:var(--color-primary);"> Any
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Key Skills &amp; Keywords <span style="color:var(--amber)">*</span></label>
+              <input class="form-input" type="text" id="skillsInput" placeholder="e.g. CRISPR, Python, Mass Spectrometry, CFD…">
+              <p class="form-hint">Separate with commas. These index your profile in employer searches.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Professional Bio <span style="color:var(--amber)">*</span></label>
+              <textarea class="form-input" rows="4" maxlength="500" placeholder="Briefly describe your expertise, notable work, and what kinds of projects or roles you're seeking…" style="resize:vertical;min-height:100px;"></textarea>
+              <p class="form-hint">Shown in your profile card in search results. Max 500 characters.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">LinkedIn Profile URL</label>
+              <input class="form-input" type="url" placeholder="https://linkedin.com/in/your-name">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">ORCID / Academic Profile <span style="font-weight:400;color:var(--slate-400);">(optional)</span></label>
+              <input class="form-input" type="url" placeholder="https://orcid.org/0000-0000-0000-0000">
+              <p class="form-hint">Helps employers verify your publications and research output.</p>
+            </div>
+
+          </div><!-- /professionalProfileFields -->
+
+          <div class="form-group">
+            <label class="form-label">Password <span style="color:var(--amber)">*</span></label>
+            <div class="password-toggle">
+              <input class="form-input" type="password" id="pwInput" placeholder="Min. 8 characters" autocomplete="new-password">
+              <button type="button" onclick="togglePw('pwInput', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <p class="form-hint" id="strengthText">Use 8+ characters with a mix of letters, numbers and symbols.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="filter-checkbox" style="align-items:flex-start;gap:10px">
+              <input type="checkbox" style="margin-top:3px;flex-shrink:0">
+              <span style="font-size:.84rem;color:var(--text-mid);line-height:1.5">
+                I agree to the <a href="#" style="color:var(--teal)">Terms of Service</a> and <a href="#" style="color:var(--teal)">Privacy Policy</a>. I may receive career-related emails from STEMsource.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Create Free Account
+          </button>
+
+          <p class="terms-note">Already have an account? <a href="#" onclick="showSignin();return false">Sign in here</a></p>
+        </form>
+
+      </div><!-- /signup-panel -->
+
+      <!-- SIGN IN PANEL -->
+      <div class="signin-panel" id="signinPanel">
+
+        <div class="auth-form-header">
+          <h2>Welcome back</h2>
+          <p>Sign in to your STEMsource account.</p>
+        </div>
+
+        <button class="social-auth-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+        <button class="social-auth-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Continue with LinkedIn
+        </button>
+
+        <div class="divider-text">or sign in with email</div>
+
+        <form onsubmit="return false">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="you@institution.edu" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+              <label class="form-label" style="margin-bottom:0">Password</label>
+              <a class="forgot-link" href="#" style="float:none">Forgot password?</a>
+            </div>
+            <div class="password-toggle">
+              <input class="form-input" type="password" id="pwSignin" placeholder="Your password" autocomplete="current-password">
+              <button type="button" onclick="togglePw('pwSignin', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="filter-checkbox">
+              <input type="checkbox">
+              <span style="font-size:.84rem;color:var(--text-mid)">Keep me signed in for 30 days</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-navy btn-lg" style="width:100%;justify-content:center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            Sign In
+          </button>
+
+          <p class="terms-note" style="margin-top:16px">Don't have an account? <a href="#" onclick="showSignup();return false">Create one free</a></p>
+        </form>
+
+      </div><!-- /signin-panel -->
+
+    </div><!-- /auth-form-wrap -->
+  </div><!-- /auth-panel-right -->
+
+</div><!-- /auth-layout -->
+
+<script src="js/main.js"></script>
+<script>
+  function showSignup() {
+    document.getElementById('signupPanel').classList.remove('hidden');
+    document.getElementById('signinPanel').classList.remove('active');
+    document.getElementById('signupTab').classList.add('active');
+    document.getElementById('signinTab').classList.remove('active');
+  }
+  function showSignin() {
+    document.getElementById('signupPanel').classList.add('hidden');
+    document.getElementById('signinPanel').classList.add('active');
+    document.getElementById('signinTab').classList.add('active');
+    document.getElementById('signupTab').classList.remove('active');
+  }
+  function selectType(card) {
+    document.querySelectorAll('.account-type-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    const isPro = card.querySelector('.account-type-label').textContent.trim() === 'STEM Professional';
+    document.getElementById('professionalProfileFields').style.display = isPro ? '' : 'none';
+  }
+  function togglePw(id, btn) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+
+  // Password strength
+  const pwInput = document.getElementById('pwInput');
+  const strengthFill = document.getElementById('strengthFill');
+  const strengthText = document.getElementById('strengthText');
+  if (pwInput) {
+    pwInput.addEventListener('input', () => {
+      const v = pwInput.value;
+      let score = 0;
+      if (v.length >= 8) score++;
+      if (/[A-Z]/.test(v)) score++;
+      if (/[0-9]/.test(v)) score++;
+      if (/[^A-Za-z0-9]/.test(v)) score++;
+      const colors = ['', '#e74c3c', '#e67e22', '#f1c40f', '#2a9d8f'];
+      const labels = ['', 'Weak — add more characters', 'Fair — add uppercase or numbers', 'Good — add symbols to strengthen', 'Strong password ✓'];
+      strengthFill.style.width = (score * 25) + '%';
+      strengthFill.style.background = colors[score] || '';
+      strengthText.textContent = score > 0 ? labels[score] : 'Use 8+ characters with a mix of letters, numbers and symbols.';
+      strengthText.style.color = score === 4 ? 'var(--teal)' : score >= 2 ? 'var(--amber)' : score === 1 ? '#e74c3c' : 'var(--text-light)';
+    });
+  }
+</script>
+</body>
+</html>
