@@ -283,4 +283,157 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep(0);
   }
 
+  /* ── Once-per-session Sign Up / Sign In CTA Popup ────────── */
+  (async function initAuthPopup() {
+    const SESSION_KEY = 'ss_popup_shown';
+
+    // Skip if already shown this session
+    if (sessionStorage.getItem(SESSION_KEY)) return;
+
+    // Skip on the signup page itself
+    if (window.location.pathname.includes('signup')) return;
+
+    // Skip if user is already signed in
+    if (typeof db !== 'undefined') {
+      try {
+        const { data: { session } } = await db.auth.getSession();
+        if (session) return;
+      } catch (e) { /* db not ready yet — show popup anyway */ }
+    }
+
+    // Mark as shown immediately so a refresh or navigation won't double-show
+    sessionStorage.setItem(SESSION_KEY, '1');
+
+    // Inject popup HTML
+    const popup = document.createElement('div');
+    popup.id = 'ss-auth-popup';
+    popup.setAttribute('role', 'dialog');
+    popup.setAttribute('aria-modal', 'true');
+    popup.setAttribute('aria-label', 'Join STEMsource');
+    popup.innerHTML = `
+      <div class="ss-popup-backdrop"></div>
+      <div class="ss-popup-card">
+        <button class="ss-popup-close" aria-label="Close">&times;</button>
+        <div class="ss-popup-icon">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="22" fill="#1e3a5f"/>
+            <text x="22" y="28" text-anchor="middle" fill="#4ea8de" font-size="20" font-weight="700" font-family="Inter,sans-serif">S</text>
+          </svg>
+        </div>
+        <h2 class="ss-popup-title">Join the STEMsource Community</h2>
+        <p class="ss-popup-body">Connect with 42,000+ STEM professionals. Find freelance work, post opportunities, and grow your career — all in one place.</p>
+        <div class="ss-popup-perks">
+          <span>&#10003; Access 5,000+ STEM jobs</span>
+          <span>&#10003; Build your public profile</span>
+          <span>&#10003; Message other members</span>
+        </div>
+        <div class="ss-popup-actions">
+          <a href="signup.html" class="ss-popup-btn-primary">Get Started Free</a>
+          <a href="signup.html#signin" class="ss-popup-btn-secondary">Sign In</a>
+        </div>
+        <p class="ss-popup-footer">Already have an account? <a href="signup.html#signin">Sign in here</a></p>
+      </div>
+    `;
+
+    // Styles
+    const style = document.createElement('style');
+    style.textContent = `
+      #ss-auth-popup {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.35s ease;
+      }
+      #ss-auth-popup.ss-visible { opacity: 1; }
+      .ss-popup-backdrop {
+        position: absolute; inset: 0;
+        background: rgba(10, 25, 47, 0.72);
+        backdrop-filter: blur(4px);
+      }
+      .ss-popup-card {
+        position: relative; z-index: 1;
+        background: #fff;
+        border-radius: 20px;
+        padding: 2.5rem 2.25rem 2rem;
+        max-width: 420px; width: calc(100% - 2rem);
+        box-shadow: 0 24px 60px rgba(10,25,47,0.28);
+        text-align: center;
+        transform: translateY(18px);
+        transition: transform 0.35s ease;
+      }
+      #ss-auth-popup.ss-visible .ss-popup-card { transform: translateY(0); }
+      .ss-popup-close {
+        position: absolute; top: 1rem; right: 1.1rem;
+        background: none; border: none; cursor: pointer;
+        font-size: 1.6rem; line-height: 1; color: #7a8fa6;
+        padding: 0.2rem 0.4rem; border-radius: 6px;
+        transition: color 0.2s, background 0.2s;
+      }
+      .ss-popup-close:hover { color: #1e3a5f; background: #f0f4f8; }
+      .ss-popup-icon { margin-bottom: 1.1rem; }
+      .ss-popup-title {
+        font-size: 1.35rem; font-weight: 700;
+        color: #1e3a5f; margin: 0 0 0.65rem; line-height: 1.3;
+      }
+      .ss-popup-body {
+        font-size: 0.93rem; color: #4a6278; margin: 0 0 1.1rem; line-height: 1.6;
+      }
+      .ss-popup-perks {
+        display: flex; flex-direction: column; gap: 0.35rem;
+        margin-bottom: 1.5rem; text-align: left;
+      }
+      .ss-popup-perks span {
+        font-size: 0.87rem; color: #2d6a9f; font-weight: 500;
+        background: #f0f7ff; border-radius: 8px;
+        padding: 0.45rem 0.85rem;
+      }
+      .ss-popup-actions {
+        display: flex; flex-direction: column; gap: 0.7rem;
+        margin-bottom: 1rem;
+      }
+      .ss-popup-btn-primary {
+        display: block; padding: 0.78rem 1rem;
+        background: linear-gradient(135deg,#1e3a5f 0%,#2d6a9f 100%);
+        color: #fff; border-radius: 10px; text-decoration: none;
+        font-weight: 600; font-size: 0.95rem;
+        transition: opacity 0.2s, transform 0.2s;
+      }
+      .ss-popup-btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+      .ss-popup-btn-secondary {
+        display: block; padding: 0.78rem 1rem;
+        background: #f0f4f8; color: #1e3a5f;
+        border-radius: 10px; text-decoration: none;
+        font-weight: 600; font-size: 0.95rem;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .ss-popup-btn-secondary:hover { background: #e2eaf2; transform: translateY(-1px); }
+      .ss-popup-footer {
+        font-size: 0.82rem; color: #8a9cb0; margin: 0;
+      }
+      .ss-popup-footer a { color: #2d6a9f; text-decoration: none; font-weight: 500; }
+      .ss-popup-footer a:hover { text-decoration: underline; }
+      @media (max-width: 480px) {
+        .ss-popup-card { padding: 2rem 1.5rem 1.75rem; border-radius: 16px; }
+        .ss-popup-title { font-size: 1.2rem; }
+      }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(popup);
+
+    // Dismiss helpers
+    const dismiss = () => {
+      popup.classList.remove('ss-visible');
+      setTimeout(() => popup.remove(), 380);
+    };
+
+    popup.querySelector('.ss-popup-close').addEventListener('click', dismiss);
+    popup.querySelector('.ss-popup-backdrop').addEventListener('click', dismiss);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') dismiss(); }, { once: true });
+
+    // CTA clicks also dismiss (they're navigating away)
+    popup.querySelectorAll('a').forEach(a => a.addEventListener('click', dismiss));
+
+    // Show after short delay
+    setTimeout(() => popup.classList.add('ss-visible'), 3200);
+  })();
+
 });
