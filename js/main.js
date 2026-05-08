@@ -101,6 +101,102 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── Job Filtering ───────────────────────────────────────── */
+  const FILTER_LABELS = {
+    type:        { freelance: 'Freelance', contract: 'Contract', fulltime: 'Full-Time', parttime: 'Part-Time' },
+    discipline:  { engineering: 'Engineering', 'life-sciences': 'Life Sciences', 'cs-ai': 'CS & AI', chemistry: 'Chemistry', physics: 'Physics', mathematics: 'Mathematics', environmental: 'Environmental', medicine: 'Medicine' },
+    arrangement: { remote: 'Remote', hybrid: 'Hybrid', onsite: 'On-Site' },
+    level:       { entry: 'Entry Level', mid: 'Mid-Level', senior: 'Senior', principal: 'Principal / Lead' },
+  };
+
+  function getActiveFilters() {
+    const groups = {};
+    document.querySelectorAll('.filter-body input[type="checkbox"][data-group]:checked').forEach(input => {
+      (groups[input.dataset.group] = groups[input.dataset.group] || []).push(input.dataset.value);
+    });
+    const rateSlider = document.getElementById('rate-slider');
+    const maxRate = rateSlider ? parseInt(rateSlider.value) : 250;
+    const dateRadio = document.querySelector('.filter-body input[type="radio"][data-group="date"]:checked');
+    const maxDays = dateRadio ? parseInt(dateRadio.dataset.maxDays) : 9999;
+    return { groups, maxRate, maxDays };
+  }
+
+  function applyFilters() {
+    const { groups, maxRate, maxDays } = getActiveFilters();
+    let visible = 0;
+
+    document.querySelectorAll('.jobs-list .jc').forEach(card => {
+      let show = true;
+
+      for (const [group, values] of Object.entries(groups)) {
+        if (!values.length) continue;
+        const cardVals = (card.dataset[group] || '').split(' ');
+        if (!values.some(v => cardVals.includes(v))) { show = false; break; }
+      }
+
+      if (show && parseInt(card.dataset.rate || 9999) > maxRate) show = false;
+      if (show && maxDays < 9999 && parseInt(card.dataset.posted || 9999) > maxDays) show = false;
+
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    // Update count
+    const countEl = document.querySelector('.jobs-count strong');
+    if (countEl) countEl.textContent = visible.toLocaleString();
+
+    // Rebuild active filter pills
+    const pillContainer = document.querySelector('.active-filters');
+    if (pillContainer) {
+      pillContainer.innerHTML = '';
+      for (const [group, values] of Object.entries(groups)) {
+        values.forEach(val => {
+          const label = FILTER_LABELS[group]?.[val] || val;
+          const pill = document.createElement('span');
+          pill.className = 'active-filter';
+          pill.textContent = label + ' ×';
+          pill.addEventListener('click', () => {
+            const input = document.querySelector(`.filter-body input[data-group="${group}"][data-value="${val}"]`);
+            if (input) { input.checked = false; applyFilters(); }
+          });
+          pillContainer.appendChild(pill);
+        });
+      }
+    }
+  }
+
+  // Apply on checkbox / radio change
+  document.querySelectorAll('.filter-body input[type="checkbox"], .filter-body input[type="radio"]').forEach(input => {
+    input.addEventListener('change', applyFilters);
+  });
+
+  // Apply button
+  const applyBtn = document.getElementById('apply-filters');
+  if (applyBtn) applyBtn.addEventListener('click', applyFilters);
+
+  // Salary slider — update label live, filter on release
+  const rateSlider = document.getElementById('rate-slider');
+  const rateLabel  = document.getElementById('rate-label');
+  if (rateSlider && rateLabel) {
+    rateSlider.addEventListener('input', () => {
+      const v = rateSlider.value;
+      rateLabel.textContent = v >= 250 ? 'Any rate' : `Up to $${v}/hr`;
+    });
+    rateSlider.addEventListener('change', applyFilters);
+  }
+
+  // Clear all
+  document.querySelector('.filter-clear')?.addEventListener('click', () => {
+    document.querySelectorAll('.filter-body input[type="checkbox"]').forEach(i => i.checked = false);
+    const firstRadio = document.querySelector('.filter-body input[type="radio"]');
+    if (firstRadio) firstRadio.checked = true;
+    if (rateSlider) { rateSlider.value = 250; if (rateLabel) rateLabel.textContent = 'Any rate'; }
+    applyFilters();
+  });
+
+  // Run on page load so initial state reflects current checkboxes
+  applyFilters();
+
   /* ── Category Tabs ──────────────────────────────────────── */
   document.querySelectorAll('.category-tab').forEach(tab => {
     tab.addEventListener('click', () => {

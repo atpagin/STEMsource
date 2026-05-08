@@ -136,40 +136,40 @@
         <div class="filter-body">
           <div class="filter-group">
             <div class="filter-group-label">Position Type</div>
-            <label class="filter-checkbox"><input type="checkbox" checked> Freelance / Project <span class="filter-checkbox-count">612</span></label>
-            <label class="filter-checkbox"><input type="checkbox" checked> Contract <span class="filter-checkbox-count">498</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Full-Time <span class="filter-checkbox-count">1,204</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Part-Time <span class="filter-checkbox-count">533</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="type" data-value="freelance"> Freelance / Project <span class="filter-checkbox-count">612</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="type" data-value="contract"> Contract <span class="filter-checkbox-count">498</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="type" data-value="fulltime"> Full-Time <span class="filter-checkbox-count">1,204</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="type" data-value="parttime"> Part-Time <span class="filter-checkbox-count">533</span></label>
           </div>
           <hr class="filter-divider">
 
           <div class="filter-group">
             <div class="filter-group-label">Discipline</div>
-            <label class="filter-checkbox"><input type="checkbox" checked> Engineering <span class="filter-checkbox-count">634</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Life Sciences <span class="filter-checkbox-count">512</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> CS &amp; AI <span class="filter-checkbox-count">487</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Chemistry <span class="filter-checkbox-count">298</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Physics <span class="filter-checkbox-count">215</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Mathematics <span class="filter-checkbox-count">341</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Environmental <span class="filter-checkbox-count">178</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Medicine <span class="filter-checkbox-count">182</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="engineering"> Engineering <span class="filter-checkbox-count">634</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="life-sciences"> Life Sciences <span class="filter-checkbox-count">512</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="cs-ai"> CS &amp; AI <span class="filter-checkbox-count">487</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="chemistry"> Chemistry <span class="filter-checkbox-count">298</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="physics"> Physics <span class="filter-checkbox-count">215</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="mathematics"> Mathematics <span class="filter-checkbox-count">341</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="environmental"> Environmental <span class="filter-checkbox-count">178</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="discipline" data-value="medicine"> Medicine <span class="filter-checkbox-count">182</span></label>
           </div>
           <hr class="filter-divider">
 
           <div class="filter-group">
             <div class="filter-group-label">Work Arrangement</div>
-            <label class="filter-checkbox"><input type="checkbox" checked> Remote <span class="filter-checkbox-count">1,342</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Hybrid <span class="filter-checkbox-count">876</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> On-Site <span class="filter-checkbox-count">629</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="arrangement" data-value="remote"> Remote <span class="filter-checkbox-count">1,342</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="arrangement" data-value="hybrid"> Hybrid <span class="filter-checkbox-count">876</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="arrangement" data-value="onsite"> On-Site <span class="filter-checkbox-count">629</span></label>
           </div>
           <hr class="filter-divider">
 
           <div class="filter-group">
             <div class="filter-group-label">Experience Level</div>
-            <label class="filter-checkbox"><input type="checkbox"> Entry Level <span class="filter-checkbox-count">312</span></label>
-            <label class="filter-checkbox"><input type="checkbox" checked> Mid-Level <span class="filter-checkbox-count">987</span></label>
-            <label class="filter-checkbox"><input type="checkbox" checked> Senior <span class="filter-checkbox-count">1,104</span></label>
-            <label class="filter-checkbox"><input type="checkbox"> Principal / Lead <span class="filter-checkbox-count">444</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="level" data-value="entry"> Entry Level <span class="filter-checkbox-count">312</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="level" data-value="mid"> Mid-Level <span class="filter-checkbox-count">987</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="level" data-value="senior"> Senior <span class="filter-checkbox-count">1,104</span></label>
+            <label class="filter-checkbox"><input type="checkbox" data-group="level" data-value="principal"> Principal / Lead <span class="filter-checkbox-count">444</span></label>
           </div>
           <hr class="filter-divider">
 
@@ -178,23 +178,23 @@
             <div style="padding:6px 0">
               <div class="salary-range" style="margin-bottom:8px">
                 <span style="font-size:.78rem;white-space:nowrap">$50/hr</span>
-                <input type="range" min="50" max="250" value="200" style="width:100%">
+                <input id="rate-slider" type="range" min="50" max="250" value="250" style="width:100%">
                 <span style="font-size:.78rem;white-space:nowrap">$250/hr</span>
               </div>
-              <p style="font-size:.78rem;color:var(--text-light);text-align:center">Up to $200/hr or $240k/yr</p>
+              <p id="rate-label" style="font-size:.78rem;color:var(--text-light);text-align:center">Up to $250/hr</p>
             </div>
           </div>
           <hr class="filter-divider">
 
           <div class="filter-group">
             <div class="filter-group-label">Date Posted</div>
-            <label class="filter-checkbox"><input type="radio" name="date" checked> Any time</label>
-            <label class="filter-checkbox"><input type="radio" name="date"> Past 24 hours</label>
-            <label class="filter-checkbox"><input type="radio" name="date"> Past 7 days</label>
-            <label class="filter-checkbox"><input type="radio" name="date"> Past 30 days</label>
+            <label class="filter-checkbox"><input type="radio" name="date" data-group="date" data-max-days="9999" checked> Any time</label>
+            <label class="filter-checkbox"><input type="radio" name="date" data-group="date" data-max-days="1"> Past 24 hours</label>
+            <label class="filter-checkbox"><input type="radio" name="date" data-group="date" data-max-days="7"> Past 7 days</label>
+            <label class="filter-checkbox"><input type="radio" name="date" data-group="date" data-max-days="30"> Past 30 days</label>
           </div>
 
-          <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Apply Filters</button>
+          <button id="apply-filters" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Apply Filters</button>
         </div>
       </aside>
 
@@ -223,7 +223,7 @@
         <div class="jobs-list">
 
           <!-- Card: IBM -->
-          <div class="jc featured">
+          <div class="jc featured" data-type="freelance" data-discipline="engineering cs-ai" data-arrangement="remote" data-level="senior" data-rate="175" data-posted="2">
             <div class="jc-logo" style="background:linear-gradient(135deg,#1a6b8a,#0d3f5a)">IBM</div>
             <div class="jc-body">
               <div class="jc-header">
@@ -256,7 +256,7 @@
           </div>
 
           <!-- Card: NASA -->
-          <div class="jc">
+          <div class="jc" data-type="contract" data-discipline="engineering" data-arrangement="hybrid" data-level="senior" data-rate="130" data-posted="1">
             <div class="jc-logo" style="background:linear-gradient(135deg,#1a4d2e,#0e2e1b)">NASA</div>
             <div class="jc-body">
               <div class="jc-header">
@@ -288,7 +288,7 @@
           </div>
 
           <!-- Card: Ginkgo Bioworks -->
-          <div class="jc">
+          <div class="jc" data-type="freelance" data-discipline="life-sciences" data-arrangement="remote" data-level="senior" data-rate="160" data-posted="0">
             <div class="jc-logo" style="background:linear-gradient(135deg,#5a1a8a,#350f52)">GNK</div>
             <div class="jc-body">
               <div class="jc-header">
@@ -321,7 +321,7 @@
           </div>
 
           <!-- Card: McKinsey -->
-          <div class="jc">
+          <div class="jc" data-type="contract" data-discipline="engineering" data-arrangement="onsite" data-level="mid" data-rate="145" data-posted="4">
             <div class="jc-logo" style="background:linear-gradient(135deg,#0f4c7a,#062f52)">MCK</div>
             <div class="jc-body">
               <div class="jc-header">
@@ -353,7 +353,7 @@
           </div>
 
           <!-- Card: Broad Institute -->
-          <div class="jc">
+          <div class="jc" data-type="freelance" data-discipline="life-sciences cs-ai" data-arrangement="remote" data-level="senior" data-rate="125" data-posted="3">
             <div class="jc-logo" style="background:linear-gradient(135deg,#7a3a0f,#4a2208)">BRD</div>
             <div class="jc-body">
               <div class="jc-header">
@@ -385,7 +385,7 @@
           </div>
 
           <!-- Card: Dept of Energy -->
-          <div class="jc">
+          <div class="jc" data-type="contract" data-discipline="engineering" data-arrangement="onsite" data-level="senior" data-rate="165" data-posted="6">
             <div class="jc-logo" style="background:linear-gradient(135deg,#1a3a6b,#0d2244)">DOE</div>
             <div class="jc-body">
               <div class="jc-header">
@@ -418,7 +418,7 @@
           </div>
 
           <!-- Card: Luminar -->
-          <div class="jc">
+          <div class="jc" data-type="freelance" data-discipline="engineering physics" data-arrangement="remote" data-level="senior" data-rate="175" data-posted="7">
             <div class="jc-logo" style="background:linear-gradient(135deg,#0d4a5a,#062e38)">LMN</div>
             <div class="jc-body">
               <div class="jc-header">
