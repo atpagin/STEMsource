@@ -316,7 +316,7 @@
 
             <div class="form-group">
               <label class="form-label">Job Title <span>*</span></label>
-              <input class="form-input" type="text" placeholder="e.g. Quantum Computing Algorithm Developer">
+              <input id="f-title" class="form-input" type="text" placeholder="e.g. Quantum Computing Algorithm Developer">
               <p class="form-hint">Be specific — titles with discipline keywords receive 3× more qualified applicants.</p>
             </div>
 
@@ -357,17 +357,17 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Organization Name <span>*</span></label>
-                <input class="form-input" type="text" placeholder="Your company or institution">
+                <input id="f-org" class="form-input" type="text" placeholder="Your company or institution">
               </div>
               <div class="form-group">
                 <label class="form-label">Company Website</label>
-                <input class="form-input" type="url" placeholder="https://yourcompany.com">
+                <input id="f-website" class="form-input" type="url" placeholder="https://yourcompany.com">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label">STEM Discipline <span>*</span></label>
-              <select class="form-select">
+              <select id="f-discipline" class="form-select">
                 <option value="">Select primary discipline…</option>
                 <optgroup label="Physical & Life Sciences">
                   <option>Biology &amp; Life Sciences</option>
@@ -400,7 +400,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Work Arrangement <span>*</span></label>
-                <select class="form-select">
+                <select id="f-arrangement" class="form-select">
                   <option>Fully Remote</option>
                   <option>Hybrid (2–3 days on-site)</option>
                   <option>Primarily On-Site</option>
@@ -409,13 +409,13 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Location</label>
-                <input class="form-input" type="text" placeholder="City, State or Country">
+                <input id="f-location" class="form-input" type="text" placeholder="City, State or Country">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label">Role Description <span>*</span></label>
-              <textarea class="form-textarea" style="min-height:200px" placeholder="Describe the role, team context, project goals, and day-to-day responsibilities. Postings with 300+ word descriptions receive significantly more applications…"></textarea>
+              <textarea id="f-description" class="form-textarea" style="min-height:200px" placeholder="Describe the role, team context, project goals, and day-to-day responsibilities. Postings with 300+ word descriptions receive significantly more applications…"></textarea>
               <div class="char-count"><span id="descCount">0</span> / 5,000 characters</div>
             </div>
 
@@ -438,7 +438,7 @@
 
             <div class="form-group">
               <label class="form-label">Experience Level <span>*</span></label>
-              <select class="form-select">
+              <select id="f-level" class="form-select">
                 <option>Entry Level (0–2 years)</option>
                 <option>Mid-Level (3–5 years)</option>
                 <option selected>Senior (6–10 years)</option>
@@ -449,7 +449,7 @@
 
             <div class="form-group">
               <label class="form-label">Education Requirement</label>
-              <select class="form-select">
+              <select id="f-education" class="form-select">
                 <option>No formal requirement</option>
                 <option>Bachelor's degree</option>
                 <option>Master's degree preferred</option>
@@ -473,17 +473,17 @@
 
             <div class="form-group">
               <label class="form-label">Must-Have Requirements</label>
-              <textarea class="form-textarea" placeholder="List non-negotiable qualifications — specific tools, certifications, clearances, or domain expertise required…"></textarea>
+              <textarea id="f-req-must" class="form-textarea" placeholder="List non-negotiable qualifications — specific tools, certifications, clearances, or domain expertise required…"></textarea>
             </div>
 
             <div class="form-group">
               <label class="form-label">Nice-to-Have Requirements</label>
-              <textarea class="form-textarea" style="min-height:100px" placeholder="Preferred but not required qualifications…"></textarea>
+              <textarea id="f-req-nice" class="form-textarea" style="min-height:100px" placeholder="Preferred but not required qualifications…"></textarea>
             </div>
 
             <div class="form-group">
               <label class="form-label">Security Clearance</label>
-              <select class="form-select">
+              <select id="f-clearance" class="form-select">
                 <option>None required</option>
                 <option>Public Trust</option>
                 <option>Secret</option>
@@ -542,14 +542,14 @@
                 <label class="form-label">Minimum Rate <span>*</span></label>
                 <div style="position:relative">
                   <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-light);font-weight:600">$</span>
-                  <input class="form-input" type="number" placeholder="85" style="padding-left:28px">
+                  <input id="f-rate-min" class="form-input" type="number" placeholder="85" style="padding-left:28px">
                 </div>
               </div>
               <div class="form-group">
                 <label class="form-label">Maximum Rate <span>*</span></label>
                 <div style="position:relative">
                   <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-light);font-weight:600">$</span>
-                  <input class="form-input" type="number" placeholder="120" style="padding-left:28px">
+                  <input id="f-rate-max" class="form-input" type="number" placeholder="120" style="padding-left:28px">
                 </div>
               </div>
             </div>
@@ -557,17 +557,17 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Duration / Term</label>
-                <input class="form-input" type="text" placeholder="e.g. 6 months, 12 months, Ongoing">
+                <input id="f-duration" class="form-input" type="text" placeholder="e.g. 6 months, 12 months, Ongoing">
               </div>
               <div class="form-group">
                 <label class="form-label">Start Date</label>
-                <input class="form-input" type="date">
+                <input id="f-start-date" class="form-input" type="date">
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label">Application Deadline</label>
-              <input class="form-input" type="date">
+              <input id="f-deadline" class="form-input" type="date">
               <p class="form-hint">Optional. Listings without deadlines remain active for 90 days.</p>
             </div>
 
@@ -689,9 +689,9 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
                 Back
               </button>
-              <button class="btn btn-primary btn-lg" type="submit">
+              <button id="publish-btn" class="btn btn-primary btn-lg" type="button">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Publish Listing — $149
+                Publish Listing
               </button>
             </div>
           </div>
@@ -770,7 +770,120 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 <script src="js/main.js"></script>
+<script>
+/* ── Post-Job Supabase submit ─────────────────────────────── */
+const DISCIPLINE_CATEGORY = {
+  'Biology & Life Sciences':      ['life-sciences'],
+  'Chemistry':                    ['chemistry'],
+  'Physics':                      ['physics'],
+  'Medicine & Biomedical':        ['medicine'],
+  'Environmental Science':        ['environmental'],
+  'Earth & Atmospheric Sciences': ['environmental'],
+  'Aerospace Engineering':        ['engineering'],
+  'Biomedical Engineering':       ['engineering'],
+  'Chemical Engineering':         ['engineering'],
+  'Civil & Structural Engineering':['engineering'],
+  'Electrical Engineering':       ['engineering'],
+  'Mechanical Engineering':       ['engineering'],
+  'Nuclear Engineering':          ['engineering'],
+  'Materials Engineering':        ['engineering'],
+  'Computer Science & Software':  ['cs-ai'],
+  'Artificial Intelligence & ML': ['cs-ai'],
+  'Data Science & Analytics':     ['cs-ai'],
+  'Mathematics & Statistics':     ['mathematics'],
+  'Quantum Computing':            ['engineering', 'cs-ai'],
+};
+const ARRANGEMENT_CODE = {
+  'Fully Remote':              'remote',
+  'Hybrid (2–3 days on-site)': 'hybrid',
+  'Primarily On-Site':         'onsite',
+  'On-Site Required':          'onsite',
+};
+const LEVEL_CODE = {
+  'Entry Level (0–2 years)':    'entry',
+  'Mid-Level (3–5 years)':      'mid',
+  'Senior (6–10 years)':        'senior',
+  'Principal / Lead (10+ years)':'principal',
+  'Executive / Director':        'principal',
+};
+
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function collectJob() {
+  const discipline = val('f-discipline');
+  const arrangement = val('f-arrangement');
+  const level = val('f-level');
+
+  // Collect skills from tag pills
+  const skills = [...document.querySelectorAll('#skillsInput .tag-pill')]
+    .map(p => p.textContent.replace('×','').trim())
+    .filter(Boolean);
+
+  return {
+    title:                val('f-title'),
+    type:                 document.querySelector('input[name="type"]:checked')?.value || 'freelance',
+    organization:         val('f-org'),
+    company_website:      val('f-website') || null,
+    discipline:           discipline,
+    discipline_category:  DISCIPLINE_CATEGORY[discipline] || ['engineering'],
+    arrangement:          ARRANGEMENT_CODE[arrangement] || 'remote',
+    location:             val('f-location') || null,
+    description:          val('f-description') || null,
+    experience_level:     LEVEL_CODE[level] || 'senior',
+    education_requirement:val('f-education') || null,
+    skills:               skills.length ? skills : null,
+    requirements_must:    val('f-req-must') || null,
+    requirements_nice:    val('f-req-nice') || null,
+    security_clearance:   val('f-clearance') || null,
+    comp_type:            document.querySelector('input[name="comp"]:checked')?.value || 'hourly',
+    rate_min:             parseFloat(val('f-rate-min')) || null,
+    rate_max:             parseFloat(val('f-rate-max')) || null,
+    duration:             val('f-duration') || null,
+    start_date:           val('f-start-date') || null,
+    deadline:             val('f-deadline') || null,
+    apply_method:         document.querySelector('input[name="apply"]:checked')?.value || 'portal',
+    status:               'active',
+    featured:             false,
+  };
+}
+
+document.getElementById('publish-btn')?.addEventListener('click', async () => {
+  const job = collectJob();
+
+  // Basic validation
+  if (!job.title || !job.organization) {
+    alert('Please fill in at least a Job Title and Organization Name (Step 1).');
+    return;
+  }
+  if (!job.rate_max) {
+    alert('Please enter a Maximum Rate (Step 3).');
+    return;
+  }
+
+  const btn = document.getElementById('publish-btn');
+  btn.disabled = true;
+  btn.textContent = 'Publishing…';
+
+  const { error } = await db.from('jobs').insert([job]);
+
+  if (error) {
+    console.error(error);
+    alert('Error publishing job: ' + error.message);
+    btn.disabled = false;
+    btn.textContent = 'Publish Listing';
+    return;
+  }
+
+  // Success — redirect to jobs board
+  window.location.href = 'jobs.html?published=1';
+});
+</script>
 <script>
   // Tag input
   const skillsWrap = document.getElementById('skillsInput');
