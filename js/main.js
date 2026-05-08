@@ -44,12 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── Stats Counter Animation ────────────────────────────── */
+  // Runs on .stat-number[data-count] elements.
+  // site-stats.js removes data-count once it has live data, so this
+  // only fires for elements that still carry a static fallback value.
   const statNumbers = document.querySelectorAll('.stat-number[data-count]');
   if (statNumbers.length) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        const el     = entry.target;
+        const el = entry.target;
+        // Skip if site-stats.js already replaced this with live data
+        if (!el.dataset.count) { observer.unobserve(el); return; }
         const target = parseInt(el.dataset.count, 10);
         const suffix = el.dataset.suffix || '';
         const prefix = el.dataset.prefix || '';
