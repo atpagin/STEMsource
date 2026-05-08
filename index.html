@@ -300,52 +300,12 @@
             <div class="hero-card-dot" style="background:#ef4444;"></div>
             <div class="hero-card-dot" style="background:#f59e0b;"></div>
             <div class="hero-card-dot" style="background:#22c55e;"></div>
-            <span class="hero-card-title">Recent Openings</span>
+            <span class="hero-card-title">Featured Openings</span>
           </div>
           <div class="hero-card-body">
-
-            <div class="hero-mini-job active">
-              <div class="hmj-row">
-                <div class="hmj-logo" style="background:#1d4ed8;">IBM</div>
-                <div>
-                  <div class="hmj-title">Senior ML Research Scientist</div>
-                  <div class="hmj-company">IBM Research · Remote</div>
-                </div>
-              </div>
-              <div class="hmj-footer">
-                <span class="hmj-rate">$145–185k / yr</span>
-                <span class="badge badge-fulltime">Full-Time</span>
-              </div>
+            <div id="hero-featured-jobs">
+              <!-- populated by index-featured.js -->
             </div>
-
-            <div class="hero-mini-job">
-              <div class="hmj-row">
-                <div class="hmj-logo" style="background:#7c3aed;">DM</div>
-                <div>
-                  <div class="hmj-title">Computational Neuroscientist</div>
-                  <div class="hmj-company">DeepMind · London / Hybrid</div>
-                </div>
-              </div>
-              <div class="hmj-footer">
-                <span class="hmj-rate">£95–130k</span>
-                <span class="badge badge-contract">Contract</span>
-              </div>
-            </div>
-
-            <div class="hero-mini-job">
-              <div class="hmj-row">
-                <div class="hmj-logo" style="background:#059669;">PFZ</div>
-                <div>
-                  <div class="hmj-title">CRISPR Genomics Consultant</div>
-                  <div class="hmj-company">Pfizer · New York, NY</div>
-                </div>
-              </div>
-              <div class="hmj-footer">
-                <span class="hmj-rate">$220/hr</span>
-                <span class="badge badge-freelance">Freelance</span>
-              </div>
-            </div>
-
           </div>
           <div class="hero-card-stats">
             <div class="hcs-item">
@@ -427,230 +387,8 @@
       </a>
     </div>
 
-    <div class="jobs-grid">
-
-      <!-- Card 1 -->
-      <div class="job-card job-card-featured">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#1d4ed8;">IBM</div>
-          <div class="jc-badges">
-            <span class="badge badge-featured">⭐ Featured</span>
-            <span class="badge badge-fulltime">Full-Time</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Senior ML Research Scientist</a></div>
-          <div class="jc-company">IBM Research</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Remote — US
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            8+ yrs exp
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">PyTorch</span>
-          <span class="tag">LLMs</span>
-          <span class="tag">Distributed ML</span>
-          <span class="tag">Python</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$145,000 – $185,000 <small>/ year</small></div>
-          <span class="jc-posted">2 days ago</span>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#7c3aed;">DM</div>
-          <div class="jc-badges">
-            <span class="badge badge-contract">Contract</span>
-            <span class="badge badge-remote">Remote</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Computational Neuroscientist</a></div>
-          <div class="jc-company">DeepMind</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            London / Hybrid
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            12-month contract
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">fMRI</span>
-          <span class="tag">Python</span>
-          <span class="tag">JAX</span>
-          <span class="tag">Neural Networks</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">£95,000 – £130,000</div>
-          <span class="jc-posted">1 day ago</span>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#059669;">PFZ</div>
-          <div class="jc-badges">
-            <span class="badge badge-freelance">Freelance</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">CRISPR Genomics Consultant</a></div>
-          <div class="jc-company">Pfizer</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            New York, NY
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            3-month project
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">CRISPR</span>
-          <span class="tag">Gene Editing</span>
-          <span class="tag">R</span>
-          <span class="tag">Bioinformatics</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$220 <small>/ hour</small></div>
-          <span class="jc-posted">3 days ago</span>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="job-card job-card-featured">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#0f172a;">JHU</div>
-          <div class="jc-badges">
-            <span class="badge badge-featured">⭐ Featured</span>
-            <span class="badge badge-parttime">Part-Time</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Biostatistics Research Advisor</a></div>
-          <div class="jc-company">Johns Hopkins University</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Baltimore, MD
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            20 hrs/week
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">R</span>
-          <span class="tag">SAS</span>
-          <span class="tag">Clinical Trials</span>
-          <span class="tag">Epidemiology</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$95 <small>/ hour</small></div>
-          <span class="jc-posted">Today</span>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#dc2626;">SpX</div>
-          <div class="jc-badges">
-            <span class="badge badge-fulltime">Full-Time</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Propulsion Systems Engineer</a></div>
-          <div class="jc-company">SpaceX</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Hawthorne, CA
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            5+ yrs exp
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">CFD</span>
-          <span class="tag">MATLAB</span>
-          <span class="tag">Ansys Fluent</span>
-          <span class="tag">Thermodynamics</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$120,000 – $160,000 <small>/ year</small></div>
-          <span class="jc-posted">5 days ago</span>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#166534;">EPA</div>
-          <div class="jc-badges">
-            <span class="badge badge-contract">Contract</span>
-            <span class="badge badge-remote">Remote</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Environmental Data Scientist</a></div>
-          <div class="jc-company">U.S. Environmental Protection Agency</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Washington, DC / Remote
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">Python</span>
-          <span class="tag">GIS</span>
-          <span class="tag">ArcGIS</span>
-          <span class="tag">Climate Modeling</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$85 <small>/ hour</small></div>
-          <span class="jc-posted">1 week ago</span>
-        </div>
-      </div>
-
+    <div class="jobs-grid" id="featured-jobs-grid">
+      <!-- populated by index-featured.js -->
     </div>
 
     <div style="text-align:center;margin-top:40px;">
@@ -1177,6 +915,9 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 <script src="js/main.js"></script>
+<script src="js/index-featured.js"></script>
 </body>
 </html>
