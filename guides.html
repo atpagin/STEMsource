@@ -79,28 +79,225 @@
 </div>
 
 <!-- NAVBAR -->
-<nav class="navbar">
+<nav class="navbar" id="navbar">
   <div class="container-lg">
     <div class="navbar-inner">
-      <a class="navbar-brand" href="index.html">
-        <div class="brand-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <span class="brand-name">STEM<span>source</span></span>
+
+      <!-- Brand -->
+      <a href="index.html" class="navbar-brand">
+        <div class="brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+          </svg>
+        </div>
+        <span class="brand-name">STEM<em>source</em></span>
       </a>
+
+      <!-- Nav links -->
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="jobs.html?type=freelance"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><div class="dropdown-item-text"><span class="title">Freelance Projects</span></div></a><a class="dropdown-item" href="jobs.html?type=contract"><div class="dropdown-icon" style="background:var(--amber-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div class="dropdown-item-text"><span class="title">Contract Positions</span></div></a><a class="dropdown-item" href="jobs.html?type=fulltime"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="dropdown-item-text"><span class="title">Full-Time Employment</span></div></a></div></li>
-        <li class="nav-item"><a class="nav-link" href="blog.html" style="color:var(--navy);font-weight:600">Resources<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="blog.html"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="dropdown-item-text"><span class="title">Blog &amp; Insights</span></div></a><a class="dropdown-item" href="guides.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="dropdown-item-text"><span class="title">Guides &amp; Handbooks</span></div></a><a class="dropdown-item" href="#"><div class="dropdown-icon" style="background:var(--sage-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="dropdown-item-text"><span class="title">Salary Explorer</span></div></a></div></li>
-        <li class="nav-item"><a class="nav-link" href="#">Community<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="#"><div class="dropdown-icon" style="background:var(--sky-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="dropdown-item-text"><span class="title">Professional Forums</span></div></a></div></li>
-        <li class="nav-item"><a class="nav-link" href="post-job.html">For Employers<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="dropdown"><a class="dropdown-item" href="post-job.html"><div class="dropdown-icon" style="background:var(--teal-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div class="dropdown-item-text"><span class="title">Post a Position</span></div></a></div></li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Find Jobs
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="jobs.html?type=freelance" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Freelance Projects</span>
+                <span class="dd-desc">Short-term, project-based contracts</span>
+              </div>
+            </a>
+            <a href="jobs.html?type=contract" class="dd-item">
+              <div class="dd-icon" style="background:var(--amber-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Contract Positions</span>
+                <span class="dd-desc">Mid-term engagements, W2 or 1099</span>
+              </div>
+            </a>
+            <a href="jobs.html?type=fulltime" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Full-Time Roles</span>
+                <span class="dd-desc">Permanent positions with benefits</span>
+              </div>
+            </a>
+            <a href="jobs.html?type=parttime" class="dd-item">
+              <div class="dd-icon" style="background:var(--violet-100);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <span class="dd-title">Part-Time &amp; Advisory</span>
+                <span class="dd-desc">Flexible hours, board seats, consulting</span>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Disciplines
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown dropdown-wide">
+            <div class="dd-grid">
+              <a href="jobs.html?d=biotech" class="dd-item">
+                <div class="dd-icon" style="background:#fdf2f8;"><span style="font-size:1.1rem;">🧬</span></div>
+                <div><span class="dd-title">Biotechnology</span><span class="dd-desc">Genomics, CRISPR, drug discovery</span></div>
+              </a>
+              <a href="jobs.html?d=cs" class="dd-item">
+                <div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">💻</span></div>
+                <div><span class="dd-title">Computer Science</span><span class="dd-desc">AI/ML, software, data science</span></div>
+              </a>
+              <a href="jobs.html?d=engineering" class="dd-item">
+                <div class="dd-icon" style="background:var(--amber-50);"><span style="font-size:1.1rem;">⚙️</span></div>
+                <div><span class="dd-title">Engineering</span><span class="dd-desc">Mechanical, electrical, civil</span></div>
+              </a>
+              <a href="jobs.html?d=chemistry" class="dd-item">
+                <div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">⚗️</span></div>
+                <div><span class="dd-title">Chemistry</span><span class="dd-desc">Pharma, materials, synthesis</span></div>
+              </a>
+              <a href="jobs.html?d=physics" class="dd-item">
+                <div class="dd-icon" style="background:var(--violet-100);"><span style="font-size:1.1rem;">⚛️</span></div>
+                <div><span class="dd-title">Physics</span><span class="dd-desc">Quantum, astrophysics, optics</span></div>
+              </a>
+              <a href="jobs.html?d=math" class="dd-item">
+                <div class="dd-icon" style="background:var(--slate-100);"><span style="font-size:1.1rem;">📐</span></div>
+                <div><span class="dd-title">Mathematics</span><span class="dd-desc">Statistics, modeling, actuarial</span></div>
+              </a>
+              <a href="jobs.html?d=env" class="dd-item">
+                <div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">🌍</span></div>
+                <div><span class="dd-title">Environmental</span><span class="dd-desc">Climate science, ecology, GIS</span></div>
+              </a>
+              <a href="jobs.html?d=neuro" class="dd-item">
+                <div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">🧠</span></div>
+                <div><span class="dd-title">Neuroscience</span><span class="dd-desc">Cognitive science, neuropharma</span></div>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Resources
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="blog.html" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div><span class="dd-title">Blog</span><span class="dd-desc">Career advice, industry trends</span></div>
+            </a>
+            <a href="guides.html" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+              </div>
+              <div><span class="dd-title">Guides &amp; Playbooks</span><span class="dd-desc">Deep-dive how-tos for STEM careers</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--amber-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div><span class="dd-title">Salary Reports</span><span class="dd-desc">2025 STEM compensation benchmarks</span></div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            Community
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--violet-100);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div><span class="dd-title">Forum</span><span class="dd-desc">Ask questions, share insights</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div><span class="dd-title">Mentorship</span><span class="dd-desc">Connect with senior STEM leaders</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div><span class="dd-title">Events &amp; Webinars</span><span class="dd-desc">Live sessions with industry experts</span></div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link">
+            For Employers
+            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <div class="dropdown">
+            <a href="post-job.html" class="dd-item">
+              <div class="dd-icon" style="background:var(--green-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+              <div><span class="dd-title">Post a Job</span><span class="dd-desc">Reach 42,000+ STEM professionals</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--blue-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div><span class="dd-title">Search Candidates</span><span class="dd-desc">Browse verified STEM profiles</span></div>
+            </a>
+            <a href="#" class="dd-item">
+              <div class="dd-icon" style="background:var(--amber-50);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div><span class="dd-title">Enterprise Plans</span><span class="dd-desc">Custom hiring solutions for teams</span></div>
+            </a>
+          </div>
+        </li>
+
       </ul>
+
+      <!-- Navbar actions -->
       <div class="navbar-actions">
-        <a class="nav-sign-in" href="signup.html">Sign In</a>
-        <a class="btn btn-primary btn-sm" href="post-job.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post a Job</a>
-        <button class="nav-toggle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <a href="signup.html" class="nav-signin">Sign In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="nav-toggle" id="mobileToggle" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
       </div>
+
     </div>
   </div>
 </nav>
-<div class="mobile-nav"><div class="mobile-nav-panel"><button class="mobile-nav-close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><a class="mobile-nav-link" href="jobs.html">Browse Jobs</a><a class="mobile-nav-link" href="blog.html">Blog</a><a class="mobile-nav-link" href="guides.html">Guides</a><hr class="mobile-nav-divider"><a class="mobile-nav-link" href="post-job.html">Post a Job</a><a class="mobile-nav-link" href="signup.html">Sign In</a></div></div>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" id="mobileClose">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="jobs.html" class="mobile-nav-link">Find Jobs</a>
+    <a href="jobs.html" class="mobile-nav-link">Browse Disciplines</a>
+    <a href="blog.html" class="mobile-nav-link">Blog</a>
+    <a href="guides.html" class="mobile-nav-link">Guides</a>
+    <a href="#" class="mobile-nav-link">Community</a>
+    <hr class="mobile-nav-divider" />
+    <a href="post-job.html" class="mobile-nav-link">Post a Job</a>
+    <hr class="mobile-nav-divider" />
+    <a href="signup.html" class="mobile-nav-link">Sign In</a>
+    <a href="signup.html" class="btn btn-primary" style="margin-top:8px;justify-content:center;">Get Started Free</a>
+  </div>
+</div>
 
 <!-- PAGE HEADER -->
 <div class="page-header">
