@@ -247,7 +247,7 @@
       <div class="hero-left">
         <div class="hero-eyebrow">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          Now live — 1,240 new jobs this week
+          <span id="idx-eyebrow-new">Now live — STEM jobs this week</span>
         </div>
 
         <h1>
@@ -309,11 +309,11 @@
           </div>
           <div class="hero-card-stats">
             <div class="hcs-item">
-              <div class="hcs-num">42k+</div>
+              <div class="hcs-num" id="hcs-professionals">—</div>
               <div class="hcs-label">Professionals</div>
             </div>
             <div class="hcs-item">
-              <div class="hcs-num">3.8k</div>
+              <div class="hcs-num" id="hcs-open-roles">—</div>
               <div class="hcs-label">Open Roles</div>
             </div>
             <div class="hcs-item">
@@ -332,30 +332,30 @@
 <div class="stats-bar">
   <div class="container-lg">
     <div class="stats-inner">
-      <div class="stat-item">
+      <div class="stat-item" data-stat="members">
         <div class="stat-icon-wrap" style="background:var(--green-50);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="42000" data-suffix="k+">0</span>
+          <span class="stat-number" data-count="42000" data-suffix="k+">—</span>
           <span class="stat-label">STEM Professionals</span>
         </div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-stat="jobs">
         <div class="stat-icon-wrap" style="background:var(--blue-50);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="3800" data-suffix="+">0</span>
+          <span class="stat-number" data-count="3800" data-suffix="+">—</span>
           <span class="stat-label">Active Openings</span>
         </div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-stat="employers">
         <div class="stat-icon-wrap" style="background:var(--amber-50);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="1200" data-suffix="+">0</span>
+          <span class="stat-number" data-count="1200" data-suffix="+">—</span>
           <span class="stat-label">Verified Employers</span>
         </div>
       </div>
@@ -364,7 +364,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="98" data-suffix="%">0</span>
+          <span class="stat-number" data-count="98" data-suffix="%">0</span>
           <span class="stat-label">Placement Rate</span>
         </div>
       </div>
@@ -392,7 +392,7 @@
     </div>
 
     <div style="text-align:center;margin-top:40px;">
-      <a href="jobs.html" class="btn btn-ghost btn-lg">View All 3,800+ Jobs →</a>
+      <a href="jobs.html" class="btn btn-ghost btn-lg" id="idx-view-all-jobs">View All Jobs →</a>
     </div>
   </div>
 </section>
@@ -495,56 +495,56 @@
         <div class="disc-icon" style="background:#fdf2f8;">🧬</div>
         <div>
           <div class="disc-name">Biotechnology</div>
-          <div class="disc-count">412 open roles</div>
+          <div class="disc-count" data-disc="life-sciences">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=cs" class="discipline-card">
         <div class="disc-icon" style="background:var(--blue-50);">💻</div>
         <div>
           <div class="disc-name">Computer Science</div>
-          <div class="disc-count">891 open roles</div>
+          <div class="disc-count" data-disc="cs-ai">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=engineering" class="discipline-card">
         <div class="disc-icon" style="background:var(--amber-50);">⚙️</div>
         <div>
           <div class="disc-name">Engineering</div>
-          <div class="disc-count">734 open roles</div>
+          <div class="disc-count" data-disc="engineering">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=chemistry" class="discipline-card">
         <div class="disc-icon" style="background:var(--green-50);">⚗️</div>
         <div>
           <div class="disc-name">Chemistry</div>
-          <div class="disc-count">298 open roles</div>
+          <div class="disc-count" data-disc="chemistry">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=physics" class="discipline-card">
         <div class="disc-icon" style="background:var(--violet-100);">⚛️</div>
         <div>
           <div class="disc-name">Physics</div>
-          <div class="disc-count">187 open roles</div>
+          <div class="disc-count" data-disc="physics">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=math" class="discipline-card">
         <div class="disc-icon" style="background:var(--slate-100);">📐</div>
         <div>
           <div class="disc-name">Mathematics</div>
-          <div class="disc-count">214 open roles</div>
+          <div class="disc-count" data-disc="mathematics">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=env" class="discipline-card">
         <div class="disc-icon" style="background:var(--green-50);">🌍</div>
         <div>
           <div class="disc-name">Environmental</div>
-          <div class="disc-count">156 open roles</div>
+          <div class="disc-count" data-disc="environmental">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=neuro" class="discipline-card">
         <div class="disc-icon" style="background:var(--blue-50);">🧠</div>
         <div>
           <div class="disc-name">Neuroscience</div>
-          <div class="disc-count">142 open roles</div>
+          <div class="disc-count" data-disc="medicine">— open roles</div>
         </div>
       </a>
     </div>
@@ -772,7 +772,7 @@
   <div class="container-lg">
     <div style="text-align:center;margin-bottom:48px;">
       <p class="label-xs">What Members Say</p>
-      <h2 class="section-title" style="text-align:center;margin:8px auto 0;">Trusted by 42,000+ STEM professionals</h2>
+      <h2 class="section-title" style="text-align:center;margin:8px auto 0;" id="idx-testimonials-header">Trusted by STEM professionals worldwide</h2>
     </div>
     <div class="testimonials-grid">
 
@@ -918,6 +918,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase.js"></script>
 <script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/site-stats.js"></script>
 <script src="js/index-featured.js"></script>
 </body>
 </html>
