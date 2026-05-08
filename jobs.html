@@ -104,93 +104,114 @@
 </div>
 
 <!-- MAIN CONTENT -->
-<div class="section-sm">
+<div style="padding:24px 0 64px">
   <div class="container">
     <div class="jobs-layout">
 
       <!-- SIDEBAR -->
       <aside class="filter-sidebar">
+        <!-- Expanded header -->
         <div class="filter-title">
-          Filters
-          <span class="filter-clear">Clear all</span>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-group-label">Position Type</div>
-          <label class="filter-checkbox"><input type="checkbox" checked> Freelance / Project <span class="filter-checkbox-count">612</span></label>
-          <label class="filter-checkbox"><input type="checkbox" checked> Contract <span class="filter-checkbox-count">498</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Full-Time <span class="filter-checkbox-count">1,204</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Part-Time <span class="filter-checkbox-count">533</span></label>
-        </div>
-        <hr class="filter-divider">
-
-        <div class="filter-group">
-          <div class="filter-group-label">Discipline</div>
-          <label class="filter-checkbox"><input type="checkbox" checked> Engineering <span class="filter-checkbox-count">634</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Life Sciences <span class="filter-checkbox-count">512</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> CS &amp; AI <span class="filter-checkbox-count">487</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Chemistry <span class="filter-checkbox-count">298</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Physics <span class="filter-checkbox-count">215</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Mathematics <span class="filter-checkbox-count">341</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Environmental <span class="filter-checkbox-count">178</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Medicine <span class="filter-checkbox-count">182</span></label>
-        </div>
-        <hr class="filter-divider">
-
-        <div class="filter-group">
-          <div class="filter-group-label">Work Arrangement</div>
-          <label class="filter-checkbox"><input type="checkbox" checked> Remote <span class="filter-checkbox-count">1,342</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Hybrid <span class="filter-checkbox-count">876</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> On-Site <span class="filter-checkbox-count">629</span></label>
-        </div>
-        <hr class="filter-divider">
-
-        <div class="filter-group">
-          <div class="filter-group-label">Experience Level</div>
-          <label class="filter-checkbox"><input type="checkbox"> Entry Level <span class="filter-checkbox-count">312</span></label>
-          <label class="filter-checkbox"><input type="checkbox" checked> Mid-Level <span class="filter-checkbox-count">987</span></label>
-          <label class="filter-checkbox"><input type="checkbox" checked> Senior <span class="filter-checkbox-count">1,104</span></label>
-          <label class="filter-checkbox"><input type="checkbox"> Principal / Lead <span class="filter-checkbox-count">444</span></label>
-        </div>
-        <hr class="filter-divider">
-
-        <div class="filter-group">
-          <div class="filter-group-label">Hourly Rate / Salary</div>
-          <div style="padding:6px 0">
-            <div class="salary-range" style="margin-bottom:8px">
-              <span style="font-size:.78rem;white-space:nowrap">$50/hr</span>
-              <input type="range" min="50" max="250" value="200" style="width:100%">
-              <span style="font-size:.78rem;white-space:nowrap">$250/hr</span>
-            </div>
-            <p style="font-size:.78rem;color:var(--text-light);text-align:center">Up to $200/hr or $240k/yr</p>
+          <span class="filter-title-text">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            Filters
+          </span>
+          <div class="filter-title-actions">
+            <span class="filter-clear">Clear all</span>
+            <button class="filter-sidebar-toggle" title="Collapse filters" aria-label="Collapse filters">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
           </div>
         </div>
-        <hr class="filter-divider">
 
-        <div class="filter-group">
-          <div class="filter-group-label">Date Posted</div>
-          <label class="filter-checkbox"><input type="radio" name="date" checked> Any time</label>
-          <label class="filter-checkbox"><input type="radio" name="date"> Past 24 hours</label>
-          <label class="filter-checkbox"><input type="radio" name="date"> Past 7 days</label>
-          <label class="filter-checkbox"><input type="radio" name="date"> Past 30 days</label>
+        <!-- Collapsed header (shown only when sidebar is collapsed) -->
+        <div class="filter-collapsed-header">
+          <button class="filter-sidebar-toggle" title="Expand filters" aria-label="Expand filters">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <span class="filter-collapsed-label">Filters</span>
         </div>
 
-        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Apply Filters</button>
+        <!-- Filter body (hidden when collapsed) -->
+        <div class="filter-body">
+          <div class="filter-group">
+            <div class="filter-group-label">Position Type</div>
+            <label class="filter-checkbox"><input type="checkbox" checked> Freelance / Project <span class="filter-checkbox-count">612</span></label>
+            <label class="filter-checkbox"><input type="checkbox" checked> Contract <span class="filter-checkbox-count">498</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Full-Time <span class="filter-checkbox-count">1,204</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Part-Time <span class="filter-checkbox-count">533</span></label>
+          </div>
+          <hr class="filter-divider">
+
+          <div class="filter-group">
+            <div class="filter-group-label">Discipline</div>
+            <label class="filter-checkbox"><input type="checkbox" checked> Engineering <span class="filter-checkbox-count">634</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Life Sciences <span class="filter-checkbox-count">512</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> CS &amp; AI <span class="filter-checkbox-count">487</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Chemistry <span class="filter-checkbox-count">298</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Physics <span class="filter-checkbox-count">215</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Mathematics <span class="filter-checkbox-count">341</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Environmental <span class="filter-checkbox-count">178</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Medicine <span class="filter-checkbox-count">182</span></label>
+          </div>
+          <hr class="filter-divider">
+
+          <div class="filter-group">
+            <div class="filter-group-label">Work Arrangement</div>
+            <label class="filter-checkbox"><input type="checkbox" checked> Remote <span class="filter-checkbox-count">1,342</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Hybrid <span class="filter-checkbox-count">876</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> On-Site <span class="filter-checkbox-count">629</span></label>
+          </div>
+          <hr class="filter-divider">
+
+          <div class="filter-group">
+            <div class="filter-group-label">Experience Level</div>
+            <label class="filter-checkbox"><input type="checkbox"> Entry Level <span class="filter-checkbox-count">312</span></label>
+            <label class="filter-checkbox"><input type="checkbox" checked> Mid-Level <span class="filter-checkbox-count">987</span></label>
+            <label class="filter-checkbox"><input type="checkbox" checked> Senior <span class="filter-checkbox-count">1,104</span></label>
+            <label class="filter-checkbox"><input type="checkbox"> Principal / Lead <span class="filter-checkbox-count">444</span></label>
+          </div>
+          <hr class="filter-divider">
+
+          <div class="filter-group">
+            <div class="filter-group-label">Hourly Rate / Salary</div>
+            <div style="padding:6px 0">
+              <div class="salary-range" style="margin-bottom:8px">
+                <span style="font-size:.78rem;white-space:nowrap">$50/hr</span>
+                <input type="range" min="50" max="250" value="200" style="width:100%">
+                <span style="font-size:.78rem;white-space:nowrap">$250/hr</span>
+              </div>
+              <p style="font-size:.78rem;color:var(--text-light);text-align:center">Up to $200/hr or $240k/yr</p>
+            </div>
+          </div>
+          <hr class="filter-divider">
+
+          <div class="filter-group">
+            <div class="filter-group-label">Date Posted</div>
+            <label class="filter-checkbox"><input type="radio" name="date" checked> Any time</label>
+            <label class="filter-checkbox"><input type="radio" name="date"> Past 24 hours</label>
+            <label class="filter-checkbox"><input type="radio" name="date"> Past 7 days</label>
+            <label class="filter-checkbox"><input type="radio" name="date"> Past 30 days</label>
+          </div>
+
+          <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Apply Filters</button>
+        </div>
       </aside>
 
       <!-- JOB LISTINGS -->
-      <div>
-        <!-- Active filters -->
-        <div class="active-filters">
-          <span class="active-filter">Freelance ×</span>
-          <span class="active-filter">Contract ×</span>
-          <span class="active-filter">Engineering ×</span>
-          <span class="active-filter">Remote ×</span>
-        </div>
+      <div class="jobs-results">
 
         <!-- Toolbar -->
         <div class="jobs-toolbar">
-          <p class="jobs-count">Showing <strong>1,110</strong> positions</p>
+          <div class="jobs-toolbar-left">
+            <p class="jobs-count"><strong>1,110</strong> positions</p>
+            <div class="active-filters">
+              <span class="active-filter">Freelance ×</span>
+              <span class="active-filter">Contract ×</span>
+              <span class="active-filter">Engineering ×</span>
+              <span class="active-filter">Remote ×</span>
+            </div>
+          </div>
           <select class="sort-select">
             <option>Most Relevant</option>
             <option>Newest First</option>
@@ -201,160 +222,229 @@
 
         <div class="jobs-list">
 
-          <!-- Featured listing -->
-          <div class="job-list-card featured-card">
-            <div class="company-logo" style="background:linear-gradient(135deg,#1a6b8a,#0d3f5a)">IBM</div>
-            <div class="job-list-body">
-              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-                <span class="badge badge-featured">⭐ Featured</span>
-                <span class="badge badge-freelance">Freelance</span>
-                <span class="badge badge-remote">Remote</span>
+          <!-- Card: IBM -->
+          <div class="jc featured">
+            <div class="jc-logo" style="background:linear-gradient(135deg,#1a6b8a,#0d3f5a)">IBM</div>
+            <div class="jc-body">
+              <div class="jc-header">
+                <div>
+                  <div class="jc-badges">
+                    <span class="badge badge-featured">⭐ Featured</span>
+                    <span class="badge badge-freelance">Freelance</span>
+                    <span class="badge badge-remote">Remote</span>
+                  </div>
+                  <div class="jc-title"><a href="#">Quantum Computing Algorithm Developer</a></div>
+                  <div class="jc-company">IBM Research &mdash; Yorktown Heights, NY</div>
+                </div>
+                <div class="jc-rate">$145–$175<span>/hr</span></div>
               </div>
-              <div class="job-title" style="font-size:1.05rem"><a href="#">Quantum Computing Algorithm Developer</a></div>
-              <div class="job-company" style="margin-bottom:10px">IBM Research — Yorktown Heights, NY</div>
-              <div class="job-meta">
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3–6 months</span>
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Senior</span>
-                <span class="job-meta-item">Posted 2 days ago</span>
-              </div>
-              <div class="job-tags" style="margin-top:10px">
-                <span class="tag">Qiskit</span><span class="tag">Python</span><span class="tag">Linear Algebra</span><span class="tag">Quantum ML</span>
-              </div>
-            </div>
-            <div class="job-list-footer">
-              <div class="job-salary" style="text-align:right">$145–$175<small>/hr</small></div>
-              <div style="display:flex;gap:8px">
-                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
-                <a class="btn btn-primary btn-sm" href="#">Apply</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Regular listings -->
-          <div class="job-list-card">
-            <div class="company-logo" style="background:linear-gradient(135deg,#2d6a2d,#1a3f1a)">NASA</div>
-            <div class="job-list-body">
-              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-contract">Contract</span><span class="badge badge-remote">Hybrid</span></div>
-              <div class="job-title"><a href="#">Computational Fluid Dynamics Engineer — Mars Mission Systems</a></div>
-              <div class="job-company" style="margin-bottom:10px">NASA Jet Propulsion Laboratory — Pasadena, CA</div>
-              <div class="job-meta">
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24 months</span>
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Senior</span>
-                <span class="job-meta-item">Posted 1 day ago</span>
-              </div>
-              <div class="job-tags" style="margin-top:10px"><span class="tag">ANSYS Fluent</span><span class="tag">OpenFOAM</span><span class="tag">C++</span><span class="tag">Thermodynamics</span></div>
-            </div>
-            <div class="job-list-footer">
-              <div class="job-salary" style="text-align:right">$95–$130<small>/hr</small></div>
-              <div style="display:flex;gap:8px">
-                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
-                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              <div class="jc-footer">
+                <div class="jc-meta">
+                  <span>3–6 months</span>
+                  <span>Senior</span>
+                  <span>Posted 2 days ago</span>
+                </div>
+                <div class="jc-tags">
+                  <span class="tag">Qiskit</span><span class="tag">Python</span><span class="tag">Linear Algebra</span><span class="tag">Quantum ML</span>
+                </div>
+                <div class="jc-actions">
+                  <button class="save-btn" title="Save job"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <a class="btn btn-primary btn-sm" href="#">Apply</a>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="job-list-card">
-            <div class="company-logo" style="background:linear-gradient(135deg,#5a1a8a,#350f52)">SYN</div>
-            <div class="job-list-body">
-              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-freelance">Freelance</span><span class="badge badge-remote">Remote</span><span class="badge badge-new">New</span></div>
-              <div class="job-title"><a href="#">Synthetic Biology Consultant — Metabolic Pathway Design</a></div>
-              <div class="job-company" style="margin-bottom:10px">Ginkgo Bioworks — Remote / Boston, MA</div>
-              <div class="job-meta">
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2–4 months</span>
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Expert</span>
-                <span class="job-meta-item">Posted today</span>
+          <!-- Card: NASA -->
+          <div class="jc">
+            <div class="jc-logo" style="background:linear-gradient(135deg,#1a4d2e,#0e2e1b)">NASA</div>
+            <div class="jc-body">
+              <div class="jc-header">
+                <div>
+                  <div class="jc-badges">
+                    <span class="badge badge-contract">Contract</span>
+                    <span class="badge badge-hybrid">Hybrid</span>
+                  </div>
+                  <div class="jc-title"><a href="#">Computational Fluid Dynamics Engineer</a></div>
+                  <div class="jc-company">NASA Jet Propulsion Laboratory &mdash; Pasadena, CA</div>
+                </div>
+                <div class="jc-rate">$95–$130<span>/hr</span></div>
               </div>
-              <div class="job-tags" style="margin-top:10px"><span class="tag">Python</span><span class="tag">COBRApy</span><span class="tag">E. coli</span><span class="tag">Fermentation</span></div>
-            </div>
-            <div class="job-list-footer">
-              <div class="job-salary" style="text-align:right">$120–$160<small>/hr</small></div>
-              <div style="display:flex;gap:8px">
-                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
-                <a class="btn btn-primary btn-sm" href="#">Apply</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="job-list-card">
-            <div class="company-logo" style="background:linear-gradient(135deg,#0f4c7a,#062f52)">MCK</div>
-            <div class="job-list-body">
-              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-contract">Contract</span></div>
-              <div class="job-title"><a href="#">Structural Materials Engineer — Semiconductor Packaging</a></div>
-              <div class="job-company" style="margin-bottom:10px">McKinsey Materials Practice — Austin, TX</div>
-              <div class="job-meta">
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12 months</span>
-                <span class="job-meta-item">Posted 4 days ago</span>
-              </div>
-              <div class="job-tags" style="margin-top:10px"><span class="tag">FEA</span><span class="tag">ABAQUS</span><span class="tag">Failure Analysis</span><span class="tag">Semiconductors</span></div>
-            </div>
-            <div class="job-list-footer">
-              <div class="job-salary" style="text-align:right">$110–$145<small>/hr</small></div>
-              <div style="display:flex;gap:8px">
-                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
-                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              <div class="jc-footer">
+                <div class="jc-meta">
+                  <span>24 months</span>
+                  <span>Senior</span>
+                  <span>Posted 1 day ago</span>
+                </div>
+                <div class="jc-tags">
+                  <span class="tag">ANSYS Fluent</span><span class="tag">OpenFOAM</span><span class="tag">C++</span><span class="tag">Thermodynamics</span>
+                </div>
+                <div class="jc-actions">
+                  <button class="save-btn" title="Save job"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <a class="btn btn-primary btn-sm" href="#">Apply</a>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="job-list-card">
-            <div class="company-logo" style="background:linear-gradient(135deg,#7a3a0f,#4a2208)">RCH</div>
-            <div class="job-list-body">
-              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-freelance">Freelance</span><span class="badge badge-remote">Remote</span></div>
-              <div class="job-title"><a href="#">Bioinformatics Pipeline Developer — Genomic Data Analysis</a></div>
-              <div class="job-company" style="margin-bottom:10px">Broad Institute (Contract via Vendor)</div>
-              <div class="job-meta">
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4–6 months</span>
-                <span class="job-meta-item">Posted 3 days ago</span>
+          <!-- Card: Ginkgo Bioworks -->
+          <div class="jc">
+            <div class="jc-logo" style="background:linear-gradient(135deg,#5a1a8a,#350f52)">GNK</div>
+            <div class="jc-body">
+              <div class="jc-header">
+                <div>
+                  <div class="jc-badges">
+                    <span class="badge badge-freelance">Freelance</span>
+                    <span class="badge badge-remote">Remote</span>
+                    <span class="badge" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0">New</span>
+                  </div>
+                  <div class="jc-title"><a href="#">Synthetic Biology Consultant</a></div>
+                  <div class="jc-company">Ginkgo Bioworks &mdash; Remote / Boston, MA</div>
+                </div>
+                <div class="jc-rate">$120–$160<span>/hr</span></div>
               </div>
-              <div class="job-tags" style="margin-top:10px"><span class="tag">Snakemake</span><span class="tag">BWA/GATK</span><span class="tag">Python</span><span class="tag">AWS</span></div>
-            </div>
-            <div class="job-list-footer">
-              <div class="job-salary" style="text-align:right">$95–$125<small>/hr</small></div>
-              <div style="display:flex;gap:8px">
-                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
-                <a class="btn btn-primary btn-sm" href="#">Apply</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="job-list-card">
-            <div class="company-logo" style="background:linear-gradient(135deg,#1a3a6b,#0d2244)">DOE</div>
-            <div class="job-list-body">
-              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-contract">Contract</span></div>
-              <div class="job-title"><a href="#">Nuclear Safety Systems Analyst — SMR Design Review</a></div>
-              <div class="job-company" style="margin-bottom:10px">US Department of Energy — Oak Ridge, TN</div>
-              <div class="job-meta">
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>18 months</span>
-                <span class="job-meta-item">Posted 6 days ago · Security clearance required</span>
-              </div>
-              <div class="job-tags" style="margin-top:10px"><span class="tag">RELAP5</span><span class="tag">MELCOR</span><span class="tag">NRC Regs</span><span class="tag">Thermal-Hydraulics</span></div>
-            </div>
-            <div class="job-list-footer">
-              <div class="job-salary" style="text-align:right">$130–$165<small>/hr</small></div>
-              <div style="display:flex;gap:8px">
-                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
-                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+              <div class="jc-footer">
+                <div class="jc-meta">
+                  <span>2–4 months</span>
+                  <span>Expert</span>
+                  <span>Posted today</span>
+                </div>
+                <div class="jc-tags">
+                  <span class="tag">Python</span><span class="tag">COBRApy</span><span class="tag">E. coli</span><span class="tag">Fermentation</span>
+                </div>
+                <div class="jc-actions">
+                  <button class="save-btn" title="Save job"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <a class="btn btn-primary btn-sm" href="#">Apply</a>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="job-list-card">
-            <div class="company-logo" style="background:linear-gradient(135deg,#0d4a5a,#062e38)">OPN</div>
-            <div class="job-list-body">
-              <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><span class="badge badge-freelance">Freelance</span><span class="badge badge-remote">Remote</span></div>
-              <div class="job-title"><a href="#">Photonic IC Layout Designer — LiDAR Systems</a></div>
-              <div class="job-company" style="margin-bottom:10px">Luminar Technologies — Remote</div>
-              <div class="job-meta">
-                <span class="job-meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 months</span>
-                <span class="job-meta-item">Posted 1 week ago</span>
+          <!-- Card: McKinsey -->
+          <div class="jc">
+            <div class="jc-logo" style="background:linear-gradient(135deg,#0f4c7a,#062f52)">MCK</div>
+            <div class="jc-body">
+              <div class="jc-header">
+                <div>
+                  <div class="jc-badges">
+                    <span class="badge badge-contract">Contract</span>
+                    <span class="badge badge-onsite">On-Site</span>
+                  </div>
+                  <div class="jc-title"><a href="#">Structural Materials Engineer</a></div>
+                  <div class="jc-company">McKinsey Materials Practice &mdash; Austin, TX</div>
+                </div>
+                <div class="jc-rate">$110–$145<span>/hr</span></div>
               </div>
-              <div class="job-tags" style="margin-top:10px"><span class="tag">Lumerical</span><span class="tag">Klayout</span><span class="tag">Silicon Photonics</span><span class="tag">FDTD</span></div>
+              <div class="jc-footer">
+                <div class="jc-meta">
+                  <span>12 months</span>
+                  <span>Mid-Level</span>
+                  <span>Posted 4 days ago</span>
+                </div>
+                <div class="jc-tags">
+                  <span class="tag">FEA</span><span class="tag">ABAQUS</span><span class="tag">Failure Analysis</span><span class="tag">Semiconductors</span>
+                </div>
+                <div class="jc-actions">
+                  <button class="save-btn" title="Save job"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <a class="btn btn-primary btn-sm" href="#">Apply</a>
+                </div>
+              </div>
             </div>
-            <div class="job-list-footer">
-              <div class="job-salary" style="text-align:right">$140–$175<small>/hr</small></div>
-              <div style="display:flex;gap:8px">
-                <button class="save-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
-                <a class="btn btn-primary btn-sm" href="#">Apply</a>
+          </div>
+
+          <!-- Card: Broad Institute -->
+          <div class="jc">
+            <div class="jc-logo" style="background:linear-gradient(135deg,#7a3a0f,#4a2208)">BRD</div>
+            <div class="jc-body">
+              <div class="jc-header">
+                <div>
+                  <div class="jc-badges">
+                    <span class="badge badge-freelance">Freelance</span>
+                    <span class="badge badge-remote">Remote</span>
+                  </div>
+                  <div class="jc-title"><a href="#">Bioinformatics Pipeline Developer</a></div>
+                  <div class="jc-company">Broad Institute &mdash; Remote</div>
+                </div>
+                <div class="jc-rate">$95–$125<span>/hr</span></div>
+              </div>
+              <div class="jc-footer">
+                <div class="jc-meta">
+                  <span>4–6 months</span>
+                  <span>Senior</span>
+                  <span>Posted 3 days ago</span>
+                </div>
+                <div class="jc-tags">
+                  <span class="tag">Snakemake</span><span class="tag">BWA/GATK</span><span class="tag">Python</span><span class="tag">AWS</span>
+                </div>
+                <div class="jc-actions">
+                  <button class="save-btn" title="Save job"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <a class="btn btn-primary btn-sm" href="#">Apply</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Dept of Energy -->
+          <div class="jc">
+            <div class="jc-logo" style="background:linear-gradient(135deg,#1a3a6b,#0d2244)">DOE</div>
+            <div class="jc-body">
+              <div class="jc-header">
+                <div>
+                  <div class="jc-badges">
+                    <span class="badge badge-contract">Contract</span>
+                    <span class="badge badge-onsite">On-Site</span>
+                    <span class="badge" style="background:#fef9c3;color:#a16207;border:1px solid #fde047">Clearance</span>
+                  </div>
+                  <div class="jc-title"><a href="#">Nuclear Safety Systems Analyst</a></div>
+                  <div class="jc-company">US Department of Energy &mdash; Oak Ridge, TN</div>
+                </div>
+                <div class="jc-rate">$130–$165<span>/hr</span></div>
+              </div>
+              <div class="jc-footer">
+                <div class="jc-meta">
+                  <span>18 months</span>
+                  <span>Senior</span>
+                  <span>Posted 6 days ago</span>
+                </div>
+                <div class="jc-tags">
+                  <span class="tag">RELAP5</span><span class="tag">MELCOR</span><span class="tag">NRC Regs</span><span class="tag">Thermal-Hydraulics</span>
+                </div>
+                <div class="jc-actions">
+                  <button class="save-btn" title="Save job"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <a class="btn btn-primary btn-sm" href="#">Apply</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Luminar -->
+          <div class="jc">
+            <div class="jc-logo" style="background:linear-gradient(135deg,#0d4a5a,#062e38)">LMN</div>
+            <div class="jc-body">
+              <div class="jc-header">
+                <div>
+                  <div class="jc-badges">
+                    <span class="badge badge-freelance">Freelance</span>
+                    <span class="badge badge-remote">Remote</span>
+                  </div>
+                  <div class="jc-title"><a href="#">Photonic IC Layout Designer</a></div>
+                  <div class="jc-company">Luminar Technologies &mdash; Remote</div>
+                </div>
+                <div class="jc-rate">$140–$175<span>/hr</span></div>
+              </div>
+              <div class="jc-footer">
+                <div class="jc-meta">
+                  <span>3 months</span>
+                  <span>Senior</span>
+                  <span>Posted 1 week ago</span>
+                </div>
+                <div class="jc-tags">
+                  <span class="tag">Lumerical</span><span class="tag">KLayout</span><span class="tag">Silicon Photonics</span><span class="tag">FDTD</span>
+                </div>
+                <div class="jc-actions">
+                  <button class="save-btn" title="Save job"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <a class="btn btn-primary btn-sm" href="#">Apply</a>
+                </div>
               </div>
             </div>
           </div>

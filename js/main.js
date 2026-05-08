@@ -83,9 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── Filter Sidebar Collapse Toggle ─────────────────────── */
+  const filterSidebar = document.querySelector('.filter-sidebar');
+  const jobsLayout = document.querySelector('.jobs-layout');
+  document.querySelectorAll('.filter-sidebar-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (filterSidebar) filterSidebar.classList.toggle('collapsed');
+      if (jobsLayout) jobsLayout.classList.toggle('sidebar-collapsed');
+    });
+  });
+
   /* ── Filter Sidebar Toggle (mobile) ─────────────────────── */
   const filterToggle = document.querySelector('.filter-toggle');
-  const filterSidebar = document.querySelector('.filter-sidebar');
   if (filterToggle && filterSidebar) {
     filterToggle.addEventListener('click', () => {
       filterSidebar.classList.toggle('open');
