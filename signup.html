@@ -7,555 +7,367 @@
   <meta name="description" content="Create your verified STEMsource account. STEM professionals, individual job posters, and organizations all welcome." />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
-    /* ── Page shell ─────────────────────────────────────────── */
     body { background: var(--slate-50); min-height: 100vh; }
 
+    /* ── Shell ──────────────────────────────────────────────────────── */
     .auth-shell {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - 29px); /* minus announce bar */
+      min-height: calc(100vh - 29px);
     }
 
-    /* ── Left marketing panel ───────────────────────────────── */
+    /* ── Left panel ─────────────────────────────────────────────────── */
     .auth-left {
       background: var(--navy-900);
       padding: 56px 52px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
     }
     .auth-left::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 60% at 20% 30%, rgba(14,165,233,.16) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 80% 75%, rgba(2,132,199,.1) 0%, transparent 55%);
+      content:'';position:absolute;inset:0;
+      background: radial-gradient(ellipse 60% 60% at 20% 30%,rgba(14,165,233,.16) 0%,transparent 60%),
+                  radial-gradient(ellipse 50% 50% at 80% 75%,rgba(2,132,199,.1) 0%,transparent 55%);
     }
     .auth-left-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      position:absolute;inset:0;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
       background-size: 36px 36px;
     }
-    .auth-left-inner { position: relative; z-index: 1; }
-    .auth-logo {
-      display: flex; align-items: center; gap: 9px;
-      margin-bottom: 44px;
-      text-decoration: none;
-    }
+    .auth-left-inner { position:relative;z-index:1; }
+    .auth-logo { display:flex;align-items:center;gap:9px;margin-bottom:44px;text-decoration:none; }
     .auth-logo-mark {
-      width: 32px; height: 32px;
-      background: var(--color-primary);
-      border-radius: var(--r-sm);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      width:32px;height:32px;background:var(--color-primary);border-radius:var(--r-sm);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
     }
-    .auth-logo-name {
-      font-size: 1.2rem; font-weight: 800;
-      color: #fff; letter-spacing: -.03em;
-    }
-    .auth-logo-name em { font-style: normal; color: var(--green-500); }
-
+    .auth-logo-name { font-size:1.2rem;font-weight:800;color:#fff;letter-spacing:-.03em; }
+    .auth-logo-name em { font-style:normal;color:var(--green-500); }
     .auth-left h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.2;
-      letter-spacing: -.025em;
-      margin-bottom: 14px;
+      font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:600;
+      color:#fff;line-height:1.2;letter-spacing:-.025em;margin-bottom:14px;
     }
-    .auth-left h2 em { font-style: italic; color: #7dd3fc; }
-    .auth-left-sub {
-      font-size: .9rem;
-      color: rgba(255,255,255,.6);
-      line-height: 1.75;
-      margin-bottom: 36px;
-      max-width: 360px;
-    }
-
-    .auth-benefit-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
-    .auth-benefit {
-      display: flex; align-items: flex-start; gap: 12px;
-    }
+    .auth-left h2 em { font-style:italic;color:#7dd3fc; }
+    .auth-left-sub { font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:36px;max-width:360px; }
+    .auth-benefit-list { display:flex;flex-direction:column;gap:14px;margin-bottom:40px; }
+    .auth-benefit { display:flex;align-items:flex-start;gap:12px; }
     .auth-benefit-dot {
-      width: 32px; height: 32px;
-      border-radius: var(--r-sm);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
+      width:32px;height:32px;border-radius:var(--r-sm);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
     }
-    .auth-benefit-title { font-size: .875rem; font-weight: 600; color: #fff; margin-bottom: 1px; }
-    .auth-benefit-desc  { font-size: .78rem; color: rgba(255,255,255,.5); line-height: 1.5; }
-
+    .auth-benefit-title { font-size:.875rem;font-weight:600;color:#fff;margin-bottom:1px; }
+    .auth-benefit-desc  { font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.5; }
     .auth-quote {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: var(--r-md);
-      padding: 20px 22px;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+      border-radius:var(--r-md);padding:20px 22px;
     }
-    .auth-quote-text {
-      font-size: .855rem;
-      color: rgba(255,255,255,.75);
-      line-height: 1.75;
-      font-style: italic;
-      margin-bottom: 14px;
-    }
-    .auth-quote-author { display: flex; align-items: center; gap: 10px; }
+    .auth-quote-text { font-size:.855rem;color:rgba(255,255,255,.75);line-height:1.75;font-style:italic;margin-bottom:14px; }
+    .auth-quote-author { display:flex;align-items:center;gap:10px; }
     .auth-quote-av {
-      width: 34px; height: 34px;
-      border-radius: var(--r-full);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .72rem; font-weight: 700; color: #fff;
-      flex-shrink: 0;
+      width:34px;height:34px;border-radius:var(--r-full);
+      display:flex;align-items:center;justify-content:center;
+      font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;
     }
-    .auth-quote-name { font-size: .82rem; font-weight: 700; color: #fff; }
-    .auth-quote-role { font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 1px; }
+    .auth-quote-name { font-size:.82rem;font-weight:700;color:#fff; }
+    .auth-quote-role { font-size:.72rem;color:rgba(255,255,255,.4);margin-top:1px; }
 
-    /* ── Right form panel ───────────────────────────────────── */
+    /* ── Right panel ────────────────────────────────────────────────── */
     .auth-right {
-      background: var(--color-surface);
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 40px 32px 60px;
-      overflow-y: auto;
+      background:var(--color-surface);
+      display:flex;align-items:flex-start;justify-content:center;
+      padding:40px 32px 60px;overflow-y:auto;
     }
-    .auth-form-wrap { width: 100%; max-width: 480px; }
+    .auth-form-wrap { width:100%;max-width:500px; }
 
     /* Tab toggle */
     .auth-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1.5px solid var(--color-border);
-      border-radius: var(--r);
-      overflow: hidden;
-      margin-bottom: 28px;
+      display:grid;grid-template-columns:1fr 1fr;
+      border:1.5px solid var(--color-border);border-radius:var(--r);overflow:hidden;margin-bottom:28px;
     }
     .auth-tab {
-      padding: 13px;
-      text-align: center;
-      font-size: .875rem;
-      font-weight: 600;
-      color: var(--slate-500);
-      cursor: pointer;
-      background: var(--slate-50);
-      border: none;
-      font-family: var(--font);
-      transition: all var(--ease);
+      padding:13px;text-align:center;font-size:.875rem;font-weight:600;
+      color:var(--slate-500);cursor:pointer;background:var(--slate-50);
+      border:none;font-family:var(--font);transition:all var(--ease);
     }
-    .auth-tab.active { background: var(--navy-900); color: #fff; }
+    .auth-tab.active { background:var(--navy-900);color:#fff; }
 
     /* Panels */
-    .auth-panel { display: none; }
-    .auth-panel.active { display: block; }
+    .auth-panel { display:none; }
+    .auth-panel.active { display:block; }
+
+    /* Step indicator */
+    .step-bar {
+      display:flex;align-items:center;gap:0;margin-bottom:28px;
+    }
+    .step-dot {
+      width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:.72rem;font-weight:700;transition:all .25s ease;flex-shrink:0;
+      background:var(--slate-200);color:var(--slate-500);
+    }
+    .step-dot.active  { background:var(--color-primary);color:#fff; }
+    .step-dot.done    { background:var(--green-100);color:var(--color-primary); }
+    .step-line { flex:1;height:2px;background:var(--slate-200);transition:background .25s ease; }
+    .step-line.done   { background:var(--green-100); }
+    .step-label-row {
+      display:flex;justify-content:space-between;margin-top:6px;margin-bottom:20px;
+    }
+    .step-label {
+      font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+      color:var(--slate-400);flex:1;text-align:center;
+    }
+    .step-label:first-child { text-align:left; }
+    .step-label:last-child  { text-align:right; }
+    .step-label.active { color:var(--color-primary); }
 
     /* Section heading */
-    .auth-section-head { margin-bottom: 24px; }
+    .auth-section-head { margin-bottom:22px; }
     .auth-section-head h2 {
-      font-family: var(--font-display);
-      font-size: 1.55rem;
-      font-weight: 600;
-      color: var(--navy-900);
-      letter-spacing: -.02em;
-      margin-bottom: 4px;
+      font-family:var(--font-display);font-size:1.45rem;font-weight:600;
+      color:var(--navy-900);letter-spacing:-.02em;margin-bottom:4px;
     }
-    .auth-section-head p { font-size: .875rem; color: var(--slate-500); }
+    .auth-section-head p { font-size:.875rem;color:var(--slate-500); }
 
-    /* Account type grid — 3 cards */
-    .account-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 24px;
-    }
+    /* Account-type cards */
+    .account-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px; }
     .account-card {
-      border: 2px solid var(--color-border);
-      border-radius: var(--r-md);
-      padding: 16px 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: all var(--ease);
-      background: #fff;
+      border:2px solid var(--color-border);border-radius:var(--r-md);padding:16px 14px;
+      text-align:center;cursor:pointer;transition:all var(--ease);background:#fff;
     }
-    .account-card:hover { border-color: var(--color-primary); background: var(--green-50); }
+    .account-card:hover { border-color:var(--color-primary);background:var(--green-50); }
     .account-card.active {
-      border-color: var(--color-primary);
-      background: var(--green-50);
-      box-shadow: 0 0 0 3px rgba(2,132,199,.12);
+      border-color:var(--color-primary);background:var(--green-50);
+      box-shadow:0 0 0 3px rgba(2,132,199,.12);
     }
     .account-card-icon {
-      width: 40px; height: 40px;
-      border-radius: var(--r);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 10px;
+      width:42px;height:42px;border-radius:var(--r);
+      display:flex;align-items:center;justify-content:center;margin:0 auto 10px;
     }
-    .account-card-label { font-size: .8rem; font-weight: 700; color: var(--navy-900); margin-bottom: 3px; }
-    .account-card-desc  { font-size: .7rem; color: var(--slate-500); line-height: 1.4; }
+    .account-card-label { font-size:.82rem;font-weight:700;color:var(--navy-900);margin-bottom:3px; }
+    .account-card-desc  { font-size:.7rem;color:var(--slate-500);line-height:1.4; }
 
-    /* Verification notice */
+    /* Verify notice */
     .verify-notice {
-      display: flex; align-items: flex-start; gap: 10px;
-      background: var(--blue-50);
-      border: 1px solid var(--blue-100);
-      border-radius: var(--r);
-      padding: 12px 14px;
-      margin-bottom: 22px;
+      display:flex;align-items:flex-start;gap:10px;
+      background:var(--blue-50);border:1px solid var(--blue-100);
+      border-radius:var(--r);padding:12px 14px;margin-bottom:20px;
     }
-    .verify-notice svg { flex-shrink: 0; margin-top: 1px; }
-    .verify-notice-text { font-size: .8rem; color: var(--blue-600); line-height: 1.55; }
-    .verify-notice-text strong { color: #1e40af; }
+    .verify-notice svg { flex-shrink:0;margin-top:1px; }
+    .verify-notice-text { font-size:.8rem;color:var(--blue-600);line-height:1.55; }
+    .verify-notice-text strong { color:#1e40af; }
 
-    /* Social buttons */
-    .social-row { display: flex; gap: 10px; margin-bottom: 4px; }
+    /* Social auth row */
+    .social-row { display:flex;gap:10px;margin-bottom:4px; }
     .social-btn-full {
-      flex: 1;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 11px 12px;
-      border: 1.5px solid var(--color-border);
-      border-radius: var(--r-sm);
-      background: #fff;
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--navy-900);
-      cursor: pointer;
-      font-family: var(--font);
-      transition: all var(--ease);
+      flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+      padding:11px 12px;border:1.5px solid var(--color-border);border-radius:var(--r-sm);
+      background:#fff;font-size:.82rem;font-weight:600;color:var(--navy-900);
+      cursor:pointer;font-family:var(--font);transition:all var(--ease);
     }
-    .social-btn-full:hover { border-color: var(--color-primary); background: var(--green-50); }
+    .social-btn-full:hover { border-color:var(--color-primary);background:var(--green-50); }
 
     /* Divider */
     .form-divider {
-      display: flex; align-items: center; gap: 12px;
-      font-size: .75rem; color: var(--slate-400);
-      margin: 18px 0;
+      display:flex;align-items:center;gap:12px;font-size:.75rem;color:var(--slate-400);margin:18px 0;
     }
-    .form-divider::before, .form-divider::after {
-      content: ''; flex: 1; height: 1px; background: var(--color-border);
-    }
+    .form-divider::before,.form-divider::after { content:'';flex:1;height:1px;background:var(--color-border); }
 
     /* Form fields */
-    .sf-group { margin-bottom: 16px; }
-    .sf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-    .sf-label {
-      display: block;
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--navy-900);
-      margin-bottom: 6px;
-    }
-    .sf-req { color: var(--amber-600); margin-left: 2px; }
-    .sf-opt { color: var(--slate-400); font-weight: 400; margin-left: 3px; }
+    .sf-group { margin-bottom:16px; }
+    .sf-row { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px; }
+    .sf-row-3 { display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px; }
+    .sf-label { display:block;font-size:.78rem;font-weight:600;color:var(--navy-900);margin-bottom:6px; }
+    .sf-req { color:var(--amber-600);margin-left:2px; }
+    .sf-opt { color:var(--slate-400);font-weight:400;margin-left:3px; }
     .sf-input {
-      width: 100%;
-      background: #fff;
-      border: 1.5px solid var(--slate-300);
-      border-radius: var(--r-sm);
-      padding: 11px 14px;
-      font-size: .875rem;
-      font-family: var(--font);
-      color: var(--navy-900);
-      outline: none;
-      transition: border-color var(--ease), box-shadow var(--ease);
-      appearance: none;
+      width:100%;background:#fff;border:1.5px solid var(--slate-300);border-radius:var(--r-sm);
+      padding:11px 14px;font-size:.875rem;font-family:var(--font);color:var(--navy-900);
+      outline:none;transition:border-color var(--ease),box-shadow var(--ease);appearance:none;box-sizing:border-box;
     }
-    .sf-input:focus {
-      border-color: var(--color-primary);
-      box-shadow: var(--shadow-focus);
-    }
-    .sf-input::placeholder { color: var(--slate-400); }
-    .sf-input:disabled { background: var(--slate-100); color: var(--slate-400); cursor: not-allowed; }
-    textarea.sf-input { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .sf-input:focus { border-color:var(--color-primary);box-shadow:var(--shadow-focus); }
+    .sf-input::placeholder { color:var(--slate-400); }
+    textarea.sf-input { resize:vertical;min-height:90px;line-height:1.6; }
     select.sf-input {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 36px;
-      cursor: pointer;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;cursor:pointer;
     }
-    .sf-hint { font-size: .73rem; color: var(--slate-500); margin-top: 5px; line-height: 1.5; }
+    .sf-hint { font-size:.73rem;color:var(--slate-500);margin-top:5px;line-height:1.5; }
+    .sf-error { font-size:.73rem;color:#dc2626;margin-top:5px;display:none; }
 
-    /* Password field */
-    .pw-wrap { position: relative; }
-    .pw-wrap .sf-input { padding-right: 44px; }
+    /* Password */
+    .pw-wrap { position:relative; }
+    .pw-wrap .sf-input { padding-right:44px; }
     .pw-toggle {
-      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-      background: none; border: none; color: var(--slate-400);
-      padding: 4px; cursor: pointer; line-height: 1;
-      transition: color var(--ease);
+      position:absolute;right:12px;top:50%;transform:translateY(-50%);
+      background:none;border:none;color:var(--slate-400);padding:4px;cursor:pointer;
+      line-height:1;transition:color var(--ease);
     }
-    .pw-toggle:hover { color: var(--slate-600); }
-    .strength-bar { height: 4px; border-radius: 2px; background: var(--slate-200); margin-top: 7px; overflow: hidden; }
-    .strength-fill { height: 100%; border-radius: 2px; width: 0; transition: width .3s ease, background .3s ease; }
+    .pw-toggle:hover { color:var(--slate-600); }
+    .strength-bar { height:4px;border-radius:2px;background:var(--slate-200);margin-top:7px;overflow:hidden; }
+    .strength-fill { height:100%;border-radius:2px;width:0;transition:width .3s ease,background .3s ease; }
 
-    /* Check / radio pill rows */
-    .pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 5px; }
+    /* Pills */
+    .pill-row { display:flex;flex-wrap:wrap;gap:7px;margin-top:5px; }
     .pill-label {
-      display: flex; align-items: center; gap: 6px;
-      padding: 7px 13px;
-      border: 1.5px solid var(--slate-200);
-      border-radius: var(--r-full);
-      font-size: .8rem; font-weight: 500;
-      color: var(--slate-600);
-      cursor: pointer;
-      transition: all var(--ease);
-      background: #fff;
-      user-select: none;
+      display:flex;align-items:center;gap:6px;padding:7px 13px;
+      border:1.5px solid var(--slate-200);border-radius:var(--r-full);
+      font-size:.8rem;font-weight:500;color:var(--slate-600);cursor:pointer;
+      transition:all var(--ease);background:#fff;user-select:none;
     }
-    .pill-label:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--green-50); }
-    .pill-label input { accent-color: var(--color-primary); width: 13px; height: 13px; }
+    .pill-label:hover { border-color:var(--color-primary);color:var(--color-primary);background:var(--green-50); }
+    .pill-label input { accent-color:var(--color-primary);width:13px;height:13px; }
 
-    /* Profile section divider */
+    /* Role toggle 2-col */
+    .role-grid { display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:18px; }
+    .role-card {
+      border:2px solid var(--color-border);border-radius:var(--r);padding:14px 10px;
+      text-align:center;cursor:pointer;transition:all var(--ease);background:#fff;
+    }
+    .role-card:hover { border-color:var(--color-primary);background:var(--green-50); }
+    .role-card.active { border-color:var(--color-primary);background:var(--green-50);box-shadow:0 0 0 3px rgba(2,132,199,.1); }
+    .role-card-icon { font-size:1.4rem;margin-bottom:7px; }
+    .role-card-label { font-size:.78rem;font-weight:700;color:var(--navy-900); }
+    .role-card-desc  { font-size:.65rem;color:var(--slate-500);margin-top:2px;line-height:1.4; }
+
+    /* Section divider */
     .profile-section-title {
-      font-size: .68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--slate-400);
-      margin: 22px 0 14px;
-      display: flex; align-items: center; gap: 10px;
+      font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+      color:var(--slate-400);margin:22px 0 14px;display:flex;align-items:center;gap:10px;
     }
-    .profile-section-title::after { content: ''; flex: 1; height: 1px; background: var(--slate-200); }
+    .profile-section-title::after { content:'';flex:1;height:1px;background:var(--slate-200); }
 
-    /* Terms checkbox */
+    /* Links grid */
+    .links-grid { display:flex;flex-direction:column;gap:12px; }
+    .link-field { display:grid;grid-template-columns:36px 1fr;gap:0;align-items:stretch; }
+    .link-icon {
+      display:flex;align-items:center;justify-content:center;
+      background:var(--slate-100);border:1.5px solid var(--slate-300);border-right:none;
+      border-radius:var(--r-sm) 0 0 var(--r-sm);color:var(--slate-500);flex-shrink:0;
+    }
+    .link-field .sf-input { border-radius:0 var(--r-sm) var(--r-sm) 0; }
+
+    /* Terms */
     .terms-check {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: .8rem; color: var(--slate-500); line-height: 1.6;
-      margin-bottom: 18px;
+      display:flex;align-items:flex-start;gap:10px;
+      font-size:.8rem;color:var(--slate-500);line-height:1.6;margin-bottom:18px;
     }
-    .terms-check input { accent-color: var(--color-primary); margin-top: 3px; flex-shrink: 0; width: 15px; height: 15px; }
-    .terms-check a { color: var(--color-primary); font-weight: 600; }
+    .terms-check input { accent-color:var(--color-primary);margin-top:3px;flex-shrink:0;width:15px;height:15px; }
+    .terms-check a { color:var(--color-primary);font-weight:600; }
 
-    /* Submit */
+    /* Buttons */
     .auth-submit {
-      width: 100%;
-      background: var(--color-primary);
-      color: #fff;
-      border: none;
-      border-radius: var(--r);
-      padding: 14px;
-      font-size: .95rem;
-      font-weight: 700;
-      font-family: var(--font);
-      cursor: pointer;
-      transition: background var(--ease), box-shadow var(--ease);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width:100%;background:var(--color-primary);color:#fff;border:none;border-radius:var(--r);
+      padding:14px;font-size:.95rem;font-weight:700;font-family:var(--font);cursor:pointer;
+      transition:background var(--ease),box-shadow var(--ease);
+      display:flex;align-items:center;justify-content:center;gap:8px;
     }
-    .auth-submit:hover { background: var(--color-primary-dark); box-shadow: 0 4px 14px rgba(2,132,199,.3); }
-    .auth-switch { font-size: .78rem; color: var(--slate-500); text-align: center; margin-top: 16px; }
-    .auth-switch a { color: var(--color-primary); font-weight: 600; cursor: pointer; }
+    .auth-submit:hover { background:var(--color-primary-dark);box-shadow:0 4px 14px rgba(2,132,199,.3); }
+    .auth-submit:disabled { opacity:.6;cursor:not-allowed; }
+    .btn-back {
+      width:100%;background:transparent;border:1.5px solid var(--color-border);color:var(--slate-600);
+      border-radius:var(--r);padding:12px;font-size:.875rem;font-weight:600;font-family:var(--font);
+      cursor:pointer;transition:all var(--ease);margin-bottom:10px;
+    }
+    .btn-back:hover { border-color:var(--slate-400);background:var(--slate-50); }
+    .auth-switch { font-size:.78rem;color:var(--slate-500);text-align:center;margin-top:16px; }
+    .auth-switch a { color:var(--color-primary);font-weight:600;cursor:pointer; }
 
-    /* Employer-only fields */
-    #employerFields, #orgFields { display: none; }
+    /* Org-only fields */
+    #orgFields { display:none; }
 
-    @media (max-width: 900px) {
-      .auth-shell { grid-template-columns: 1fr; }
-      .auth-left { display: none; }
+    /* Error / success banners */
+    .form-banner {
+      padding:12px 14px;border-radius:var(--r);margin-bottom:18px;font-size:.83rem;line-height:1.55;
+      display:none;
+    }
+    .form-banner.error   { background:#fef2f2;border:1px solid #fca5a5;color:#dc2626; }
+    .form-banner.success { background:#f0fdf4;border:1px solid #86efac;color:#15803d; }
+
+    /* Nav avatar */
+    .nav-profile-btn {
+      display:flex;align-items:center;gap:8px;text-decoration:none;
+      padding:6px 10px;border-radius:var(--r-full);transition:background var(--ease);
+    }
+    .nav-profile-btn:hover { background:var(--slate-100); }
+    .nav-avatar-img { width:30px;height:30px;border-radius:50%;object-fit:cover; }
+    .nav-avatar-initials {
+      width:30px;height:30px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0;
+    }
+    .nav-profile-name { font-size:.83rem;font-weight:600;color:var(--navy-900); }
+
+    @media (max-width:900px) {
+      .auth-shell { grid-template-columns:1fr; }
+      .auth-left { display:none; }
+      .auth-right { padding:32px 20px 60px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ─── ANNOUNCE BAR ──────────────────────────────────────────────── -->
+<!-- ─── ANNOUNCE BAR ────────────────────────────────────────────────── -->
 <div style="background:var(--green-700);color:#fff;text-align:center;padding:9px 16px;font-size:.8rem;font-weight:500;letter-spacing:.01em;">
   🚀 STEMsource is in beta — post your first job <strong>free</strong> for a limited time.
   <a href="post-job.html" style="color:#bae6fd;font-weight:700;margin-left:6px;text-decoration:underline;">Post Now →</a>
 </div>
 
-<!-- ─── NAVBAR ────────────────────────────────────────────────────── -->
+<!-- ─── NAVBAR ──────────────────────────────────────────────────────── -->
 <nav class="navbar" id="navbar">
   <div class="container-lg">
     <div class="navbar-inner">
-
-      <!-- Brand -->
       <a href="index.html" class="navbar-brand">
         <div class="brand-mark">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
-          </svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
         </div>
         <span class="brand-name">STEM<em>source</em></span>
       </a>
-
-      <!-- Nav links -->
       <ul class="navbar-nav">
-
         <li class="nav-item">
-          <span class="nav-link">
-            Find Jobs
-            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
+          <span class="nav-link">Find Jobs<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
           <div class="dropdown">
-            <a href="jobs.html?type=freelance" class="dd-item">
-              <div class="dd-icon" style="background:var(--green-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-              </div>
-              <div>
-                <span class="dd-title">Freelance Projects</span>
-                <span class="dd-desc">Short-term, project-based contracts</span>
-              </div>
-            </a>
-            <a href="jobs.html?type=contract" class="dd-item">
-              <div class="dd-icon" style="background:var(--amber-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-              </div>
-              <div>
-                <span class="dd-title">Contract Positions</span>
-                <span class="dd-desc">Mid-term engagements, W2 or 1099</span>
-              </div>
-            </a>
-            <a href="jobs.html?type=fulltime" class="dd-item">
-              <div class="dd-icon" style="background:var(--blue-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              </div>
-              <div>
-                <span class="dd-title">Full-Time Roles</span>
-                <span class="dd-desc">Permanent positions with benefits</span>
-              </div>
-            </a>
-            <a href="jobs.html?type=parttime" class="dd-item">
-              <div class="dd-icon" style="background:var(--violet-100);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div>
-                <span class="dd-title">Part-Time &amp; Advisory</span>
-                <span class="dd-desc">Flexible hours, board seats, consulting</span>
-              </div>
-            </a>
+            <a href="jobs.html?type=freelance" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><span class="dd-title">Freelance Projects</span><span class="dd-desc">Short-term, project-based contracts</span></div></a>
+            <a href="jobs.html?type=contract" class="dd-item"><div class="dd-icon" style="background:var(--amber-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div><span class="dd-title">Contract Positions</span><span class="dd-desc">Mid-term engagements, W2 or 1099</span></div></a>
+            <a href="jobs.html?type=fulltime" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><span class="dd-title">Full-Time Roles</span><span class="dd-desc">Permanent positions with benefits</span></div></a>
+            <a href="jobs.html?type=parttime" class="dd-item"><div class="dd-icon" style="background:var(--violet-100);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><span class="dd-title">Part-Time &amp; Advisory</span><span class="dd-desc">Flexible hours, board seats, consulting</span></div></a>
           </div>
         </li>
-
         <li class="nav-item">
-          <span class="nav-link">
-            Disciplines
-            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
+          <span class="nav-link">Disciplines<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
           <div class="dropdown dropdown-wide">
             <div class="dd-grid">
-              <a href="jobs.html?d=biotech" class="dd-item">
-                <div class="dd-icon" style="background:#fdf2f8;"><span style="font-size:1.1rem;">🧬</span></div>
-                <div><span class="dd-title">Biotechnology</span><span class="dd-desc">Genomics, CRISPR, drug discovery</span></div>
-              </a>
-              <a href="jobs.html?d=cs" class="dd-item">
-                <div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">💻</span></div>
-                <div><span class="dd-title">Computer Science</span><span class="dd-desc">AI/ML, software, data science</span></div>
-              </a>
-              <a href="jobs.html?d=engineering" class="dd-item">
-                <div class="dd-icon" style="background:var(--amber-50);"><span style="font-size:1.1rem;">⚙️</span></div>
-                <div><span class="dd-title">Engineering</span><span class="dd-desc">Mechanical, electrical, civil</span></div>
-              </a>
-              <a href="jobs.html?d=chemistry" class="dd-item">
-                <div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">⚗️</span></div>
-                <div><span class="dd-title">Chemistry</span><span class="dd-desc">Pharma, materials, synthesis</span></div>
-              </a>
-              <a href="jobs.html?d=physics" class="dd-item">
-                <div class="dd-icon" style="background:var(--violet-100);"><span style="font-size:1.1rem;">⚛️</span></div>
-                <div><span class="dd-title">Physics</span><span class="dd-desc">Quantum, astrophysics, optics</span></div>
-              </a>
-              <a href="jobs.html?d=math" class="dd-item">
-                <div class="dd-icon" style="background:var(--slate-100);"><span style="font-size:1.1rem;">📐</span></div>
-                <div><span class="dd-title">Mathematics</span><span class="dd-desc">Statistics, modeling, actuarial</span></div>
-              </a>
-              <a href="jobs.html?d=env" class="dd-item">
-                <div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">🌍</span></div>
-                <div><span class="dd-title">Environmental</span><span class="dd-desc">Climate science, ecology, GIS</span></div>
-              </a>
-              <a href="jobs.html?d=neuro" class="dd-item">
-                <div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">🧠</span></div>
-                <div><span class="dd-title">Neuroscience</span><span class="dd-desc">Cognitive science, neuropharma</span></div>
-              </a>
+              <a href="jobs.html?d=biotech" class="dd-item"><div class="dd-icon" style="background:#fdf2f8;"><span style="font-size:1.1rem;">🧬</span></div><div><span class="dd-title">Biotechnology</span><span class="dd-desc">Genomics, CRISPR, drug discovery</span></div></a>
+              <a href="jobs.html?d=cs" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">💻</span></div><div><span class="dd-title">Computer Science</span><span class="dd-desc">AI/ML, software, data science</span></div></a>
+              <a href="jobs.html?d=engineering" class="dd-item"><div class="dd-icon" style="background:var(--amber-50);"><span style="font-size:1.1rem;">⚙️</span></div><div><span class="dd-title">Engineering</span><span class="dd-desc">Mechanical, electrical, civil</span></div></a>
+              <a href="jobs.html?d=chemistry" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">⚗️</span></div><div><span class="dd-title">Chemistry</span><span class="dd-desc">Pharma, materials, synthesis</span></div></a>
+              <a href="jobs.html?d=physics" class="dd-item"><div class="dd-icon" style="background:var(--violet-100);"><span style="font-size:1.1rem;">⚛️</span></div><div><span class="dd-title">Physics</span><span class="dd-desc">Quantum, astrophysics, optics</span></div></a>
+              <a href="jobs.html?d=math" class="dd-item"><div class="dd-icon" style="background:var(--slate-100);"><span style="font-size:1.1rem;">📐</span></div><div><span class="dd-title">Mathematics</span><span class="dd-desc">Statistics, modeling, actuarial</span></div></a>
+              <a href="jobs.html?d=env" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">🌍</span></div><div><span class="dd-title">Environmental</span><span class="dd-desc">Climate science, ecology, GIS</span></div></a>
+              <a href="jobs.html?d=neuro" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">🧠</span></div><div><span class="dd-title">Neuroscience</span><span class="dd-desc">Cognitive science, neuropharma</span></div></a>
             </div>
           </div>
         </li>
-
         <li class="nav-item">
-          <span class="nav-link">
-            Resources
-            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
+          <span class="nav-link">Resources<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
           <div class="dropdown">
-            <a href="blog.html" class="dd-item">
-              <div class="dd-icon" style="background:var(--blue-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              </div>
-              <div><span class="dd-title">Blog</span><span class="dd-desc">Career advice, industry trends</span></div>
-            </a>
-            <a href="guides.html" class="dd-item">
-              <div class="dd-icon" style="background:var(--green-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-              </div>
-              <div><span class="dd-title">Guides &amp; Playbooks</span><span class="dd-desc">Deep-dive how-tos for STEM careers</span></div>
-            </a>
-            <a href="#" class="dd-item">
-              <div class="dd-icon" style="background:var(--amber-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </div>
-              <div><span class="dd-title">Salary Reports</span><span class="dd-desc">2025 STEM compensation benchmarks</span></div>
-            </a>
+            <a href="blog.html" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><span class="dd-title">Blog</span><span class="dd-desc">Career advice, industry trends</span></div></a>
+            <a href="guides.html" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div><div><span class="dd-title">Guides &amp; Playbooks</span><span class="dd-desc">Deep-dive how-tos for STEM careers</span></div></a>
           </div>
         </li>
-
         <li class="nav-item">
-          <span class="nav-link">
-            Community
-            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
+          <span class="nav-link">Community<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
           <div class="dropdown">
-            <a href="#" class="dd-item">
-              <div class="dd-icon" style="background:var(--violet-100);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div><span class="dd-title">Forum</span><span class="dd-desc">Ask questions, share insights</span></div>
-            </a>
-            <a href="#" class="dd-item">
-              <div class="dd-icon" style="background:var(--blue-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-              </div>
-              <div><span class="dd-title">Mentorship</span><span class="dd-desc">Connect with senior STEM leaders</span></div>
-            </a>
-            <a href="#" class="dd-item">
-              <div class="dd-icon" style="background:var(--green-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              </div>
-              <div><span class="dd-title">Events &amp; Webinars</span><span class="dd-desc">Live sessions with industry experts</span></div>
-            </a>
+            <a href="community.html" class="dd-item"><div class="dd-icon" style="background:var(--violet-100);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><span class="dd-title">Member Directory</span><span class="dd-desc">Browse STEM professionals</span></div></a>
+            <a href="#" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><span class="dd-title">Forum</span><span class="dd-desc">Ask questions, share insights</span></div></a>
+            <a href="#" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><span class="dd-title">Events &amp; Webinars</span><span class="dd-desc">Live sessions with industry experts</span></div></a>
           </div>
         </li>
-
         <li class="nav-item">
-          <span class="nav-link">
-            For Employers
-            <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-          </span>
+          <span class="nav-link">For Employers<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
           <div class="dropdown">
-            <a href="post-job.html" class="dd-item">
-              <div class="dd-icon" style="background:var(--green-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              </div>
-              <div><span class="dd-title">Post a Job</span><span class="dd-desc">Reach 42,000+ STEM professionals</span></div>
-            </a>
-            <a href="#" class="dd-item">
-              <div class="dd-icon" style="background:var(--blue-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              </div>
-              <div><span class="dd-title">Search Candidates</span><span class="dd-desc">Browse verified STEM profiles</span></div>
-            </a>
-            <a href="#" class="dd-item">
-              <div class="dd-icon" style="background:var(--amber-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              </div>
-              <div><span class="dd-title">Enterprise Plans</span><span class="dd-desc">Custom hiring solutions for teams</span></div>
-            </a>
+            <a href="post-job.html" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><span class="dd-title">Post a Job</span><span class="dd-desc">Reach 42,000+ STEM professionals</span></div></a>
+            <a href="community.html" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><span class="dd-title">Search Candidates</span><span class="dd-desc">Browse verified STEM profiles</span></div></a>
           </div>
         </li>
-
       </ul>
-
-      <!-- Navbar actions -->
       <div class="navbar-actions">
         <a href="signup.html" class="nav-signin">Sign In</a>
         <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
@@ -563,102 +375,68 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
-
     </div>
   </div>
 </nav>
-
-<!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-panel">
-    <button class="mobile-nav-close" id="mobileClose">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+    <button class="mobile-nav-close" id="mobileClose"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     <a href="jobs.html" class="mobile-nav-link">Find Jobs</a>
-    <a href="jobs.html" class="mobile-nav-link">Browse Disciplines</a>
+    <a href="community.html" class="mobile-nav-link">Member Directory</a>
     <a href="blog.html" class="mobile-nav-link">Blog</a>
     <a href="guides.html" class="mobile-nav-link">Guides</a>
-    <a href="#" class="mobile-nav-link">Community</a>
-    <hr class="mobile-nav-divider" />
+    <hr class="mobile-nav-divider"/>
     <a href="post-job.html" class="mobile-nav-link">Post a Job</a>
-    <hr class="mobile-nav-divider" />
+    <hr class="mobile-nav-divider"/>
     <a href="signup.html" class="mobile-nav-link">Sign In</a>
     <a href="signup.html" class="btn btn-primary" style="margin-top:8px;justify-content:center;">Get Started Free</a>
   </div>
 </div>
 
-<!-- ─── AUTH SHELL ────────────────────────────────────────────────── -->
+<!-- ─── AUTH SHELL ──────────────────────────────────────────────────── -->
 <div class="auth-shell">
 
-  <!-- LEFT: Marketing panel -->
+  <!-- LEFT -->
   <div class="auth-left">
     <div class="auth-left-grid"></div>
     <div class="auth-left-inner">
-
       <a href="index.html" class="auth-logo">
         <div class="auth-logo-mark">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
         </div>
         <span class="auth-logo-name">STEM<em>source</em></span>
       </a>
-
       <h2>Your next great<br><em>STEM opportunity</em><br>starts here.</h2>
       <p class="auth-left-sub">Join 42,000+ scientists, engineers, and researchers — or post your next hire — on the platform built exclusively for STEM.</p>
-
       <div class="auth-benefit-list">
         <div class="auth-benefit">
-          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div>
-            <div class="auth-benefit-title">Verified identity, every account</div>
-            <div class="auth-benefit-desc">All members are vetted — professionals via credentials, employers via business registration.</div>
-          </div>
+          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><div class="auth-benefit-title">Verified identity, every account</div><div class="auth-benefit-desc">All members vetted — professionals via credentials, employers via business registration.</div></div>
         </div>
         <div class="auth-benefit">
-          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
-          <div>
-            <div class="auth-benefit-title">Discipline-matched search</div>
-            <div class="auth-benefit-desc">Roles surface by exact field — no irrelevant listings, no keyword spam.</div>
-          </div>
+          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div><div class="auth-benefit-title">Discipline-matched search</div><div class="auth-benefit-desc">Roles surface by exact field — no irrelevant listings, no keyword spam.</div></div>
         </div>
         <div class="auth-benefit">
-          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          </div>
-          <div>
-            <div class="auth-benefit-title">Transparent compensation</div>
-            <div class="auth-benefit-desc">Every listing includes salary ranges. Know your market rate before you apply.</div>
-          </div>
+          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div><div class="auth-benefit-title">Global STEM community</div><div class="auth-benefit-desc">Connect with researchers and engineers across 60+ countries on one platform.</div></div>
         </div>
         <div class="auth-benefit">
-          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-          </div>
-          <div>
-            <div class="auth-benefit-title">Expert guides &amp; resources</div>
-            <div class="auth-benefit-desc">Free access to salary reports, career playbooks, and legal guides.</div>
-          </div>
+          <div class="auth-benefit-dot" style="background:rgba(14,165,233,.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div><div class="auth-benefit-title">Transparent compensation</div><div class="auth-benefit-desc">Every listing includes salary ranges. Know your market rate before you apply.</div></div>
         </div>
       </div>
-
       <div class="auth-quote">
-        <p class="auth-quote-text">"I went from a postdoc with no industry connections to three job offers in six weeks. The guides, the community, and the quality of listings made the difference."</p>
+        <p class="auth-quote-text">"I went from a postdoc with no industry connections to three job offers in six weeks. The community and quality of listings made the difference."</p>
         <div class="auth-quote-author">
           <div class="auth-quote-av" style="background:linear-gradient(135deg,var(--color-primary),#60a5fa);">PL</div>
-          <div>
-            <div class="auth-quote-name">Dr. Priya Lalwani</div>
-            <div class="auth-quote-role">Senior Data Scientist · Genentech</div>
-          </div>
+          <div><div class="auth-quote-name">Dr. Priya Lalwani</div><div class="auth-quote-role">Senior Data Scientist · Genentech</div></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- RIGHT: Form panel -->
+  <!-- RIGHT -->
   <div class="auth-right">
     <div class="auth-form-wrap">
 
@@ -669,427 +447,608 @@
       </div>
 
       <!-- ═══════════════════════════════════
-           SIGN UP PANEL
+           SIGN UP PANEL — 3-step form
       ══════════════════════════════════════ -->
       <div class="auth-panel active" id="panelSignup">
 
-        <div class="auth-section-head">
-          <h2>Join STEMsource</h2>
-          <p>Free to join. All accounts are verified before activation.</p>
+        <!-- Step bar -->
+        <div class="step-bar">
+          <div class="step-dot active" id="sdot1">1</div>
+          <div class="step-line" id="sline1"></div>
+          <div class="step-dot" id="sdot2">2</div>
+          <div class="step-line" id="sline2"></div>
+          <div class="step-dot" id="sdot3">3</div>
+        </div>
+        <div class="step-label-row">
+          <span class="step-label active" id="slbl1">Account</span>
+          <span class="step-label" id="slbl2">Profile</span>
+          <span class="step-label" id="slbl3">Links</span>
         </div>
 
-        <!-- Step 1: Account type -->
-        <p style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--slate-400);margin-bottom:10px;">I am a…</p>
-        <div class="account-grid">
+        <div id="formBanner" class="form-banner"></div>
 
-          <div class="account-card active" id="typeProf" onclick="selectAccount('prof')">
-            <div class="account-card-icon" style="background:var(--green-50);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="account-card-label">STEM Professional</div>
-            <div class="account-card-desc">Scientist, engineer, or researcher seeking work</div>
+        <!-- ── STEP 1 ─────────────────────────────────── -->
+        <div id="step1">
+          <div class="auth-section-head">
+            <h2>Create your account</h2>
+            <p>Start for free — no credit card required.</p>
           </div>
 
-          <div class="account-card" id="typeInd" onclick="selectAccount('ind')">
-            <div class="account-card-icon" style="background:var(--amber-50);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <!-- Account type -->
+          <p style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--slate-400);margin-bottom:10px;">Account type</p>
+          <div class="account-grid">
+            <div class="account-card active" id="typeIndividual" onclick="selectAccountType('individual')">
+              <div class="account-card-icon" style="background:var(--green-50);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="account-card-label">Individual</div>
+              <div class="account-card-desc">Scientist, engineer, researcher, or sole poster</div>
             </div>
-            <div class="account-card-label">Individual</div>
-            <div class="account-card-desc">Posting a single STEM opportunity</div>
+            <div class="account-card" id="typeOrganization" onclick="selectAccountType('organization')">
+              <div class="account-card-icon" style="background:var(--blue-50);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+              </div>
+              <div class="account-card-label">Organization</div>
+              <div class="account-card-desc">Company, institute, or university hiring at scale</div>
+            </div>
           </div>
 
-          <div class="account-card" id="typeOrg" onclick="selectAccount('org')">
-            <div class="account-card-icon" style="background:var(--blue-50);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-            </div>
-            <div class="account-card-label">Organization</div>
-            <div class="account-card-desc">Company or institution hiring at scale</div>
+          <!-- Social auth -->
+          <div class="social-row">
+            <button class="social-btn-full" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Continue with Google
+            </button>
           </div>
+          <div class="form-divider">or sign up with email</div>
 
-        </div>
-
-        <!-- Verification notice (changes per type) -->
-        <div class="verify-notice" id="verifyNotice">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <p class="verify-notice-text" id="verifyText">
-            <strong>Verification required.</strong> After signup you'll receive an email to confirm your address. Our team will then verify your credentials (degree, ORCID, or institutional email) within 24 hours before your profile goes live.
-          </p>
-        </div>
-
-        <!-- Social auth -->
-        <div class="social-row">
-          <button class="social-btn-full">
-            <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-            Google
-          </button>
-          <button class="social-btn-full">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </button>
-        </div>
-
-        <div class="form-divider">or sign up with email</div>
-
-        <form onsubmit="return false;">
-
-          <!-- ── Common fields ── -->
-          <div class="sf-row">
+          <!-- Name -->
+          <div id="indNameRow" class="sf-row">
             <div>
               <label class="sf-label">First Name <span class="sf-req">*</span></label>
-              <input class="sf-input" type="text" placeholder="Jane" autocomplete="given-name" />
+              <input id="firstName" class="sf-input" type="text" placeholder="Jane" autocomplete="given-name" />
             </div>
             <div>
               <label class="sf-label">Last Name <span class="sf-req">*</span></label>
-              <input class="sf-input" type="text" placeholder="Smith" autocomplete="family-name" />
+              <input id="lastName" class="sf-input" type="text" placeholder="Smith" autocomplete="family-name" />
             </div>
+          </div>
+          <div id="orgNameRow" class="sf-group" style="display:none">
+            <label class="sf-label">Organisation Name <span class="sf-req">*</span></label>
+            <input id="orgName" class="sf-input" type="text" placeholder="Acme Biotech Inc." />
           </div>
 
           <div class="sf-group">
-            <label class="sf-label">Work or Academic Email <span class="sf-req">*</span></label>
-            <input class="sf-input" type="email" placeholder="jane.smith@institution.edu" autocomplete="email" />
+            <label class="sf-label">Email Address <span class="sf-req">*</span></label>
+            <input id="signupEmail" class="sf-input" type="email" placeholder="jane.smith@institution.edu" autocomplete="email" />
             <p class="sf-hint">Use an institutional email where possible — it speeds up verification.</p>
           </div>
-
-          <!-- ── STEM Professional fields ── -->
-          <div id="profFields">
-            <div class="sf-group">
-              <label class="sf-label">Primary Discipline <span class="sf-req">*</span></label>
-              <select class="sf-input">
-                <option value="">Select your field…</option>
-                <optgroup label="Sciences">
-                  <option>Biology &amp; Life Sciences</option>
-                  <option>Chemistry</option>
-                  <option>Physics</option>
-                  <option>Medicine &amp; Biomedical</option>
-                  <option>Environmental Science</option>
-                  <option>Neuroscience</option>
-                </optgroup>
-                <optgroup label="Engineering">
-                  <option>Aerospace Engineering</option>
-                  <option>Biomedical Engineering</option>
-                  <option>Chemical Engineering</option>
-                  <option>Electrical Engineering</option>
-                  <option>Mechanical Engineering</option>
-                  <option>Materials Engineering</option>
-                  <option>Nuclear Engineering</option>
-                </optgroup>
-                <optgroup label="Technology &amp; Math">
-                  <option>Computer Science &amp; Software</option>
-                  <option>Artificial Intelligence &amp; ML</option>
-                  <option>Data Science &amp; Analytics</option>
-                  <option>Mathematics &amp; Statistics</option>
-                  <option>Quantum Computing</option>
-                </optgroup>
-              </select>
-            </div>
-
-            <div class="profile-section-title">Searchable Profile</div>
-
-            <div class="sf-group">
-              <label class="sf-label">Professional Headline <span class="sf-req">*</span></label>
-              <input class="sf-input" type="text" placeholder="e.g. Computational Biologist | 8 yrs · CRISPR · Python" maxlength="100" />
-              <p class="sf-hint">Shown in search results and at the top of your profile card.</p>
-            </div>
-
-            <div class="sf-row">
-              <div>
-                <label class="sf-label">Years of Experience <span class="sf-req">*</span></label>
-                <select class="sf-input">
-                  <option value="">Select…</option>
-                  <option>0–1 yr (new grad)</option>
-                  <option>2–4 years</option>
-                  <option>5–9 years</option>
-                  <option>10–14 years</option>
-                  <option>15+ years</option>
-                </select>
-              </div>
-              <div>
-                <label class="sf-label">Highest Degree <span class="sf-req">*</span></label>
-                <select class="sf-input">
-                  <option value="">Select…</option>
-                  <option>Bachelor's</option>
-                  <option>Master's</option>
-                  <option>PhD / Doctoral</option>
-                  <option>MD / MD-PhD</option>
-                  <option>Postdoc</option>
-                  <option>Certification</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="sf-row">
-              <div>
-                <label class="sf-label">City / Location <span class="sf-req">*</span></label>
-                <input class="sf-input" type="text" placeholder="Boston, MA" />
-              </div>
-              <div>
-                <label class="sf-label">Availability <span class="sf-req">*</span></label>
-                <select class="sf-input">
-                  <option value="">Select…</option>
-                  <option>Immediately available</option>
-                  <option>2 weeks notice</option>
-                  <option>1 month notice</option>
-                  <option>2–3 months</option>
-                  <option>Not actively looking</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="sf-group">
-              <label class="sf-label">Open To <span class="sf-req">*</span></label>
-              <div class="pill-row">
-                <label class="pill-label"><input type="checkbox" checked /> Freelance</label>
-                <label class="pill-label"><input type="checkbox" checked /> Contract</label>
-                <label class="pill-label"><input type="checkbox" /> Full-Time</label>
-                <label class="pill-label"><input type="checkbox" /> Part-Time</label>
-                <label class="pill-label"><input type="checkbox" /> Advisory</label>
-              </div>
-            </div>
-
-            <div class="sf-group">
-              <label class="sf-label">Work Preference</label>
-              <div class="pill-row">
-                <label class="pill-label"><input type="radio" name="wpref" checked /> Remote</label>
-                <label class="pill-label"><input type="radio" name="wpref" /> Hybrid</label>
-                <label class="pill-label"><input type="radio" name="wpref" /> On-Site</label>
-                <label class="pill-label"><input type="radio" name="wpref" /> Any</label>
-              </div>
-            </div>
-
-            <div class="sf-group">
-              <label class="sf-label">Key Skills &amp; Keywords <span class="sf-req">*</span></label>
-              <input class="sf-input" type="text" placeholder="e.g. CRISPR, Python, Mass Spectrometry, CFD…" />
-              <p class="sf-hint">Comma-separated. These index your profile in employer keyword searches.</p>
-            </div>
-
-            <div class="sf-group">
-              <label class="sf-label">Professional Bio <span class="sf-req">*</span></label>
-              <textarea class="sf-input" rows="3" maxlength="500" placeholder="Briefly describe your expertise, notable projects, and what you're seeking…"></textarea>
-              <p class="sf-hint">Max 500 characters. Shown in your profile card in search results.</p>
-            </div>
-
-            <div class="sf-group">
-              <label class="sf-label">LinkedIn URL <span class="sf-opt">(optional)</span></label>
-              <input class="sf-input" type="url" placeholder="https://linkedin.com/in/your-name" />
-            </div>
-
-            <div class="sf-group">
-              <label class="sf-label">ORCID / Academic Profile <span class="sf-opt">(optional)</span></label>
-              <input class="sf-input" type="url" placeholder="https://orcid.org/0000-0000-0000-0000" />
-              <p class="sf-hint">Helps verify publications and speeds up credential review.</p>
-            </div>
-          </div><!-- /profFields -->
-
-          <!-- ── Individual poster fields ── -->
-          <div id="indFields" style="display:none;">
-            <div class="sf-group">
-              <label class="sf-label">Job Title / Role You're Hiring For <span class="sf-req">*</span></label>
-              <input class="sf-input" type="text" placeholder="e.g. Data Scientist for 3-month project" />
-            </div>
-            <div class="sf-group">
-              <label class="sf-label">Your Organization or Affiliation <span class="sf-opt">(optional)</span></label>
-              <input class="sf-input" type="text" placeholder="e.g. Independent lab, startup, university dept." />
-            </div>
-            <div class="sf-group">
-              <label class="sf-label">Phone Number <span class="sf-req">*</span></label>
-              <input class="sf-input" type="tel" placeholder="+1 (555) 000-0000" />
-              <p class="sf-hint">Used for identity verification only. Never shown publicly.</p>
-            </div>
-          </div><!-- /indFields -->
-
-          <!-- ── Organization fields ── -->
-          <div id="orgFields" style="display:none;">
-            <div class="sf-group">
-              <label class="sf-label">Organization Name <span class="sf-req">*</span></label>
-              <input class="sf-input" type="text" placeholder="e.g. Precision Bio Inc." />
-            </div>
-            <div class="sf-row">
-              <div>
-                <label class="sf-label">Industry <span class="sf-req">*</span></label>
-                <select class="sf-input">
-                  <option value="">Select…</option>
-                  <option>Biotechnology</option>
-                  <option>Pharmaceuticals</option>
-                  <option>Aerospace &amp; Defense</option>
-                  <option>Energy &amp; Environment</option>
-                  <option>Technology</option>
-                  <option>Healthcare</option>
-                  <option>Government / Federal</option>
-                  <option>Academia &amp; Research</option>
-                  <option>Consulting</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div>
-                <label class="sf-label">Company Size <span class="sf-req">*</span></label>
-                <select class="sf-input">
-                  <option value="">Select…</option>
-                  <option>1–10</option>
-                  <option>11–50</option>
-                  <option>51–200</option>
-                  <option>201–1,000</option>
-                  <option>1,000+</option>
-                </select>
-              </div>
-            </div>
-            <div class="sf-group">
-              <label class="sf-label">Organization Website <span class="sf-req">*</span></label>
-              <input class="sf-input" type="url" placeholder="https://yourcompany.com" />
-              <p class="sf-hint">Used to verify your business registration during the review process.</p>
-            </div>
-            <div class="sf-group">
-              <label class="sf-label">Your Job Title at the Organization <span class="sf-req">*</span></label>
-              <input class="sf-input" type="text" placeholder="e.g. Head of Talent, VP of R&amp;D, Founder" />
-            </div>
-          </div><!-- /orgFields -->
-
-          <!-- ── Password ── -->
-          <div class="profile-section-title">Security</div>
 
           <div class="sf-group">
             <label class="sf-label">Password <span class="sf-req">*</span></label>
             <div class="pw-wrap">
-              <input class="sf-input" type="password" id="pwInput" placeholder="Min. 8 characters" autocomplete="new-password" />
-              <button type="button" class="pw-toggle" onclick="togglePw('pwInput')">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <input id="signupPassword" class="sf-input" type="password" placeholder="Min. 8 characters" autocomplete="new-password" oninput="checkStrength(this.value)" />
+              <button type="button" class="pw-toggle" onclick="togglePw('signupPassword',this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
               </button>
             </div>
             <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
-            <p class="sf-hint" id="strengthText">Use 8+ characters with a mix of letters, numbers, and symbols.</p>
+            <p class="sf-hint" id="strengthLabel">Password strength</p>
           </div>
 
-          <!-- ── Terms ── -->
-          <label class="terms-check">
-            <input type="checkbox" />
-            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, and understand that my account will require identity verification before going live.</span>
-          </label>
-
-          <button type="submit" class="auth-submit">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Create Account &amp; Send Verification Email
+          <button class="auth-submit" type="button" onclick="goStep(2)">
+            Continue
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
+          <p class="auth-switch">Already have an account? <a onclick="showPanel('signin')">Sign in</a></p>
+        </div>
 
-          <p class="auth-switch">Already have an account? <a onclick="showPanel('signin')">Sign in here</a></p>
+        <!-- ── STEP 2 ─────────────────────────────────── -->
+        <div id="step2" style="display:none">
+          <div class="auth-section-head">
+            <h2>Your profile</h2>
+            <p>Help employers and collaborators find you.</p>
+          </div>
 
-        </form>
+          <!-- Professional title -->
+          <div class="sf-group">
+            <label class="sf-label" id="titleLabel">Professional Headline <span class="sf-req">*</span></label>
+            <input id="profTitle" class="sf-input" type="text" placeholder="e.g. Computational Biologist · CRISPR · Python" maxlength="100" />
+            <p class="sf-hint">Shown in search results and on your profile card.</p>
+          </div>
+
+          <!-- Discipline -->
+          <div class="sf-group">
+            <label class="sf-label" id="discLabel">Primary Discipline <span class="sf-req">*</span></label>
+            <select id="discipline" class="sf-input">
+              <option value="">Select your field…</option>
+              <optgroup label="Sciences">
+                <option value="life-sciences">Biology &amp; Life Sciences</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="physics">Physics</option>
+                <option value="medicine">Medicine &amp; Biomedical</option>
+                <option value="environment">Environmental Science</option>
+                <option value="neuroscience">Neuroscience</option>
+              </optgroup>
+              <optgroup label="Engineering">
+                <option value="aerospace">Aerospace Engineering</option>
+                <option value="biomedical-eng">Biomedical Engineering</option>
+                <option value="chemical-eng">Chemical Engineering</option>
+                <option value="electrical">Electrical Engineering</option>
+                <option value="mechanical">Mechanical Engineering</option>
+                <option value="materials">Materials Engineering</option>
+                <option value="nuclear">Nuclear Engineering</option>
+              </optgroup>
+              <optgroup label="Technology &amp; Math">
+                <option value="cs">Computer Science &amp; Software</option>
+                <option value="ai-ml">Artificial Intelligence &amp; ML</option>
+                <option value="data-science">Data Science &amp; Analytics</option>
+                <option value="mathematics">Mathematics &amp; Statistics</option>
+                <option value="quantum">Quantum Computing</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Country + Currency -->
+          <div class="sf-row">
+            <div>
+              <label class="sf-label">Country <span class="sf-req">*</span></label>
+              <select id="country" class="sf-input">
+                <option value="">Select country…</option>
+                <option>United States</option><option>United Kingdom</option><option>Canada</option>
+                <option>Australia</option><option>Germany</option><option>France</option>
+                <option>Netherlands</option><option>Sweden</option><option>Switzerland</option>
+                <option>Denmark</option><option>Norway</option><option>Finland</option>
+                <option>Japan</option><option>South Korea</option><option>Singapore</option>
+                <option>India</option><option>China</option><option>Israel</option>
+                <option>Ireland</option><option>New Zealand</option><option>Belgium</option>
+                <option>Austria</option><option>Spain</option><option>Italy</option>
+                <option>Portugal</option><option>Poland</option><option>Czech Republic</option>
+                <option>Brazil</option><option>Mexico</option><option>Argentina</option>
+                <option>South Africa</option><option>Nigeria</option><option>Kenya</option>
+                <option>United Arab Emirates</option><option>Saudi Arabia</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="sf-label">Preferred Currency <span class="sf-req">*</span></label>
+              <select id="currency" class="sf-input">
+                <option value="USD">USD — US Dollar</option>
+                <option value="GBP">GBP — British Pound</option>
+                <option value="EUR">EUR — Euro</option>
+                <option value="CAD">CAD — Canadian Dollar</option>
+                <option value="AUD">AUD — Australian Dollar</option>
+                <option value="JPY">JPY — Japanese Yen</option>
+                <option value="CHF">CHF — Swiss Franc</option>
+                <option value="SEK">SEK — Swedish Krona</option>
+                <option value="NOK">NOK — Norwegian Krone</option>
+                <option value="DKK">DKK — Danish Krone</option>
+                <option value="SGD">SGD — Singapore Dollar</option>
+                <option value="INR">INR — Indian Rupee</option>
+                <option value="CNY">CNY — Chinese Yuan</option>
+                <option value="BRL">BRL — Brazilian Real</option>
+                <option value="ZAR">ZAR — South African Rand</option>
+                <option value="AED">AED — UAE Dirham</option>
+                <option value="ILS">ILS — Israeli Shekel</option>
+                <option value="NZD">NZD — NZ Dollar</option>
+                <option value="KRW">KRW — South Korean Won</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Platform role -->
+          <div class="sf-group">
+            <label class="sf-label">I'm here to… <span class="sf-req">*</span></label>
+            <div class="role-grid">
+              <div class="role-card active" id="roleSeeker" onclick="selectRole('seeker')">
+                <div class="role-card-icon">🔍</div>
+                <div class="role-card-label">Find Work</div>
+                <div class="role-card-desc">Browse jobs &amp; projects</div>
+              </div>
+              <div class="role-card" id="rolePoster" onclick="selectRole('poster')">
+                <div class="role-card-icon">📋</div>
+                <div class="role-card-label">Post Jobs</div>
+                <div class="role-card-desc">Hire STEM talent</div>
+              </div>
+              <div class="role-card" id="roleBoth" onclick="selectRole('both')">
+                <div class="role-card-icon">⚡</div>
+                <div class="role-card-label">Both</div>
+                <div class="role-card-desc">Find work &amp; hire</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job type preferences -->
+          <div class="sf-group">
+            <label class="sf-label">Open To <span class="sf-opt">(select all that apply)</span></label>
+            <div class="pill-row">
+              <label class="pill-label"><input type="checkbox" name="jtype" value="freelance" checked /> Freelance</label>
+              <label class="pill-label"><input type="checkbox" name="jtype" value="contract" checked /> Contract</label>
+              <label class="pill-label"><input type="checkbox" name="jtype" value="fulltime" /> Full-Time</label>
+              <label class="pill-label"><input type="checkbox" name="jtype" value="parttime" /> Part-Time</label>
+              <label class="pill-label"><input type="checkbox" name="jtype" value="advisory" /> Advisory</label>
+            </div>
+          </div>
+
+          <!-- Org-only fields -->
+          <div id="orgFields">
+            <div class="sf-row">
+              <div>
+                <label class="sf-label">Organisation Size</label>
+                <select id="orgSize" class="sf-input">
+                  <option value="">Select…</option>
+                  <option value="solo">Solo / Self-employed</option>
+                  <option value="2-10">2–10 people</option>
+                  <option value="11-50">11–50 people</option>
+                  <option value="51-200">51–200 people</option>
+                  <option value="201-1000">201–1,000 people</option>
+                  <option value="1000+">1,000+ people</option>
+                </select>
+              </div>
+              <div>
+                <label class="sf-label">Industry / Sector</label>
+                <select id="orgIndustry" class="sf-input">
+                  <option value="">Select…</option>
+                  <option>Pharmaceutical</option><option>Biotechnology</option>
+                  <option>Medical Devices</option><option>Defence &amp; Aerospace</option>
+                  <option>Energy &amp; Utilities</option><option>Environmental</option>
+                  <option>Government / Public Sector</option><option>Higher Education</option>
+                  <option>Research Institute</option><option>Technology</option>
+                  <option>Consulting</option><option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio -->
+          <div class="sf-group">
+            <label class="sf-label">Short Bio <span class="sf-opt">(optional)</span></label>
+            <textarea id="bio" class="sf-input" rows="3" maxlength="500" placeholder="Briefly describe your expertise, current focus, and what you're looking for…"></textarea>
+            <p class="sf-hint">Max 500 characters. Shown in your profile and search results.</p>
+          </div>
+
+          <!-- Key skills -->
+          <div class="sf-group">
+            <label class="sf-label">Key Skills <span class="sf-opt">(optional)</span></label>
+            <input id="skills" class="sf-input" type="text" placeholder="e.g. Python, CRISPR, Mass Spectrometry, CFD…" />
+            <p class="sf-hint">Comma-separated. These help employers find you in keyword searches.</p>
+          </div>
+
+          <button class="btn-back" type="button" onclick="goStep(1)">← Back</button>
+          <button class="auth-submit" type="button" onclick="goStep(3)">
+            Continue
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- ── STEP 3 ─────────────────────────────────── -->
+        <div id="step3" style="display:none">
+          <div class="auth-section-head">
+            <h2>Links &amp; portfolio</h2>
+            <p>All fields optional — add what's relevant to your work.</p>
+          </div>
+
+          <div class="links-grid">
+            <div>
+              <label class="sf-label">Personal Website</label>
+              <div class="link-field">
+                <div class="link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                <input id="websiteUrl" class="sf-input" type="url" placeholder="https://yoursite.com" />
+              </div>
+            </div>
+            <div>
+              <label class="sf-label">LinkedIn</label>
+              <div class="link-field">
+                <div class="link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+                <input id="linkedinUrl" class="sf-input" type="url" placeholder="https://linkedin.com/in/your-name" />
+              </div>
+            </div>
+            <div>
+              <label class="sf-label">Facebook</label>
+              <div class="link-field">
+                <div class="link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                <input id="facebookUrl" class="sf-input" type="url" placeholder="https://facebook.com/your-name" />
+              </div>
+            </div>
+            <div>
+              <label class="sf-label">Academic / Research Portfolio</label>
+              <div class="link-field">
+                <div class="link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                <input id="academicUrl" class="sf-input" type="url" placeholder="https://orcid.org/0000-0000-0000-0000" />
+              </div>
+              <p class="sf-hint">ORCID, Google Scholar, ResearchGate, Academia.edu, or institutional profile.</p>
+            </div>
+          </div>
+
+          <!-- Privacy -->
+          <div class="profile-section-title">Privacy</div>
+          <div class="sf-group">
+            <label class="pill-label" style="width:fit-content;">
+              <input type="checkbox" id="isPublic" checked />
+              Make my profile visible in the Member Directory
+            </label>
+            <p class="sf-hint" style="margin-top:8px;">You can change this any time from your profile settings. Only profiles active in the last 30 days appear in search results.</p>
+          </div>
+
+          <!-- Terms -->
+          <div class="terms-check">
+            <input type="checkbox" id="termsCheck" />
+            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I confirm I am at least 16 years old.</span>
+          </div>
+
+          <button class="btn-back" type="button" onclick="goStep(2)">← Back</button>
+          <button class="auth-submit" id="submitBtn" type="button" onclick="handleSignUp()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Create My Account
+          </button>
+        </div>
+
       </div><!-- /panelSignup -->
 
       <!-- ═══════════════════════════════════
            SIGN IN PANEL
       ══════════════════════════════════════ -->
       <div class="auth-panel" id="panelSignin">
-
         <div class="auth-section-head">
           <h2>Welcome back</h2>
-          <p>Sign in to your verified STEMsource account.</p>
+          <p>Sign in to your STEMsource account.</p>
         </div>
+
+        <div id="signinBanner" class="form-banner"></div>
 
         <div class="social-row">
-          <button class="social-btn-full">
+          <button class="social-btn-full" type="button">
             <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-            Google
-          </button>
-          <button class="social-btn-full">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
+            Continue with Google
           </button>
         </div>
-
         <div class="form-divider">or sign in with email</div>
 
-        <form onsubmit="return false;">
-          <div class="sf-group">
-            <label class="sf-label">Email Address</label>
-            <input class="sf-input" type="email" placeholder="you@institution.edu" autocomplete="email" />
+        <div class="sf-group">
+          <label class="sf-label">Email Address</label>
+          <input id="signinEmail" class="sf-input" type="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="sf-group">
+          <label class="sf-label">Password</label>
+          <div class="pw-wrap">
+            <input id="signinPassword" class="sf-input" type="password" placeholder="••••••••" autocomplete="current-password" />
+            <button type="button" class="pw-toggle" onclick="togglePw('signinPassword',this)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
           </div>
+        </div>
+        <div style="text-align:right;margin-bottom:18px;"><a href="#" style="font-size:.78rem;color:var(--color-primary);font-weight:600;">Forgot password?</a></div>
 
-          <div class="sf-group">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <label class="sf-label" style="margin:0;">Password</label>
-              <a href="#" style="font-size:.78rem;color:var(--color-primary);font-weight:600;">Forgot password?</a>
-            </div>
-            <div class="pw-wrap">
-              <input class="sf-input" type="password" id="pwSignin" placeholder="Your password" autocomplete="current-password" />
-              <button type="button" class="pw-toggle" onclick="togglePw('pwSignin')">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <label class="terms-check" style="margin-bottom:20px;">
-            <input type="checkbox" />
-            <span>Keep me signed in for 30 days</span>
-          </label>
-
-          <button type="submit" class="auth-submit">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-            Sign In
-          </button>
-
-          <p class="auth-switch">Don't have an account? <a onclick="showPanel('signup')">Create one free</a></p>
-        </form>
-
-      </div><!-- /panelSignin -->
+        <button class="auth-submit" type="button" onclick="handleSignIn()">
+          Sign In
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="auth-switch">Don't have an account? <a onclick="showPanel('signup')">Create one free</a></p>
+      </div>
 
     </div><!-- /auth-form-wrap -->
   </div><!-- /auth-right -->
-
 </div><!-- /auth-shell -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 <script src="js/main.js"></script>
+<script src="js/auth.js"></script>
 <script>
-  const VERIFY_MESSAGES = {
-    prof: '<strong>Credential verification required.</strong> After signup you\'ll receive a confirmation email. Our team then verifies your degree, ORCID, or institutional email within 24 hours before your profile goes live.',
-    ind:  '<strong>Identity verification required.</strong> After signup you\'ll receive a confirmation email and a brief phone or video call to verify your identity before your posting goes live.',
-    org:  '<strong>Business verification required.</strong> After signup we\'ll confirm your organization via your website and business registration. Most organizations are verified within 1–2 business days.'
-  };
+  /* ── State ────────────────────────────────────────────────────────── */
+  let currentStep      = 1;
+  let currentAccType   = 'individual';
+  let currentRole      = 'seeker';
 
-  let currentType = 'prof';
+  /* ── Panel toggle ─────────────────────────────────────────────────── */
+  function showPanel(p) {
+    document.getElementById('panelSignup').classList.toggle('active', p === 'signup');
+    document.getElementById('panelSignin').classList.toggle('active', p === 'signin');
+    document.getElementById('tabSignup').classList.toggle('active', p === 'signup');
+    document.getElementById('tabSignin').classList.toggle('active', p === 'signin');
+  }
 
-  function selectAccount(type) {
-    currentType = type;
-    ['prof','ind','org'].forEach(t => {
-      document.getElementById('type' + t.charAt(0).toUpperCase() + t.slice(1))
-        .classList.toggle('active', t === type);
+  /* ── Account type ─────────────────────────────────────────────────── */
+  function selectAccountType(type) {
+    currentAccType = type;
+    document.getElementById('typeIndividual').classList.toggle('active', type === 'individual');
+    document.getElementById('typeOrganization').classList.toggle('active', type === 'organization');
+    document.getElementById('indNameRow').style.display = type === 'individual' ? '' : 'none';
+    document.getElementById('orgNameRow').style.display = type === 'organization' ? '' : 'none';
+  }
+
+  /* ── Platform role ────────────────────────────────────────────────── */
+  function selectRole(r) {
+    currentRole = r;
+    ['seeker','poster','both'].forEach(x => {
+      document.getElementById('role' + x.charAt(0).toUpperCase() + x.slice(1))
+        .classList.toggle('active', x === r);
     });
-    document.getElementById('profFields').style.display = type === 'prof' ? '' : 'none';
-    document.getElementById('indFields').style.display  = type === 'ind'  ? '' : 'none';
-    document.getElementById('orgFields').style.display  = type === 'org'  ? '' : 'none';
-    document.getElementById('verifyText').innerHTML = VERIFY_MESSAGES[type];
+    // Show org-only fields when they're posting
+    const orgFields = document.getElementById('orgFields');
+    orgFields.style.display = (currentAccType === 'organization' || r === 'poster' || r === 'both') ? '' : 'none';
   }
 
-  function showPanel(name) {
-    document.getElementById('panelSignup').classList.toggle('active', name === 'signup');
-    document.getElementById('panelSignin').classList.toggle('active', name === 'signin');
-    document.getElementById('tabSignup').classList.toggle('active', name === 'signup');
-    document.getElementById('tabSignin').classList.toggle('active', name === 'signin');
+  /* ── Step navigation ─────────────────────────────────────────────── */
+  function goStep(n) {
+    if (n > currentStep && !validateStep(currentStep)) return;
+    document.getElementById('step' + currentStep).style.display = 'none';
+    document.getElementById('step' + n).style.display = '';
+    updateStepBar(n);
+    currentStep = n;
+    document.getElementById('formBanner').style.display = 'none';
+    window.scrollTo({ top: document.querySelector('.auth-right').offsetTop, behavior: 'smooth' });
   }
 
-  function togglePw(id) {
-    const el = document.getElementById(id);
-    el.type = el.type === 'password' ? 'text' : 'password';
+  function updateStepBar(n) {
+    for (let i = 1; i <= 3; i++) {
+      const dot  = document.getElementById('sdot' + i);
+      const lbl  = document.getElementById('slbl' + i);
+      if (i < n)  { dot.classList.add('done');   dot.classList.remove('active'); dot.innerHTML = '✓'; }
+      if (i === n){ dot.classList.add('active');  dot.classList.remove('done');  dot.innerHTML = i; }
+      if (i > n)  { dot.classList.remove('active','done'); dot.innerHTML = i; }
+      lbl.classList.toggle('active', i === n);
+    }
+    if (document.getElementById('sline1'))
+      document.getElementById('sline1').classList.toggle('done', n > 1);
+    if (document.getElementById('sline2'))
+      document.getElementById('sline2').classList.toggle('done', n > 2);
   }
 
-  // Password strength
-  const pwInput = document.getElementById('pwInput');
-  const strengthFill = document.getElementById('strengthFill');
-  const strengthText = document.getElementById('strengthText');
-  if (pwInput) {
-    pwInput.addEventListener('input', () => {
-      const v = pwInput.value;
-      let score = 0;
-      if (v.length >= 8) score++;
-      if (/[A-Z]/.test(v)) score++;
-      if (/[0-9]/.test(v)) score++;
-      if (/[^A-Za-z0-9]/.test(v)) score++;
-      const colors = ['', '#ef4444', '#f59e0b', '#eab308', '#0284c7'];
-      const labels = ['', 'Weak — add more characters', 'Fair — add uppercase or numbers', 'Good — add a symbol to strengthen', 'Strong password ✓'];
-      strengthFill.style.width  = (score * 25) + '%';
-      strengthFill.style.background = colors[score] || '';
-      strengthText.textContent = score > 0 ? labels[score] : 'Use 8+ characters with letters, numbers, and symbols.';
-      strengthText.style.color = score === 4 ? 'var(--color-primary)' : score >= 2 ? 'var(--amber-600)' : score === 1 ? '#ef4444' : 'var(--slate-400)';
-    });
+  /* ── Validation ───────────────────────────────────────────────────── */
+  function showBanner(msg, type='error') {
+    const el = document.getElementById('formBanner');
+    el.textContent = msg;
+    el.className = 'form-banner ' + type;
+    el.style.display = '';
   }
+
+  function validateStep(step) {
+    if (step === 1) {
+      const fn = document.getElementById('firstName').value.trim();
+      const ln = document.getElementById('lastName').value.trim();
+      const on = document.getElementById('orgName').value.trim();
+      const em = document.getElementById('signupEmail').value.trim();
+      const pw = document.getElementById('signupPassword').value;
+      if (currentAccType === 'individual' && (!fn || !ln)) { showBanner('Please enter your first and last name.'); return false; }
+      if (currentAccType === 'organization' && !on) { showBanner('Please enter your organisation name.'); return false; }
+      if (!em || !em.includes('@')) { showBanner('Please enter a valid email address.'); return false; }
+      if (pw.length < 8) { showBanner('Password must be at least 8 characters.'); return false; }
+    }
+    if (step === 2) {
+      const title = document.getElementById('profTitle').value.trim();
+      const country = document.getElementById('country').value;
+      if (!title) { showBanner('Please add a professional headline.'); return false; }
+      if (!country) { showBanner('Please select your country.'); return false; }
+    }
+    return true;
+  }
+
+  /* ── Password strength ────────────────────────────────────────────── */
+  function checkStrength(pw) {
+    let score = 0;
+    if (pw.length >= 8) score++;
+    if (/[A-Z]/.test(pw)) score++;
+    if (/[0-9]/.test(pw)) score++;
+    if (/[^A-Za-z0-9]/.test(pw)) score++;
+    const fill  = document.getElementById('strengthFill');
+    const label = document.getElementById('strengthLabel');
+    const map = [
+      { w:'0%',   bg:'', text:'Password strength' },
+      { w:'25%',  bg:'#ef4444', text:'Too weak' },
+      { w:'50%',  bg:'#f59e0b', text:'Fair' },
+      { w:'75%',  bg:'#0ea5e9', text:'Good' },
+      { w:'100%', bg:'#22c55e', text:'Strong ✓' },
+    ];
+    fill.style.width      = map[score].w;
+    fill.style.background = map[score].bg;
+    label.textContent     = map[score].text;
+    label.style.color     = score >= 3 ? '#15803d' : score === 2 ? '#0284c7' : '#64748b';
+  }
+
+  /* ── Toggle password visibility ───────────────────────────────────── */
+  function togglePw(id, btn) {
+    const inp = document.getElementById(id);
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    btn.style.color = inp.type === 'text' ? 'var(--color-primary)' : 'var(--slate-400)';
+  }
+
+  /* ── Sign Up ──────────────────────────────────────────────────────── */
+  async function handleSignUp() {
+    if (!document.getElementById('termsCheck').checked) {
+      showBanner('Please accept the Terms of Service to continue.');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg width="16" height="16" class="spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity=".25"/><path d="M21 12a9 9 0 00-9-9" stroke-linecap="round"/></svg> Creating account…';
+
+    const isInd  = currentAccType === 'individual';
+    const fn     = document.getElementById('firstName').value.trim();
+    const ln     = document.getElementById('lastName').value.trim();
+    const on     = document.getElementById('orgName').value.trim();
+    const name   = isInd ? `${fn} ${ln}` : on;
+    const skills = document.getElementById('skills').value
+      .split(',').map(s => s.trim()).filter(Boolean);
+    const jtypes = [...document.querySelectorAll('input[name="jtype"]:checked')].map(el => el.value);
+
+    const formData = {
+      email:            document.getElementById('signupEmail').value.trim(),
+      password:         document.getElementById('signupPassword').value,
+      display_name:     name,
+      account_type:     currentAccType,
+      title:            document.getElementById('profTitle').value.trim(),
+      country:          document.getElementById('country').value,
+      currency:         document.getElementById('currency').value,
+      role:             currentRole,
+      job_type_prefs:   jtypes,
+      discipline_prefs: [document.getElementById('discipline').value].filter(Boolean),
+      skills,
+      website_url:      document.getElementById('websiteUrl').value.trim() || null,
+      linkedin_url:     document.getElementById('linkedinUrl').value.trim() || null,
+      facebook_url:     document.getElementById('facebookUrl').value.trim() || null,
+      academic_url:     document.getElementById('academicUrl').value.trim() || null,
+      org_size:         document.getElementById('orgSize')?.value || null,
+      org_industry:     document.getElementById('orgIndustry')?.value || null,
+      bio:              document.getElementById('bio').value.trim() || null,
+    };
+
+    const { user, error } = await signUp(formData);
+
+    if (error) {
+      btn.disabled = false;
+      btn.innerHTML = '✕ Try Again';
+      showBanner(error.message || 'Sign-up failed. Please try again.');
+      return;
+    }
+
+    // Success — show confirmation
+    document.getElementById('step3').innerHTML = `
+      <div style="text-align:center;padding:32px 0;">
+        <div style="width:64px;height:64px;background:var(--green-50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--navy-900);margin-bottom:10px;">You're in, ${fn || on}!</h2>
+        <p style="color:var(--slate-500);font-size:.9rem;line-height:1.7;max-width:340px;margin:0 auto 24px;">
+          Check your inbox to confirm your email address. Once verified, your profile will be reviewed within 24 hours.
+        </p>
+        <a href="community.html" class="auth-submit" style="display:inline-flex;text-decoration:none;max-width:280px;margin:0 auto;">
+          Browse the Community →
+        </a>
+      </div>`;
+  }
+
+  /* ── Sign In ──────────────────────────────────────────────────────── */
+  async function handleSignIn() {
+    const email = document.getElementById('signinEmail').value.trim();
+    const pw    = document.getElementById('signinPassword').value;
+    const banner= document.getElementById('signinBanner');
+
+    if (!email || !pw) {
+      banner.textContent = 'Please enter your email and password.';
+      banner.className   = 'form-banner error';
+      banner.style.display = '';
+      return;
+    }
+
+    const { user, error } = await signIn(email, pw);
+    if (error) {
+      banner.textContent = error.message || 'Invalid credentials. Please try again.';
+      banner.className   = 'form-banner error';
+      banner.style.display = '';
+      return;
+    }
+
+    // Redirect to profile
+    const { profile } = await getSessionProfile();
+    window.location.href = profile ? `profile?id=${profile.id}` : 'index.html';
+  }
+
+  /* ── CSS spinner ─────────────────────────────────────────────────── */
+  const s = document.createElement('style');
+  s.textContent = `@keyframes spin{to{transform:rotate(360deg)}}.spin{animation:spin .8s linear infinite}`;
+  document.head.appendChild(s);
 </script>
 </body>
 </html>
