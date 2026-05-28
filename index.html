@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STEMsource — Jobs & Resources for STEM Professionals</title>
   <meta name="description" content="Find freelance projects, contracts, and full-time positions in science, technology, engineering, and mathematics. Join 42,000+ STEM professionals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://fpexmafogncynubpfzxg.supabase.co">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -154,17 +158,17 @@
             <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </span>
           <div class="dropdown">
-            <a href="#" class="dd-item">
+            <a href="community.html" class="dd-item">
               <div class="dd-icon" style="background:var(--violet-100);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
               </div>
-              <div><span class="dd-title">Forum</span><span class="dd-desc">Ask questions, share insights</span></div>
+              <div><span class="dd-title">Member Directory</span><span class="dd-desc">Browse STEM professionals</span></div>
             </a>
             <a href="#" class="dd-item">
               <div class="dd-icon" style="background:var(--blue-50);">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
               </div>
-              <div><span class="dd-title">Mentorship</span><span class="dd-desc">Connect with senior STEM leaders</span></div>
+              <div><span class="dd-title">Forum</span><span class="dd-desc">Ask questions, share insights</span></div>
             </a>
             <a href="#" class="dd-item">
               <div class="dd-icon" style="background:var(--green-50);">
@@ -227,7 +231,7 @@
     <a href="jobs.html" class="mobile-nav-link">Browse Disciplines</a>
     <a href="blog.html" class="mobile-nav-link">Blog</a>
     <a href="guides.html" class="mobile-nav-link">Guides</a>
-    <a href="#" class="mobile-nav-link">Community</a>
+    <a href="community.html" class="mobile-nav-link">Community</a>
     <hr class="mobile-nav-divider" />
     <a href="post-job.html" class="mobile-nav-link">Post a Job</a>
     <hr class="mobile-nav-divider" />
@@ -247,7 +251,7 @@
       <div class="hero-left">
         <div class="hero-eyebrow">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          Now live — 1,240 new jobs this week
+          <span id="idx-eyebrow-new">Now live — STEM jobs this week</span>
         </div>
 
         <h1>
@@ -300,60 +304,20 @@
             <div class="hero-card-dot" style="background:#ef4444;"></div>
             <div class="hero-card-dot" style="background:#f59e0b;"></div>
             <div class="hero-card-dot" style="background:#22c55e;"></div>
-            <span class="hero-card-title">Recent Openings</span>
+            <span class="hero-card-title">Featured Openings</span>
           </div>
           <div class="hero-card-body">
-
-            <div class="hero-mini-job active">
-              <div class="hmj-row">
-                <div class="hmj-logo" style="background:#1d4ed8;">IBM</div>
-                <div>
-                  <div class="hmj-title">Senior ML Research Scientist</div>
-                  <div class="hmj-company">IBM Research · Remote</div>
-                </div>
-              </div>
-              <div class="hmj-footer">
-                <span class="hmj-rate">$145–185k / yr</span>
-                <span class="badge badge-fulltime">Full-Time</span>
-              </div>
+            <div id="hero-featured-jobs">
+              <!-- populated by index-featured.js -->
             </div>
-
-            <div class="hero-mini-job">
-              <div class="hmj-row">
-                <div class="hmj-logo" style="background:#7c3aed;">DM</div>
-                <div>
-                  <div class="hmj-title">Computational Neuroscientist</div>
-                  <div class="hmj-company">DeepMind · London / Hybrid</div>
-                </div>
-              </div>
-              <div class="hmj-footer">
-                <span class="hmj-rate">£95–130k</span>
-                <span class="badge badge-contract">Contract</span>
-              </div>
-            </div>
-
-            <div class="hero-mini-job">
-              <div class="hmj-row">
-                <div class="hmj-logo" style="background:#059669;">PFZ</div>
-                <div>
-                  <div class="hmj-title">CRISPR Genomics Consultant</div>
-                  <div class="hmj-company">Pfizer · New York, NY</div>
-                </div>
-              </div>
-              <div class="hmj-footer">
-                <span class="hmj-rate">$220/hr</span>
-                <span class="badge badge-freelance">Freelance</span>
-              </div>
-            </div>
-
           </div>
           <div class="hero-card-stats">
             <div class="hcs-item">
-              <div class="hcs-num">42k+</div>
+              <div class="hcs-num" id="hcs-professionals">—</div>
               <div class="hcs-label">Professionals</div>
             </div>
             <div class="hcs-item">
-              <div class="hcs-num">3.8k</div>
+              <div class="hcs-num" id="hcs-open-roles">—</div>
               <div class="hcs-label">Open Roles</div>
             </div>
             <div class="hcs-item">
@@ -372,30 +336,30 @@
 <div class="stats-bar">
   <div class="container-lg">
     <div class="stats-inner">
-      <div class="stat-item">
+      <div class="stat-item" data-stat="members">
         <div class="stat-icon-wrap" style="background:var(--green-50);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="42000" data-suffix="k+">0</span>
+          <span class="stat-number" data-count="42000" data-suffix="k+">—</span>
           <span class="stat-label">STEM Professionals</span>
         </div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-stat="jobs">
         <div class="stat-icon-wrap" style="background:var(--blue-50);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="3800" data-suffix="+">0</span>
+          <span class="stat-number" data-count="3800" data-suffix="+">—</span>
           <span class="stat-label">Active Openings</span>
         </div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-stat="employers">
         <div class="stat-icon-wrap" style="background:var(--amber-50);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="1200" data-suffix="+">0</span>
+          <span class="stat-number" data-count="1200" data-suffix="+">—</span>
           <span class="stat-label">Verified Employers</span>
         </div>
       </div>
@@ -404,7 +368,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </div>
         <div>
-          <span class="stat-num" data-count="98" data-suffix="%">0</span>
+          <span class="stat-number" data-count="98" data-suffix="%">0</span>
           <span class="stat-label">Placement Rate</span>
         </div>
       </div>
@@ -427,234 +391,12 @@
       </a>
     </div>
 
-    <div class="jobs-grid">
-
-      <!-- Card 1 -->
-      <div class="job-card job-card-featured">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#1d4ed8;">IBM</div>
-          <div class="jc-badges">
-            <span class="badge badge-featured">⭐ Featured</span>
-            <span class="badge badge-fulltime">Full-Time</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Senior ML Research Scientist</a></div>
-          <div class="jc-company">IBM Research</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Remote — US
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            8+ yrs exp
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">PyTorch</span>
-          <span class="tag">LLMs</span>
-          <span class="tag">Distributed ML</span>
-          <span class="tag">Python</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$145,000 – $185,000 <small>/ year</small></div>
-          <span class="jc-posted">2 days ago</span>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#7c3aed;">DM</div>
-          <div class="jc-badges">
-            <span class="badge badge-contract">Contract</span>
-            <span class="badge badge-remote">Remote</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Computational Neuroscientist</a></div>
-          <div class="jc-company">DeepMind</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            London / Hybrid
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            12-month contract
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">fMRI</span>
-          <span class="tag">Python</span>
-          <span class="tag">JAX</span>
-          <span class="tag">Neural Networks</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">£95,000 – £130,000</div>
-          <span class="jc-posted">1 day ago</span>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#059669;">PFZ</div>
-          <div class="jc-badges">
-            <span class="badge badge-freelance">Freelance</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">CRISPR Genomics Consultant</a></div>
-          <div class="jc-company">Pfizer</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            New York, NY
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            3-month project
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">CRISPR</span>
-          <span class="tag">Gene Editing</span>
-          <span class="tag">R</span>
-          <span class="tag">Bioinformatics</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$220 <small>/ hour</small></div>
-          <span class="jc-posted">3 days ago</span>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="job-card job-card-featured">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#0f172a;">JHU</div>
-          <div class="jc-badges">
-            <span class="badge badge-featured">⭐ Featured</span>
-            <span class="badge badge-parttime">Part-Time</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Biostatistics Research Advisor</a></div>
-          <div class="jc-company">Johns Hopkins University</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Baltimore, MD
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            20 hrs/week
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">R</span>
-          <span class="tag">SAS</span>
-          <span class="tag">Clinical Trials</span>
-          <span class="tag">Epidemiology</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$95 <small>/ hour</small></div>
-          <span class="jc-posted">Today</span>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#dc2626;">SpX</div>
-          <div class="jc-badges">
-            <span class="badge badge-fulltime">Full-Time</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Propulsion Systems Engineer</a></div>
-          <div class="jc-company">SpaceX</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Hawthorne, CA
-          </span>
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            5+ yrs exp
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">CFD</span>
-          <span class="tag">MATLAB</span>
-          <span class="tag">Ansys Fluent</span>
-          <span class="tag">Thermodynamics</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$120,000 – $160,000 <small>/ year</small></div>
-          <span class="jc-posted">5 days ago</span>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="job-card">
-        <div class="jc-top">
-          <div class="co-logo" style="background:#166534;">EPA</div>
-          <div class="jc-badges">
-            <span class="badge badge-contract">Contract</span>
-            <span class="badge badge-remote">Remote</span>
-          </div>
-          <button class="save-btn" aria-label="Save job">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-          </button>
-        </div>
-        <div>
-          <div class="jc-title"><a href="#">Environmental Data Scientist</a></div>
-          <div class="jc-company">U.S. Environmental Protection Agency</div>
-        </div>
-        <div class="jc-meta">
-          <span class="jc-meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Washington, DC / Remote
-          </span>
-        </div>
-        <div class="jc-tags">
-          <span class="tag">Python</span>
-          <span class="tag">GIS</span>
-          <span class="tag">ArcGIS</span>
-          <span class="tag">Climate Modeling</span>
-        </div>
-        <div class="jc-footer">
-          <div class="jc-salary">$85 <small>/ hour</small></div>
-          <span class="jc-posted">1 week ago</span>
-        </div>
-      </div>
-
+    <div class="jobs-grid" id="featured-jobs-grid">
+      <!-- populated by index-featured.js -->
     </div>
 
     <div style="text-align:center;margin-top:40px;">
-      <a href="jobs.html" class="btn btn-ghost btn-lg">View All 3,800+ Jobs →</a>
+      <a href="jobs.html" class="btn btn-ghost btn-lg" id="idx-view-all-jobs">View All Jobs →</a>
     </div>
   </div>
 </section>
@@ -757,56 +499,56 @@
         <div class="disc-icon" style="background:#fdf2f8;">🧬</div>
         <div>
           <div class="disc-name">Biotechnology</div>
-          <div class="disc-count">412 open roles</div>
+          <div class="disc-count" data-disc="life-sciences">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=cs" class="discipline-card">
         <div class="disc-icon" style="background:var(--blue-50);">💻</div>
         <div>
           <div class="disc-name">Computer Science</div>
-          <div class="disc-count">891 open roles</div>
+          <div class="disc-count" data-disc="cs-ai">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=engineering" class="discipline-card">
         <div class="disc-icon" style="background:var(--amber-50);">⚙️</div>
         <div>
           <div class="disc-name">Engineering</div>
-          <div class="disc-count">734 open roles</div>
+          <div class="disc-count" data-disc="engineering">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=chemistry" class="discipline-card">
         <div class="disc-icon" style="background:var(--green-50);">⚗️</div>
         <div>
           <div class="disc-name">Chemistry</div>
-          <div class="disc-count">298 open roles</div>
+          <div class="disc-count" data-disc="chemistry">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=physics" class="discipline-card">
         <div class="disc-icon" style="background:var(--violet-100);">⚛️</div>
         <div>
           <div class="disc-name">Physics</div>
-          <div class="disc-count">187 open roles</div>
+          <div class="disc-count" data-disc="physics">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=math" class="discipline-card">
         <div class="disc-icon" style="background:var(--slate-100);">📐</div>
         <div>
           <div class="disc-name">Mathematics</div>
-          <div class="disc-count">214 open roles</div>
+          <div class="disc-count" data-disc="mathematics">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=env" class="discipline-card">
         <div class="disc-icon" style="background:var(--green-50);">🌍</div>
         <div>
           <div class="disc-name">Environmental</div>
-          <div class="disc-count">156 open roles</div>
+          <div class="disc-count" data-disc="environmental">— open roles</div>
         </div>
       </a>
       <a href="jobs.html?d=neuro" class="discipline-card">
         <div class="disc-icon" style="background:var(--blue-50);">🧠</div>
         <div>
           <div class="disc-name">Neuroscience</div>
-          <div class="disc-count">142 open roles</div>
+          <div class="disc-count" data-disc="medicine">— open roles</div>
         </div>
       </a>
     </div>
@@ -1034,7 +776,7 @@
   <div class="container-lg">
     <div style="text-align:center;margin-bottom:48px;">
       <p class="label-xs">What Members Say</p>
-      <h2 class="section-title" style="text-align:center;margin:8px auto 0;">Trusted by 42,000+ STEM professionals</h2>
+      <h2 class="section-title" style="text-align:center;margin:8px auto 0;" id="idx-testimonials-header">Trusted by STEM professionals worldwide</h2>
     </div>
     <div class="testimonials-grid">
 
@@ -1177,6 +919,11 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 <script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/site-stats.js"></script>
+<script src="js/index-featured.js"></script>
 </body>
 </html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Directory — STEMsource</title>
+  <meta name="description" content="Browse verified STEM professionals — scientists, engineers, researchers, and organisations active in the last 30 days." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://fpexmafogncynubpfzxg.supabase.co">
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body { background: var(--slate-50); }
+
+    /* ── Page hero ───────────────────────────────────────────────────── */
+    .comm-hero {
+      background: var(--navy-900);
+      padding: 56px 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .comm-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 15% 50%, rgba(14,165,233,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 85% 30%, rgba(2,132,199,.08) 0%, transparent 55%);
+    }
+    .comm-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .comm-hero-inner { position: relative; z-index: 1; }
+    .comm-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -.025em;
+      margin-bottom: 12px;
+    }
+    .comm-hero h1 em { font-style: italic; color: #7dd3fc; }
+    .comm-hero-sub {
+      font-size: .95rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+    .comm-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .comm-stat-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.03em;
+      font-family: var(--font-display);
+    }
+    .comm-stat-lbl {
+      font-size: .75rem;
+      color: rgba(255,255,255,.45);
+      font-weight: 500;
+      margin-top: 1px;
+    }
+
+    /* ── Layout ──────────────────────────────────────────────────────── */
+    .comm-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 28px;
+      align-items: start;
+      padding: 40px 0 80px;
+    }
+
+    /* ── Sidebar filters ─────────────────────────────────────────────── */
+    .comm-sidebar {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .filter-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--r-lg);
+      padding: 20px;
+    }
+    .filter-title {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--slate-400);
+      margin-bottom: 14px;
+    }
+    .filter-select {
+      width: 100%;
+      background: var(--slate-50);
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--r-sm);
+      padding: 9px 32px 9px 12px;
+      font-size: .835rem;
+      font-family: var(--font);
+      color: var(--navy-900);
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      transition: border-color var(--ease);
+      box-sizing: border-box;
+    }
+    .filter-select:focus { border-color: var(--color-primary); }
+    .filter-select:last-child { margin-bottom: 0; }
+    .filter-reset {
+      font-size: .75rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font);
+    }
+    .filter-reset:hover { text-decoration: underline; }
+
+    /* ── Main column ─────────────────────────────────────────────────── */
+    .comm-main {}
+    .comm-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .comm-count {
+      font-size: .82rem;
+      color: var(--slate-500);
+      flex: 1;
+    }
+    .comm-count strong { color: var(--navy-900); }
+    .comm-search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 320px;
+    }
+    .comm-search-wrap svg {
+      position: absolute;
+      left: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--slate-400);
+      pointer-events: none;
+    }
+    .comm-search {
+      width: 100%;
+      padding: 9px 14px 9px 36px;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--r-sm);
+      font-size: .855rem;
+      font-family: var(--font);
+      color: var(--navy-900);
+      background: #fff;
+      outline: none;
+      transition: border-color var(--ease), box-shadow var(--ease);
+      box-sizing: border-box;
+    }
+    .comm-search:focus { border-color: var(--color-primary); box-shadow: var(--shadow-focus); }
+    .comm-search::placeholder { color: var(--slate-400); }
+
+    /* ── Member cards grid ───────────────────────────────────────────── */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    /* ── Member card ─────────────────────────────────────────────────── */
+    .cm-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--r-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: box-shadow var(--ease), transform var(--ease), border-color var(--ease);
+    }
+    .cm-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--slate-300);
+      transform: translateY(-2px);
+    }
+
+    .cm-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cm-avatar-wrap { position: relative; flex-shrink: 0; }
+    .cm-avatar-img {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--slate-200);
+    }
+    .cm-avatar-initials {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 700; color: #fff;
+    }
+    .cm-active-dot {
+      position: absolute;
+      bottom: 2px; right: 2px;
+      width: 11px; height: 11px;
+      background: #22c55e;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+    .cm-card-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+    .cm-role-badge {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: var(--r-full);
+    }
+    .cm-role-seeker { background: var(--green-100); color: var(--green-700); }
+    .cm-role-poster { background: var(--blue-100);  color: var(--blue-600); }
+    .cm-role-both   { background: var(--violet-100);color: var(--violet-600); }
+    .cm-org-badge {
+      font-size: .65rem;
+      font-weight: 600;
+      color: var(--slate-500);
+      background: var(--slate-100);
+      padding: 2px 8px;
+      border-radius: var(--r-full);
+    }
+
+    .cm-card-body {}
+    .cm-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 2px;
+    }
+    .cm-name a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .cm-name a:hover { color: var(--color-primary); }
+    .cm-title {
+      font-size: .82rem;
+      color: var(--slate-600);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .cm-location {
+      font-size: .76rem;
+      color: var(--slate-400);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .cm-bio {
+      font-size: .8rem;
+      color: var(--slate-500);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .cm-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .cm-tags .tag {
+      font-size: .7rem;
+      padding: 3px 9px;
+      background: var(--slate-100);
+      color: var(--slate-600);
+      border-radius: var(--r-full);
+      border: 1px solid var(--slate-200);
+    }
+
+    .cm-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--slate-100);
+    }
+    .cm-joined { font-size: .72rem; color: var(--slate-400); }
+    .cm-actions { display: flex; align-items: center; gap: 8px; }
+    .cm-social-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: var(--r-sm);
+      background: var(--slate-100);
+      color: var(--slate-500);
+      text-decoration: none;
+      transition: all var(--ease);
+    }
+    .cm-social-link:hover { background: var(--color-primary); color: #fff; }
+
+    /* Nav avatar */
+    .nav-profile-btn {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: var(--r-full);
+      transition: background var(--ease);
+    }
+    .nav-profile-btn:hover { background: var(--slate-100); }
+    .nav-avatar-img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+    .nav-avatar-initials {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .nav-profile-name { font-size: .83rem; font-weight: 600; color: var(--navy-900); }
+
+    @media (max-width: 960px) {
+      .comm-layout { grid-template-columns: 1fr; }
+      .comm-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
+      .filter-card { flex: 1; min-width: 200px; }
+    }
+    @media (max-width: 600px) {
+      .comm-hero { padding: 36px 0 28px; }
+      .members-grid { grid-template-columns: 1fr; }
+      .comm-stats { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── ANNOUNCE BAR ────────────────────────────────────────────────── -->
+<div style="background:var(--green-700);color:#fff;text-align:center;padding:9px 16px;font-size:.8rem;font-weight:500;letter-spacing:.01em;">
+  🚀 STEMsource is in beta — post your first job <strong>free</strong> for a limited time.
+  <a href="post-job.html" style="color:#bae6fd;font-weight:700;margin-left:6px;text-decoration:underline;">Post Now →</a>
+</div>
+
+<!-- ─── NAVBAR ──────────────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="container-lg">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <div class="brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        </div>
+        <span class="brand-name">STEM<em>source</em></span>
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <span class="nav-link">Find Jobs<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+          <div class="dropdown">
+            <a href="jobs.html?type=freelance" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><span class="dd-title">Freelance Projects</span><span class="dd-desc">Short-term, project-based contracts</span></div></a>
+            <a href="jobs.html?type=contract" class="dd-item"><div class="dd-icon" style="background:var(--amber-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--amber-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div><span class="dd-title">Contract Positions</span><span class="dd-desc">Mid-term engagements, W2 or 1099</span></div></a>
+            <a href="jobs.html?type=fulltime" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><span class="dd-title">Full-Time Roles</span><span class="dd-desc">Permanent positions with benefits</span></div></a>
+            <a href="jobs.html?type=parttime" class="dd-item"><div class="dd-icon" style="background:var(--violet-100);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><span class="dd-title">Part-Time &amp; Advisory</span><span class="dd-desc">Flexible hours, board seats, consulting</span></div></a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link">Disciplines<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+          <div class="dropdown dropdown-wide">
+            <div class="dd-grid">
+              <a href="jobs.html?d=biotech" class="dd-item"><div class="dd-icon" style="background:#fdf2f8;"><span style="font-size:1.1rem;">🧬</span></div><div><span class="dd-title">Biotechnology</span><span class="dd-desc">Genomics, CRISPR, drug discovery</span></div></a>
+              <a href="jobs.html?d=cs" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">💻</span></div><div><span class="dd-title">Computer Science</span><span class="dd-desc">AI/ML, software, data science</span></div></a>
+              <a href="jobs.html?d=engineering" class="dd-item"><div class="dd-icon" style="background:var(--amber-50);"><span style="font-size:1.1rem;">⚙️</span></div><div><span class="dd-title">Engineering</span><span class="dd-desc">Mechanical, electrical, civil</span></div></a>
+              <a href="jobs.html?d=chemistry" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">⚗️</span></div><div><span class="dd-title">Chemistry</span><span class="dd-desc">Pharma, materials, synthesis</span></div></a>
+              <a href="jobs.html?d=physics" class="dd-item"><div class="dd-icon" style="background:var(--violet-100);"><span style="font-size:1.1rem;">⚛️</span></div><div><span class="dd-title">Physics</span><span class="dd-desc">Quantum, astrophysics, optics</span></div></a>
+              <a href="jobs.html?d=math" class="dd-item"><div class="dd-icon" style="background:var(--slate-100);"><span style="font-size:1.1rem;">📐</span></div><div><span class="dd-title">Mathematics</span><span class="dd-desc">Statistics, modeling, actuarial</span></div></a>
+              <a href="jobs.html?d=env" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><span style="font-size:1.1rem;">🌍</span></div><div><span class="dd-title">Environmental</span><span class="dd-desc">Climate science, ecology, GIS</span></div></a>
+              <a href="jobs.html?d=neuro" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><span style="font-size:1.1rem;">🧠</span></div><div><span class="dd-title">Neuroscience</span><span class="dd-desc">Cognitive science, neuropharma</span></div></a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link">Resources<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+          <div class="dropdown">
+            <a href="blog.html" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><span class="dd-title">Blog</span><span class="dd-desc">Career advice, industry trends</span></div></a>
+            <a href="guides.html" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div><div><span class="dd-title">Guides &amp; Playbooks</span><span class="dd-desc">Deep-dive how-tos for STEM careers</span></div></a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link">Community<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+          <div class="dropdown">
+            <a href="community.html" class="dd-item"><div class="dd-icon" style="background:var(--violet-100);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--violet-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><span class="dd-title">Member Directory</span><span class="dd-desc">Browse STEM professionals</span></div></a>
+            <a href="#" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><span class="dd-title">Forum</span><span class="dd-desc">Ask questions, share insights</span></div></a>
+            <a href="#" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><span class="dd-title">Events &amp; Webinars</span><span class="dd-desc">Live sessions with industry experts</span></div></a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link">For Employers<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+          <div class="dropdown">
+            <a href="post-job.html" class="dd-item"><div class="dd-icon" style="background:var(--green-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><div><span class="dd-title">Post a Job</span><span class="dd-desc">Reach 42,000+ STEM professionals</span></div></a>
+            <a href="community.html" class="dd-item"><div class="dd-icon" style="background:var(--blue-50);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><span class="dd-title">Search Candidates</span><span class="dd-desc">Browse verified STEM profiles</span></div></a>
+          </div>
+        </li>
+      </ul>
+      <div class="navbar-actions">
+        <a href="signup.html" class="nav-signin">Sign In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="nav-toggle" id="mobileToggle" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" id="mobileClose"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <a href="jobs.html" class="mobile-nav-link">Find Jobs</a>
+    <a href="community.html" class="mobile-nav-link">Member Directory</a>
+    <a href="blog.html" class="mobile-nav-link">Blog</a>
+    <a href="guides.html" class="mobile-nav-link">Guides</a>
+    <hr class="mobile-nav-divider"/>
+    <a href="post-job.html" class="mobile-nav-link">Post a Job</a>
+    <hr class="mobile-nav-divider"/>
+    <a href="signup.html" class="mobile-nav-link">Sign In</a>
+    <a href="signup.html" class="btn btn-primary" style="margin-top:8px;justify-content:center;">Get Started Free</a>
+  </div>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────── -->
+<section class="comm-hero">
+  <div class="comm-hero-grid"></div>
+  <div class="container-lg comm-hero-inner">
+    <h1>The <em>STEM</em> Member Directory</h1>
+    <p class="comm-hero-sub">Browse verified scientists, engineers, researchers, and organisations. All profiles are active within the last 30 days.</p>
+    <div class="comm-stats">
+      <div>
+        <div class="comm-stat-val" id="comm-stat-members">—</div>
+        <div class="comm-stat-lbl">Active members</div>
+      </div>
+      <div>
+        <div class="comm-stat-val" id="comm-stat-countries">—</div>
+        <div class="comm-stat-lbl">Countries</div>
+      </div>
+      <div>
+        <div class="comm-stat-val">18</div>
+        <div class="comm-stat-lbl">Disciplines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAIN CONTENT ─────────────────────────────────────────────────── -->
+<div class="container-lg comm-layout">
+
+  <!-- Sidebar -->
+  <aside class="comm-sidebar">
+    <div class="filter-card">
+      <div class="filter-title">Filter Members</div>
+      <select id="filterRole" class="filter-select">
+        <option value="">All Roles</option>
+        <option value="seeker">Looking for Work</option>
+        <option value="poster">Hiring / Posting</option>
+        <option value="both">Open to Both</option>
+      </select>
+      <select id="filterType" class="filter-select">
+        <option value="">All Types</option>
+        <option value="individual">Individual</option>
+        <option value="organization">Organisation</option>
+      </select>
+      <select id="filterDisc" class="filter-select">
+        <option value="">All Disciplines</option>
+        <option value="life-sciences">Biology &amp; Life Sciences</option>
+        <option value="chemistry">Chemistry</option>
+        <option value="physics">Physics</option>
+        <option value="medicine">Medicine &amp; Biomedical</option>
+        <option value="environment">Environmental Science</option>
+        <option value="neuroscience">Neuroscience</option>
+        <option value="aerospace">Aerospace Engineering</option>
+        <option value="biomedical-eng">Biomedical Engineering</option>
+        <option value="chemical-eng">Chemical Engineering</option>
+        <option value="electrical">Electrical Engineering</option>
+        <option value="mechanical">Mechanical Engineering</option>
+        <option value="materials">Materials Engineering</option>
+        <option value="cs">Computer Science</option>
+        <option value="ai-ml">AI &amp; Machine Learning</option>
+        <option value="data-science">Data Science</option>
+        <option value="mathematics">Mathematics &amp; Statistics</option>
+        <option value="quantum">Quantum Computing</option>
+      </select>
+      <select id="filterCountry" class="filter-select">
+        <option value="">All Countries</option>
+        <option>United States</option><option>United Kingdom</option>
+        <option>Canada</option><option>Germany</option><option>Australia</option>
+        <option>France</option><option>Netherlands</option><option>Sweden</option>
+        <option>Switzerland</option><option>Japan</option><option>Singapore</option>
+        <option>India</option><option>Israel</option><option>South Korea</option>
+        <option>New Zealand</option>
+      </select>
+      <button class="filter-reset" onclick="resetFilters()">Clear filters</button>
+    </div>
+
+    <div class="filter-card" style="background:var(--navy-900);border-color:transparent;">
+      <p style="font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:14px;">
+        <strong style="color:#fff;display:block;margin-bottom:6px;">Need to find STEM talent?</strong>
+        Post a job or contact members directly from their profile pages.
+      </p>
+      <a href="post-job.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;display:flex;">Post a Job</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="comm-main">
+    <div class="comm-toolbar">
+      <p class="comm-count"><strong>—</strong> members active in the last 30 days</p>
+      <div class="comm-search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="commSearch" class="comm-search" type="search" placeholder="Search by name, skill, keyword…" />
+      </div>
+    </div>
+    <div class="members-grid" id="membersGrid">
+      <p style="padding:32px;color:var(--slate-400);text-align:center;grid-column:1/-1;">Loading members…</p>
+    </div>
+  </main>
+</div>
+
+<!-- ─── FOOTER ───────────────────────────────────────────────────────── -->
+<footer style="background:var(--navy-900);color:rgba(255,255,255,.45);text-align:center;padding:24px;font-size:.78rem;margin-top:40px;">
+  © 2025 STEMsource · <a href="#" style="color:rgba(255,255,255,.45);">Privacy</a> · <a href="#" style="color:rgba(255,255,255,.45);">Terms</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/site-stats.js"></script>
+<script src="js/community.js"></script>
+<script>
+  function resetFilters() {
+    ['filterRole','filterType','filterDisc','filterCountry'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    const s = document.getElementById('commSearch');
+    if (s) s.value = '';
+    renderFiltered();
+  }
+</script>
+</body>
+</html>
